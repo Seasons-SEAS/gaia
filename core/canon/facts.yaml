@@ -1,0 +1,980 @@
+# GAIA canon: facts (the Almanac)
+#
+# Every entry is one sentence GAIA may say, in English. GAIA writes her own
+# prose around these facts; a live tool result (`live_tool`) always wins over
+# the value written here, which is the last verified snapshot.
+#
+# Status rules (founders review these in PRs):
+#   approved       aggregate on-chain facts that answer a direct question (the
+#                  L0 disclosure principle) and plain documented mechanics.
+#   team_reported  figures only the team reports (APY, paid totals, the audit
+#                  post). GAIA always labels them "team-reported".
+#   needs_founder  depends on an open team decision (`decision`). The `text`
+#                  is the interim neutral wording GAIA may use meanwhile: true,
+#                  and it denies nothing. `disputed` lists the claims (regexes)
+#                  that interim wording must never make; they stay verifier-side.
+#
+# Fields: key, label (receipt label), value (receipt display value), text,
+# numbers (key figures; the build adds every other number found in `text`),
+# as_of (ISO date or UTC time of the read), source_kind, source, url
+# (registry domains only), status, live_tool, decision, disputed, on_request
+# (GAIA never volunteers it; asked directly, she answers briefly and plainly
+# with what can be verified, or offers to pass it to the team).
+#
+# Sources: on-chain reads of 2026-09-28 (slot ≈451.29M, epoch 1044), the live GitBook (fetched 2026-09-28), seasons.wtf
+# blog posts and the Terms. Internal wallet labels are never used here.
+
+# --- token ---------------------------------------------------------------------
+
+- key: token.mint
+  label: Official $SEAS mint
+  value: 7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS (Token-2022, 8 decimals)
+  text: >-
+    The only official $SEAS mint is 7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS, a Solana Token-2022
+    token with 8 decimals whose metadata (name "Seasons", ticker $SEAS) has been immutable since
+    13 May 2026; copy it only from seasons.wtf or the docs and compare every character.
+  numbers: [8]
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "Mint account (getAccountInfo, jsonParsed, slot 451,289,968); metadata authority set to none on 2026-05-13 11:50:50 UTC; GitBook $SEAS page (CA)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: token.supply_total
+  label: Total $SEAS supply
+  value: 1,000,000,000 minted at genesis; 999,999,999.80 on-chain
+  text: >-
+    1 billion $SEAS were minted at genesis on 9 Dec 2025 and the supply is fixed; the on-chain total
+    is 999,999,999.80 because about 0.2 $SEAS has been burned in small amounts.
+  numbers: [1000000000, 999999999.80449592]
+  as_of: 2026-09-28T10:53:06Z
+  source_kind: chain
+  source: "getTokenSupply (raw 99,999,999,980,449,592 base units); genesis tx tHKLAgg3…1vw (2025-12-09 18:30:44 UTC)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_supply
+
+- key: token.mint_authority
+  label: Mint authority
+  value: none (null)
+  text: >-
+    The $SEAS mint authority is null, so nobody, the team included, can create more $SEAS.
+  numbers: []
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "Mint account mintAuthority = null (slot 451,289,968)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: token.freeze_authority
+  label: Freeze authority
+  value: none (null)
+  text: >-
+    The $SEAS freeze authority is null, so nobody can freeze a holder's tokens.
+  numbers: []
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "Mint account freezeAuthority = null (slot 451,289,968)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: token.holder_safety
+  label: What can touch a holder's balance
+  value: no freeze, no transfer hook, no permanent delegate
+  text: >-
+    The mint has no freeze authority, transfer hook or permanent delegate, so nobody can freeze, seize
+    or spend a holder's $SEAS; the only thing that can leave a holder's token account without their
+    signature is the 10% fee withheld on tokens they received, which was never part of their spendable
+    balance.
+  numbers: [10]
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "Mint extensions: only transferFeeConfig, metadataPointer, tokenMetadata (no transferHook, permanentDelegate, defaultAccountState, pausable)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+# --- the 10% fee ----------------------------------------------------------------
+
+- key: fee.rate
+  label: Transfer fee on the $SEAS mint
+  value: 10% (1000 bps)
+  text: >-
+    Every $SEAS transfer carries a 10% fee (1000 basis points) set in the token contract itself.
+  numbers: [10, 0.1, 1000]
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "Mint transferFeeConfig newerTransferFee.transferFeeBasisPoints = 1000"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: fee.scope
+  label: What the 10% applies to
+  value: every movement of $SEAS
+  text: >-
+    The 10% applies to every movement of $SEAS: buys, sells, wallet-to-wallet transfers (including
+    between your own wallets), liquidity deposits and withdrawals, and releases from time-locks.
+  numbers: [10]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook TTT F.A.Q. (every movement triggers the TTT); Token-2022 transfer-fee extension"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt
+  status: approved
+
+- key: fee.history
+  label: Fee history
+  value: 1000 bps since epoch 892; no change pending at epoch 1044
+  text: >-
+    The fee has been exactly 10% since the genesis epoch 892 (9 Dec 2025), and no change was pending
+    at epoch 1044 on 28 Sep 2026.
+  numbers: [10, 892, 1044]
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "olderTransferFee = newerTransferFee = {epoch 892, 1000 bps}; current epoch 1044"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: fee.change_delay
+  label: Notice before a fee change applies
+  value: 2 epochs (about 2–4 days), visible on-chain at once
+  text: >-
+    Under Token-2022 a new fee rate only takes effect two Solana epochs after it is submitted, about
+    2 to 4 days, and the pending rate is visible on-chain from the moment it is submitted.
+  numbers: [2, 4]
+  as_of: 2026-09-28T10:18:40Z
+  source_kind: chain
+  source: "token-2022 transfer_fee/processor.rs SetTransferFee (epoch = current + 2); measured epoch ≈1.93 days"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_token_trust_facts
+
+- key: fee.config_authority
+  label: Fee-config authority
+  value: single-signature wallet (Seasons creator address)
+  text: >-
+    The fee-config authority is a single-signature wallet, the Seasons creator address
+    E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8, not a multisig and not the DAO, and Token-2022 lets it
+    set any rate from 0 to 100% and any per-transfer cap (currently 100,000,000 $SEAS, so in practice
+    uncapped).
+  numbers: [0, 100, 100000000]
+  as_of: 2026-09-28T10:19:46Z
+  source_kind: chain
+  source: "transferFeeConfigAuthority = E1J26…Jzm8: system-owned, on-curve (EOA); maximumFee 1e16 base units"
+  url: https://solscan.io/account/E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8
+  status: approved
+  on_request: true
+  live_tool: get_token_trust_facts
+
+- key: fee.withdraw_authority
+  label: Fee-withdraw authority
+  value: single-signature wallet CY3fa3…MDK7
+  text: >-
+    The 10% is not sent anywhere automatically: it stays withheld in the token accounts involved,
+    including the pools, and only the token's fee-withdraw authority, the single-signature wallet
+    CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7, can collect it; it has held that role since genesis
+    and is a different key from the creator address.
+  numbers: [10]
+  as_of: 2026-09-28T10:19:47Z
+  source_kind: chain
+  source: "withdrawWithheldAuthority = CY3fa3…MDK7: system-owned, on-curve (EOA), set by initializeTransferFeeConfig in the genesis tx"
+  url: https://solscan.io/account/CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7
+  status: approved
+  on_request: true
+  live_tool: get_token_trust_facts
+
+- key: fees.withheld_summary
+  label: Fees withheld on-chain (lower bound)
+  value: ≥75.9M $SEAS, of which 66.7M from the lock transfers
+  text: >-
+    At least 75.9M $SEAS of fees sat withheld on-chain on 28 Sep 2026, collectable only by the
+    fee-withdraw authority; 66.7M of it is the one-time fee charged when allocations moved into
+    time-locks in January 2026, not trading fees.
+  numbers: [75.9, 75900000, 75936692.7, 66.7, 66700000, 66701001.56]
+  as_of: 2026-09-28T10:59:23Z
+  source_kind: chain
+  source: "Withheld amounts on known accounts: lock escrows 66,701,001.56; Raydium CLMM vault 7,374,977.34; Meteora vaults 332,941.61; mint 288,471.41; others. Holder accounts not counted (lower bound)"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  on_request: true
+
+- key: fees.last_collected
+  label: Last fee collection
+  value: 9 Dec 2025 (launch day); none since
+  text: >-
+    The fee-withdraw authority last collected withheld fees on launch day, 9 Dec 2025 (about 100.6M
+    $SEAS, the fees charged on the genesis allocation), and had collected none since as of 28 Sep 2026.
+  numbers: [100.6, 100600000, 100637332.65]
+  as_of: 2026-09-28T10:27:00Z
+  source_kind: chain
+  source: "Full history of CY3fa3 (163 signatures): 10 × WithdrawWithheldTokensFromAccounts, all 2025-12-09 19:14 UTC; none since"
+  url: https://solscan.io/account/CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7
+  status: approved
+  on_request: true
+
+- key: team.statement_2026_09_14
+  label: Team post of 14 Sep 2026 (audit and authorities)
+  value: QuillAudits token audit; fee settings adjustable; multisig planned
+  text: >-
+    In its 14 Sep 2026 post the team said QuillAudits audited the $SEAS token's configuration and
+    extensions and found no critical, high or medium issues (the scope is the token, not the whole
+    protocol), that certain fee-related settings stay adjustable, and that it plans to move
+    fee-withdrawal authority to a multisig, which had not happened on-chain as of 28 Sep 2026.
+  numbers: []
+  as_of: 2026-09-14
+  source_kind: team_statement
+  source: "seasons.wtf blog 'More to build on, with confidence' (2026-09-14); report listed on QuillAudits' GitHub; on-chain authorities read 2026-09-28"
+  url: https://seasons.wtf/blog/more-to-build-on-with-confidence
+  status: team_reported
+
+# D12: public names for the two fee-authority wallets are not approved yet.
+# Until then GAIA uses their on-chain roles only.
+- key: wallets.public_names
+  label: How GAIA names the fee-authority wallets
+  value: by on-chain role (interim)
+  text: >-
+    GAIA names the two fee-authority wallets by their on-chain roles: E1J26…Jzm8 is the Seasons
+    creator address, which holds the fee-config authority, and CY3fa3…MDK7 is the fee-withdraw
+    authority wallet.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: chain
+  source: "Mint transferFeeConfig authorities; naming pending team decision D12"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: needs_founder
+  on_request: true
+  decision: D12
+  disputed:
+    - "\\bYMS\\b"
+    - "operations wallet"
+    - "operating wallet"
+    - "treasury wallet"
+    - "yield (management )?(system )?wallet"
+    - "team('s)? wallet"
+    - "reserve wallet"
+
+# --- supply and locks -------------------------------------------------------------
+
+# Tokenomics reconciliation is open: the GitBook table, the published wallets and older site pages disagree.
+- key: supply.allocation
+  label: Tokenomics allocation (as documented)
+  value: GitBook table; reconciliation pending
+  text: >-
+    The GitBook Tokenomics table allocates the 1B supply as Liquidity 10%, Privates 20%, Foundation
+    25%, Public 25%, Team 5%, Incentives 5% and Growth 10%, but the published wallets and some older
+    Seasons pages don't fully match it, and the team hasn't reconciled the differences yet.
+  numbers: [1, 1000000000, 10, 20, 25, 5]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Tokenomics allocation table; published wallets (Growth 4 × 12.5M, Partner 12 × 8.33M); website Public 30% (protocol.ts)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics
+  status: needs_founder
+  on_request: true
+  decision: TOKENOMICS
+  disputed:
+    - "public (is |= ?)?30 ?%"
+    - "(correct|right|accurate|real) (split|allocation|tokenomics)"
+    - "team (allocation |tokens )?(is|are) (locked|vested|vesting)"
+    - "growth (is|=) (5|10) ?%"
+
+- key: supply.circulating
+  label: Circulating supply
+  value: ≈333M (supply minus lock escrows and their withheld fees)
+  text: >-
+    About 333M $SEAS (33.3% of supply) is circulating, counted as total supply minus the time-lock
+    escrows and the fees withheld in them; this matches the docs, includes the unlocked Incentives and
+    Growth wallets, and market caps quoted elsewhere may use other circulating figures.
+  numbers: [333, 333000000, 332989984.15, 33.3]
+  as_of: 2026-09-28T10:51:47Z
+  source_kind: chain
+  source: "999,999,999.80 − 667,010,015.65 (61 escrows, net + withheld); GitBook Tokenomics 333,000,000"
+  url: https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  live_tool: get_supply
+
+- key: locks.total
+  label: Time-locked supply
+  value: 600.3M net in 61 escrows + 66.7M withheld
+  text: >-
+    About 600.3M $SEAS (60% of supply) sits in 61 time-lock escrows, plus 66.7M withheld as fees when
+    it was locked, so 667.0M is out of circulation in total.
+  numbers: [600.3, 600309014.08, 60, 61, 66.7, 66701001.56, 667.0, 667010015.65]
+  as_of: 2026-09-28T10:51:47Z
+  source_kind: chain
+  source: "61 vesting accounts of lock program Lock1z…eju (= the Terminal's TREASURY_ADDRESSES)"
+  url: https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju
+  status: approved
+  live_tool: get_supply
+
+- key: locks.published_groups
+  label: Foundation and Partner locks
+  value: Foundation opens 2027-07-08 → 2028-07-08; Partner 2027-01-30
+  text: >-
+    The Foundation's 250M $SEAS (5 wallets) is time-locked, 225M net after fees, opening about 94.5M
+    on 8 Jul 2027, 85.5M on 17 and 29 Jan 2028 and 45M on 8 Jul 2028, and the Partner allocation
+    (12 wallets, 100M) is locked as 90M net until 30 Jan 2027.
+  numbers: [250, 5, 225, 94.5, 85.5, 45, 12, 100, 90]
+  as_of: 2026-09-28T10:43:49Z
+  source_kind: chain
+  source: "Lock1z vesting accounts: Foundation 9 escrows (locked 2026-01-18/27); Partner 12 escrows (locked 2026-01-13, unlock 2027-01-30 04:00–04:11 UTC)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics
+  status: approved
+  live_tool: get_supply
+
+- key: locks.unlocked_groups
+  label: Incentives and Growth (not locked)
+  value: Incentives 50M unmoved; Growth 50M, ≈25.6M moved out
+  text: >-
+    The Incentives wallets (6 wallets, 50M $SEAS) haven't moved since launch and the Growth wallets
+    (4 wallets, 50M) have sent out about 25.6M since January 2026, leaving about 24.4M, and neither
+    group is in any lock program.
+  numbers: [6, 50, 4, 25.6, 25588114.22, 24.4, 24411885.78]
+  as_of: 2026-09-28T10:37:49Z
+  source_kind: chain
+  source: "getTokenAccountsByOwner on the 6 Incentives and 4 Growth wallets published in the GitBook; full signature histories"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics
+  status: approved
+  on_request: true
+
+# D9: Growth and "Fund Use" disclosure is open. GAIA may say the movements are
+# public; she must not describe what they were for.
+- key: growth.fund_use
+  label: Growth wallet movements
+  value: visible on-chain; no published fund-use record (interim)
+  text: >-
+    Transfers out of the published Growth wallets are visible on-chain, but no fund-use record
+    explaining them has been published yet, so what they were for is for the team to state.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: chain
+  source: "Growth wallet histories; GitBook Tokenomics 'Fund Use … shall be publicly recorded'; pending team decision D9"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics
+  status: needs_founder
+  on_request: true
+  decision: D9
+  disputed:
+    - "(was|were) (used|spent|sent) (for|on|to pay)"
+    - "marketing"
+    - "market[- ]?mak"
+    - "liquidity provision"
+    - "\\bsold\\b"
+    - "dump"
+    - "builder (claims|funding)"
+
+- key: locks.upcoming_unlocks
+  label: Unlocks due by 30 Jan 2027
+  value: ≈194.4M $SEAS (5.4M + 99.0M + 90.0M)
+  text: >-
+    About 194.4M $SEAS unlocks by 30 Jan 2027, about 5.4M on 11 Dec 2026, 99.0M from 31 Dec 2026 to
+    10 Jan 2027 (9M a day) and 90.0M on 30 Jan 2027, about 19.4% of supply.
+  numbers: [194.4, 194400000, 5.4, 5400000, 99.0, 99000000, 9, 90.0, 90000000, 19.4]
+  as_of: 2026-09-28T10:51:47Z
+  source_kind: chain
+  source: "Release schedules of the 61 Lock1z vesting accounts (net escrow amounts)"
+  url: https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju
+  status: approved
+  on_request: true
+  live_tool: get_supply
+
+- key: locks.unlabelled
+  label: Locks without a published beneficiary
+  value: ≈227M net, unlocks Dec 2026 → Dec 2030
+  text: >-
+    About 227M $SEAS net sits in time-locks whose beneficiary wallets aren't published in the docs,
+    with unlocks spread from Dec 2026 to Dec 2030.
+  numbers: [227, 226.96, 226960000]
+  as_of: 2026-09-28T10:51:47Z
+  source_kind: chain
+  source: "Lock1z vesting accounts whose beneficiaries are not in the GitBook's published wallet lists (aggregate only)"
+  url: https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju
+  status: approved
+  on_request: true
+
+# D4: which lock belongs to which allocation (bucket labels) is not approved for
+# publication. GAIA states the aggregates above and nothing about labels.
+- key: locks.bucket_labels
+  label: Which lock belongs to which allocation
+  value: not published (interim)
+  text: >-
+    Wallet-level details for the Team, Privates, Public and Liquidity allocations aren't published in
+    the docs, so which time-lock belongs to which allocation is for the team to publish.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Tokenomics (no wallets or vesting for Team, Privates, Public, Liquidity); pending team decision D4"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics
+  status: needs_founder
+  on_request: true
+  decision: D4
+  disputed:
+    - "team('s)? (tokens|allocation|wallets?|locks?) (is|are) (locked|in|held)"
+    - "\\bpubx?\\b"
+    - "team[- ]labell?ed"
+    - "belongs? to the team"
+    - "(team|private|public|liquidity)('s)? (lock|escrow|tranche)s? (unlock|open)s?"
+    - "internal label"
+    - "all team tokens"
+
+- key: locks.program
+  label: Lock program
+  value: third-party, upgradeable (Squads vault holds the upgrade key)
+  text: >-
+    The time-locks run on a third-party, upgradeable lock program whose upgrade key is a Squads
+    multisig vault that isn't Seasons' and whose operator isn't confirmed, and at unlock the tokens
+    return to ordinary single-signature wallets, with the release transfer itself paying the 10% fee.
+  numbers: [10]
+  as_of: 2026-09-28T10:44:36Z
+  source_kind: chain
+  source: "Lock1z…eju programData upgrade authority SH5WSy…Luv3 (off-curve Squads v4 vault); all 61 beneficiaries on-curve"
+  url: https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju
+  status: approved
+  on_request: true
+
+# --- nodes ------------------------------------------------------------------------
+
+- key: node.director
+  label: Director Node
+  value: ≥10,000 $SEAS; Sun + Wed; basket; no claim
+  text: >-
+    A Director Node is a self-custody Solana wallet holding 10,000 $SEAS or more at a round's
+    snapshot; Directors are paid on Sundays and Wednesdays in the Inclusion Set basket straight to the
+    wallet, with nothing to claim, and each Director's share is its balance divided by all Directors'
+    balances at that snapshot.
+  numbers: [10000]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Director Nodes (Director Yield Implementation v2, weight formula)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/nodes/director-nodes
+  status: approved
+  live_tool: get_wallet_tier
+
+- key: node.builder
+  label: Builder Node
+  value: 1,000–9,999 $SEAS; weekly $SEAS at 0.8× the network rate; claim
+  text: >-
+    A Builder Node holds 1,000 to 9,999 $SEAS; since August 2026 Builders accrue $SEAS weekly at 0.8×
+    the network rate, published each Sunday after the Director round, and claim it themselves in the
+    Terminal.
+  numbers: [1000, 9999, 0.8]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Builder Nodes (Builder Yield Implementation v1); blog 'Builder claim is live' (2026-09-02); week-8 root 2026-09-27"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/nodes/builder-nodes
+  status: approved
+  live_tool: get_wallet_tier
+
+- key: node.builder_funding
+  label: Where Builder payouts come from
+  value: finite allocation of existing supply; vault via 2-of-3 multisig
+  text: >-
+    Builder payouts come from a finite, dedicated allocation of existing $SEAS supply, not newly minted
+    tokens; its size and runway aren't published, and the claims vault is funded through a 2-of-3
+    Squads multisig.
+  numbers: [2, 3]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Builder Nodes (yield sourced from a limited, dedicated allocation); blog 'A budget for builders' (2026-09-24); Squads funding txs"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/nodes/builder-nodes
+  status: approved
+  on_request: true
+
+- key: node.identity
+  label: What counts as a node
+  value: one self-custody address = one node, read at the snapshot
+  text: >-
+    One address is one node and only ordinary self-custody wallets count, not tokens on an exchange, in
+    a pool or in a smart contract, and eligibility is read from the balance at each round's snapshot,
+    so a wallet below its threshold at the snapshot gets nothing that round.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Nodes ('One Address = One Node'), Director and Builder criteria (EOA, not a smart contract); blog 'One address, one node' (2026-08-28)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/nodes
+  status: approved
+  live_tool: get_wallet_tier
+
+# --- distributions -----------------------------------------------------------------
+
+- key: distribution.schedule
+  label: Distribution schedule
+  value: Directors Sun + Wed; Builders weekly (Sunday); time varies
+  text: >-
+    Director rounds run on Sundays and Wednesdays and Builder accruals are published weekly on Sunday
+    after the Director round; the exact time varies, and rounds usually land in the morning UTC.
+  numbers: []
+  as_of: 2026-09-28T10:33:10Z
+  source_kind: chain
+  source: "GitBook F.A.Q. ('Twice a week, every Sunday and Wednesday'); distributor rounds 2026-07-26 → 2026-09-27 started 03:42–18:57 UTC"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution
+  status: approved
+  live_tool: get_payout_schedule
+
+- key: distribution.weekday_streak
+  label: Round weekdays
+  value: 19 of 19 rounds on Sun/Wed (26 Jul → 27 Sep 2026)
+  text: >-
+    All 19 Director rounds from 26 Jul to 27 Sep 2026 landed on a Sunday or a Wednesday, each visible
+    on-chain from the Set #2 distributor.
+  numbers: [19]
+  as_of: 2026-09-28T10:33:10Z
+  source_kind: chain
+  source: "Distributor 2yHa1U…k9a signatures (1,500, clustered by >3 h gaps)"
+  url: https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a
+  status: approved
+  live_tool: get_distribution_receipts
+
+- key: distribution.last_round
+  label: Last observed round
+  value: Sun 27 Sep 2026, ~370 wallets, ≈$5,858
+  text: >-
+    In the last observed round, Sunday 27 Sep 2026 from 03:42 to 06:19 UTC, the distributor swapped
+    about 25,011 $SEAS on public pools and paid about 370 wallets 0.4161 XAUt0, 0.02108 wBTC and
+    2,238.61 jlUSDc, worth about $5,858 at 28 Sep prices.
+  numbers:
+    [
+      25011,
+      25011.11,
+      370,
+      0.4161,
+      0.416109,
+      0.02108,
+      0.02108091,
+      2238.61,
+      2238.609157,
+      5858,
+      5858.18,
+    ]
+  as_of: 2026-09-28T10:54:27Z
+  source_kind: chain
+  source: "69 × getTransaction of the 2026-09-27 round (8 swaps, 57 batched payouts, 3 ATA creations); valued at Jupiter price v3"
+  url: https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a
+  status: approved
+  live_tool: get_distribution_receipts
+
+- key: inclusion_set.current
+  label: Active Inclusion Set
+  value: "Set #2 'Perfect Order': 30% XAUt0, 30% wBTC, 40% jlUSDc"
+  text: >-
+    The active Inclusion Set #2, "Perfect Order" (since 1 Apr 2026), pays Directors 30% XAUt0 (Tether
+    Gold), 30% wBTC (Wormhole) and 40% jlUSDc (Jupiter Lend USDC) through the distributor
+    2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a; Set #1, which paid memecoins (PENGU, FARTCOIN, BONK,
+    WIF, JBMB), ended on 31 Mar 2026.
+  numbers: [30, 40]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Inclusion Sets and Inclusion Set Archives; last round split 29.6/29.9/40.6 by value"
+  url: https://seasons.gitbook.io/seasons-docs/resources/inclusion-set-archives
+  status: approved
+
+# D3: how GAIA describes where a round's funding comes from awaits a team
+# decision. The interim wording states only the public mechanics.
+- key: funding.observed_path
+  label: How a round moves on-chain
+  value: wallet → distributor → basket swaps → node wallets (interim)
+  text: >-
+    Each round is public on-chain: shortly before it, $SEAS arrives at the Set #2 distributor, which
+    swaps it into XAUt0, wBTC and jlUSDc and pays node wallets.
+  numbers: []
+  as_of: 2026-09-28T10:33:10Z
+  source_kind: chain
+  source: "Distributor inflows before each round (e.g. 2 × 23,456.789 gross on 2026-09-27); swap and payout txs; pending team decision D3"
+  url: https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a
+  status: needs_founder
+  on_request: true
+  decision: D3
+  disputed:
+    - "funded (by|from|with|out of) (the |its )?(collected |trading |transaction |transfer )?(fees|tax)"
+    - "reserve"
+    - "(fees?|tax) (go|goes|are sent|is sent|flows?) (directly |straight |automatically )?to (node )?(holders|nodes|wallets)"
+    - "last 48"
+    - "in full"
+    - "fee revenue pays"
+    # Present-tense "the fee pays the payouts" in any wording (D3 is open).
+    - "(payouts?|rounds?|distributions?|yield|rewards?)\\b[^.;]{0,40}\\b(come|comes|paid|financed|funded)\\s+(from|by|out of|with)\\b[^.;]{0,30}\\b(fees?|tax)"
+    - "(fees?|tax)\\b[^.;]{0,40}\\b(funds?|pays? for|finances?|covers?|feeds?)\\b[^.;]{0,30}\\b(payouts?|rounds?|distributions?|yield|rewards?)"
+
+- key: funding.reconciliation
+  label: Per-round reconciliation
+  value: not published
+  text: >-
+    No per-round reconciliation of fees withheld, $SEAS swapped and payouts made has been published, so
+    the chain shows each round but not a fee-by-fee accounting of it.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: chain
+  source: "No reconciliation in the GitBook, website or Terminal; withheld fees uncollected since 2025-12-09"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution
+  status: approved
+  on_request: true
+
+- key: yield.distributed_share
+  label: Share of generated yield distributed (team-reported)
+  value: Q1 58.9%, Q2 75.4%
+  text: >-
+    The team's quarterly reports show the distributed share of generated yield rising: Q1 2026
+    distributed $101,045 of $171,622 generated (58.9%) and Q2 $118,585 of $157,233 (75.4%), with the
+    rest reported as unrealized.
+  numbers: [101045, 171622, 58.9, 118585, 118585.08, 157233, 157232.9, 75.4]
+  as_of: 2026-07-01
+  source_kind: team_statement
+  source: "Seasons Q1 report (to 2026-03-12) and Q2 recap (2026-03-13 → 2026-07-01)"
+  status: team_reported
+
+# --- APY and the fee arithmetic ---------------------------------------------------------
+
+- key: apy.not_guaranteed
+  label: Is the APY fixed?
+  value: no; no floor; target range is a design target
+  text: >-
+    The APY isn't fixed or guaranteed and has no floor: it changes every round; the docs' Director
+    range of 6.58% to 21.07% is a design target with variance outside it expected, and the node table's
+    "100% APY" and "80% APY" rows are share labels (Directors full rate, Builders 0.8×), not returns.
+  numbers: [6.58, 21.07, 100, 80, 0.8]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook APY F.A.Q. ('Is APY Fixed? No'), Director Nodes F.A.Q. (target 6.58%–21.07%), Nodes type table"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/apy
+  status: approved
+
+# Q9 (canonical APY formula) is open; this is the method the team publishes.
+- key: apy.definition
+  label: How the reported APY is computed (team method)
+  value: per-round simple rate × 104, one 10,000 $SEAS node
+  text: >-
+    The APY Seasons reports is a per-round simple rate for one 10,000 $SEAS node, annualised over about
+    104 rounds a year on the $SEAS price at the time, and a new buyer's yield on what they paid is about
+    0.9× that figure because of the entry fee.
+  numbers: [10000, 104, 0.9]
+  as_of: 2026-09-28
+  source_kind: team_statement
+  source: "Terminal 30d APY and Telegram 'LIVE APY' methodology; entry-fee cost basis"
+  url: https://terminal.seasons.wtf
+  status: team_reported
+
+- key: apy.last_reported
+  label: Last reported APY (team-reported)
+  value: ≈20.17% (Round #84, 25 Sep 2026)
+  text: >-
+    For Round #84 on 25 Sep 2026 the team reported an APY of about 20.17% and more than $310,216 paid to
+    Directors in total; a single round is history, not a forecast.
+  numbers: [84, 20.17, 310216]
+  as_of: 2026-09-25
+  source_kind: team_statement
+  source: "seasons.wtf blog '$300,000 where it counts' (2026-09-25)"
+  url: https://seasons.wtf/blog/300000-where-it-counts
+  status: team_reported
+
+- key: apy.history
+  label: Reported APY ranges (team-reported)
+  value: Q1 6.13–18.42%; Q2 5.76–12.17% (avg 8.66%)
+  text: >-
+    Team-reported round APYs ranged from 6.13% to 18.42% in Q1 2026 and from 5.76% to 12.17% in Q2 2026,
+    averaging 8.66% in Q2.
+  numbers: [6.13, 18.42, 5.76, 12.17, 8.66]
+  as_of: 2026-07-01
+  source_kind: team_statement
+  source: "Seasons Q1 report and Q2 recap"
+  status: team_reported
+
+- key: tax.round_trip
+  label: Round-trip cost of the 10% fee
+  value: keeps ≈81%; ≈19% cost; break-even ≈+23.46%
+  text: >-
+    With 10% in and 10% out, buying and later selling at the same price keeps about 81% of the value, a
+    round-trip cost of about 19% before pool fees, and the price would have to rise about 23.46% just to
+    break even.
+  numbers: [10, 81, 0.81, 19, 0.19, 23.46, 0.2346]
+  as_of: 2026-09-28
+  source_kind: calc
+  source: "0.9 × 0.9 = 0.81; 1 / 0.81 − 1 = 0.2346"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt
+  status: approved
+  on_request: true
+
+- key: tax.gross_up
+  label: Gross amount needed to net a balance
+  value: net ÷ 0.9 (10,000 → 11,111.12)
+  text: >-
+    Ending up with a net balance takes about 1.111× it before the fee, whether bought or sent from
+    another wallet: netting 10,000 $SEAS takes about 11,111.12 and netting 1,000 about 1,111.12, while
+    sending exactly 10,000 delivers 9,000, a Builder balance.
+  numbers: [1.111, 10000, 11111.12, 1000, 1111.12, 9000]
+  as_of: 2026-09-28
+  source_kind: calc
+  source: "gross = net / (1 − 0.10)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt
+  status: approved
+
+- key: tax.earn_back_formula
+  label: Time to earn back the fee (formula)
+  value: entry fee ≈ 0.11 ÷ r years; round trip ≈ 0.21 ÷ r years
+  text: >-
+    At a steady price and a rate r that the user chooses, earning back the entry fee takes about 0.11 ÷ r
+    years and recovering a full round trip about 0.21 ÷ r years, and any real price move changes the
+    result.
+  numbers: [0.11, 0.21, 0.2111]
+  as_of: 2026-09-28
+  source_kind: calc
+  source: "t / ((1 − t)·r) and (1 − (1 − t)²) / ((1 − t)·r) with t = 0.10"
+  status: approved
+
+# --- protocol status -------------------------------------------------------------------
+
+- key: modules.status
+  label: Revenue modules live
+  value: 1 of 3 (TTT); SSYM and YAV not active
+  text: >-
+    One of the three planned revenue modules is live, the TTT (the 10% fee); two more, the stablecoin
+    module (SSYM) and the vaults (YAV), are planned as further sources of yield and have no confirmed
+    date yet.
+  numbers: [10]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Generation, SSYM ('NOT YET ACTIVE'), YAV ('NOT YET ACTIVE')"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation
+  status: approved
+
+- key: dao.status
+  label: DAO status
+  value: not operational; tentatively H2 2027
+  text: >-
+    The Seasons DAO is not operational and has no on-chain role yet; the docs tentatively earmark it for
+    H2 2027.
+  numbers: [2027]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook DAO ('NOT YET OPERATIONAL', 'Tentatively earmarked for development in H2 of 2027')"
+  url: https://seasons.gitbook.io/seasons-docs/ecosystem/dao
+  status: approved
+  on_request: true
+
+- key: builder_claims.upgrade
+  label: Builder claims program control
+  value: upgrade by 2-of-3 Squads multisig (no time lock); roots by a single key
+  text: >-
+    The Builder claims program (GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf) can only be upgraded by a
+    2-of-3 Squads multisig, which has no time lock, and its weekly claim roots are published by a
+    single-signature key.
+  numbers: [2, 3]
+  as_of: 2026-09-28T10:22:01Z
+  source_kind: chain
+  source: "programData EdGQRw…oH3 authority = Squads vault CXHa…SJ8k; multisig Fm1TPAL…nvw5 threshold 2, members 3, time_lock 0; config authority BMR2n6…dhMt (on-curve)"
+  url: https://solscan.io/account/GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf
+  status: approved
+  on_request: true
+
+- key: custody.self
+  label: Custody
+  value: self-custody; no deposit, staking contract, lock-up or ID form
+  text: >-
+    Holders keep their $SEAS and payouts in their own wallets, with no deposit, staking contract, lock-up
+    or identity form to become a node.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Distribution ('No need to claim and no lock-ups'), LPs (pools deployed by the Seasons Foundation); home-v6 FAQ (no identity-verification form)"
+  url: https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution
+  status: approved
+
+- key: audit.protocol
+  label: Audit coverage beyond the token
+  value: no published audit of distribution, claims or lock programs
+  text: >-
+    The published audit covers the $SEAS token; the distribution, Builder claims and lock programs don't
+    have a published audit yet, and scanner badges such as Jupiter's "mint authority disabled" are
+    checks, not audits.
+  numbers: []
+  as_of: 2026-09-28T10:53:57Z
+  source_kind: docs
+  source: "No report in the GitBook, website or repos beyond the token audit; Jupiter tokens/v2: isVerified null, tags unknown and token-2022"
+  url: https://jup.ag/tokens/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS
+  status: approved
+  on_request: true
+
+# --- market -------------------------------------------------------------------------------
+
+# D7 (canonical price pool, divergence threshold) is open; the current team rule
+# is the deepest DexScreener pair. Never quote a price from documents or the
+# website's calculator fallback.
+- key: price.sources
+  label: $SEAS price sources
+  value: live only; pool and time named
+  text: >-
+    The $SEAS price is only quoted from a live read that names its pool and time, from DexScreener's
+    deepest pool (Raydium CLMM $SEAS/USDC), Meteora and Jupiter, which can differ slightly; on 28 Sep 2026
+    they differed by about 1.26%.
+  numbers: [1.26]
+  as_of: 2026-09-28T10:54:27Z
+  source_kind: api
+  source: "DexScreener pair Fc6N…Zvy $0.2697; Jupiter price v3 $0.26629; Meteora D12EGY…VbJ $0.2663"
+  url: https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy
+  status: approved
+  live_tool: get_price
+
+- key: liquidity.exit_depth
+  label: Exit-side liquidity
+  value: ≈$78.7k USDC on the deepest pool; ≈$207k across pools
+  text: >-
+    On 28 Sep 2026 the deepest pool held about $78.7k of USDC on its sell side and all pools about $207k,
+    so a large sale moves the price noticeably.
+  numbers: [78.7, 78700, 78683, 207, 207000, 207027]
+  as_of: 2026-09-28T10:53:53Z
+  source_kind: api
+  source: "DexScreener pairs: Fc6N… 3,488,730 $SEAS + 78,683 USDC; stable side across pools $207.0k"
+  url: https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy
+  status: approved
+  on_request: true
+  live_tool: get_price
+
+- key: volume.definition
+  label: What "volume" means
+  value: Terminal volume = on-chain transfer volume
+  text: >-
+    The Terminal's "volume" counts on-chain $SEAS transfer volume, not DEX trading volume, and volume,
+    holder counts and transaction counts are not by themselves evidence of demand for any token.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "Terminal public API manifest (/v1/volume: 'NOT DEX trade volume')"
+  url: https://terminal.seasons.wtf
+  status: approved
+  on_request: true
+
+# D-VOL: how GAIA answers about trading by Seasons-related wallets is on hold
+# until the team decides. Interim wording only; never deny.
+- key: market.trading_activity
+  label: Trading by Seasons-related wallets
+  value: no information; team to answer on the record (interim)
+  text: >-
+    GAIA doesn't have information about trading by Seasons-related wallets, and the team should answer
+    that question on the record.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: almanac
+  source: "Pending team decision D-VOL"
+  status: needs_founder
+  on_request: true
+  decision: D-VOL
+  disputed:
+    - "no (market[- ]?makers?|bots?)"
+    - "organic"
+    - "wash[- ]trad\\w*.{0,20}(costly|pointless|expensive|impossible)"
+    - "(runs?|operates?|uses?) (a )?(trading )?(bots?|fleet|market[- ]?makers?)"
+    - "100 ?%"
+    - "fake"
+
+# --- official channels, safety, legal ---------------------------------------------------
+
+- key: official.channels
+  label: Official Seasons sites and channels
+  value: seasons.wtf, terminal.seasons.wtf, GitBook docs, @SeasonsDEFI, t.me/SeasonsCommunity
+  text: >-
+    Official Seasons sites are seasons.wtf and its subdomains such as terminal.seasons.wtf, plus the docs
+    at seasons.gitbook.io/seasons-docs, and official channels are X @SeasonsDEFI, Telegram
+    t.me/SeasonsCommunity and t.me/SeasonsHQ, YouTube @SeasonsDEFI and linktr.ee/SeasonsDEFI, while
+    @SEAS_onchain and linktr.ee/SEASonchain are outdated.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Socials and Blogs pages; v1 persona and support FAQ (outdated handles)"
+  url: https://seasons.gitbook.io/seasons-docs/resources/socials
+  status: approved
+
+- key: support.tutorials
+  label: Step-by-step guides
+  value: seasons.wtf/tutorials
+  text: >-
+    Step-by-step interactive guides are at seasons.wtf/tutorials: becoming a node with Jupiter Wallet,
+    moving a Phantom wallet to Jupiter Mobile, setting up and receiving tokens on a Backpack wallet,
+    buying $SEAS on Jupiter and bridging tokens to Solana.
+  numbers: []
+  as_of: 2026-09-29
+  source_kind: docs
+  source: "seasons.wtf Tutorials page"
+  url: https://seasons.wtf/tutorials
+  status: approved
+
+- key: gaia.surfaces
+  label: Official GAIA surfaces
+  value: seasons.wtf assistant; Telegram @GAIA_Seasons_Bot
+  text: >-
+    The official GAIA is the assistant on seasons.wtf and the Telegram bot @GAIA_Seasons_Bot; she never
+    DMs first, never asks for keys, and can be wrong, which is why every Seasons figure she gives comes
+    with a receipt.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook G.A.I.A. page; website GaiaLauncher (t.me/GAIA_Seasons_Bot); blog 'GAIA is live on Seasons website' (2026-07-31)"
+  url: https://seasons.gitbook.io/seasons-docs/ecosystem/yield-3.0-mechanism
+  status: approved
+
+- key: security.keys
+  label: Seed phrases and DMs
+  value: never asked for; staff never DM first
+  text: >-
+    Seasons and GAIA never ask for a seed phrase or private key and official staff never DM first, so
+    anyone asking for one is running a scam, and addresses should be copied only from seasons.wtf or the
+    docs and compared character by character, since look-alike dust addresses appear in wallet histories.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook G.A.I.A. ('GAIA WILL NEVER ASK YOU FOR YOUR PRIVATE KEYS'); website safety line; dust transfers to the creator address"
+  url: https://seasons.gitbook.io/seasons-docs/ecosystem/yield-3.0-mechanism
+  status: approved
+
+- key: market.where_to_buy
+  label: Where $SEAS trades
+  value: Solana DEXs; 6 official pools; no CEX listing
+  text: >-
+    $SEAS trades only on Solana DEXs, the docs list 6 official pools on Raydium and Meteora paired with
+    USD stablecoins, and $SEAS is not listed on any centralised exchange, so a CEX offer is not official.
+  numbers: [6]
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook LPs ('6 official active pools', others 'treated with caution'); blog 'Anyone offering $SEAS on a CEX is a fraud'"
+  url: https://seasons.gitbook.io/seasons-docs/ecosystem/lps
+  status: approved
+
+- key: legal.entity
+  label: Terms of use
+  value: Seasons Labs; British Virgin Islands law; not advice
+  text: >-
+    The Terms say the Seasons website and Terminal are provided by Seasons Labs under the laws of the
+    British Virgin Islands, are not a financial product or investment advice, exclude sanctioned persons
+    and residents of sanctioned regions, and leave users responsible for their own taxes.
+  numbers: []
+  as_of: 2026-06-18
+  source_kind: docs
+  source: "seasons.wtf/legal/terms (last updated 2026-06-18)"
+  url: https://seasons.wtf/legal/terms
+  status: approved
+
+- key: legal.insurance
+  label: Not a bank deposit
+  value: not insured, not government-backed, nothing guaranteed
+  text: >-
+    Holding $SEAS is not a bank deposit: it isn't insured by the FDIC or SIPC, isn't government-backed,
+    and neither returns nor principal are guaranteed.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "Website home-v6 FAQ ('Returns and principal are not guaranteed'); v1 disclaimer"
+  url: https://seasons.wtf/legal/terms
+  status: approved
+
+- key: brand.name_origin
+  label: Why "Seasons"
+  value: named for nature's cycles
+  text: >-
+    Seasons takes its name from nature's cycles: the docs describe the design as inspired by nature, and
+    the payout baskets are organised into Seasons.
+  numbers: []
+  as_of: 2026-09-28
+  source_kind: docs
+  source: "GitBook Introduction ('Inspired by nature'), Inclusion Sets (Seasons)"
+  url: https://seasons.gitbook.io/seasons-docs/intro/introduction
+  status: approved

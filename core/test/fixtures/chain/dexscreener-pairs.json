@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0.0",
+  "pairs": [
+    {
+      "chainId": "solana",
+      "dexId": "raydium",
+      "url": "https://dexscreener.com/solana/fc6nsemazygwwqcr6uqssx8axv85qcoa5tajmrbhgzvy",
+      "pairAddress": "Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+      "labels": ["CLMM"],
+      "baseToken": {
+        "address": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+        "name": "Seasons",
+        "symbol": "SEAS"
+      },
+      "quoteToken": {
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "priceNative": "0.2664",
+      "priceUsd": "0.2664",
+      "txns": {
+        "m5": {
+          "buys": 0,
+          "sells": 1
+        },
+        "h1": {
+          "buys": 2,
+          "sells": 13
+        },
+        "h6": {
+          "buys": 30,
+          "sells": 70
+        },
+        "h24": {
+          "buys": 123,
+          "sells": 382
+        }
+      },
+      "volume": {
+        "h24": 8659.61,
+        "h6": 3568.98,
+        "h1": 266.07,
+        "m5": 0.19
+      },
+      "priceChange": {
+        "h1": -0.65,
+        "h6": 4.6,
+        "h24": -1.15
+      },
+      "liquidity": {
+        "usd": 1008383.92,
+        "base": 3490574,
+        "quote": 78210
+      },
+      "fdv": 266481460,
+      "marketCap": 136478480,
+      "pairCreatedAt": 1765305988000,
+      "info": {
+        "imageUrl": "https://cdn.dexscreener.com/cms/images/q3i0-WadOACbQlHt?width=800&height=800&quality=95&format=auto",
+        "header": "https://cdn.dexscreener.com/cms/images/ADMzStNBzL-b7JpU?width=1500&height=500&quality=95&format=auto",
+        "openGraph": "https://cdn.dexscreener.com/token-images/og/solana/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS?timestamp=1790664000000",
+        "websites": [
+          {
+            "url": "https://seasons.wtf/",
+            "label": "Website"
+          },
+          {
+            "url": "https://seasons.gitbook.io/seasons-docs/",
+            "label": "Docs"
+          },
+          {
+            "url": "https://www.facebook.com/seasons.protocol/",
+            "label": "Facebook"
+          },
+          {
+            "url": "https://linktr.ee/SEASonchain",
+            "label": "LinkTree"
+          },
+          {
+            "url": "https://beacons.ai/seasonchain",
+            "label": "Beacons"
+          }
+        ],
+        "socials": [
+          {
+            "url": "https://x.com/SEAS_onchain",
+            "type": "twitter"
+          },
+          {
+            "url": "https://t.me/SeasonsCommunity",
+            "type": "telegram"
+          },
+          {
+            "url": "https://www.instagram.com/seasonsprotocol",
+            "type": "instagram"
+          },
+          {
+            "url": "https://www.reddit.com/user/SeasonsSEAS/",
+            "type": "reddit"
+          }
+        ]
+      }
+    },
+    {
+      "chainId": "solana",
+      "dexId": "meteora",
+      "url": "https://dexscreener.com/solana/d12egywwgj7s981m6rbvs8ljrwo6s9jzvnvpldhihvbj",
+      "pairAddress": "D12EGYWwgj7S981m6rbvs8LJrWo6s9JZVNVpLDHiHVbJ",
+      "labels": ["DYN2"],
+      "baseToken": {
+        "address": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+        "name": "Seasons",
+        "symbol": "SEAS"
+      },
+      "quoteToken": {
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "priceNative": "0.2664",
+      "priceUsd": "0.2664",
+      "txns": {
+        "m5": {
+          "buys": 0,
+          "sells": 2
+        },
+        "h1": {
+          "buys": 3,
+          "sells": 15
+        },
+        "h6": {
+          "buys": 32,
+          "sells": 86
+        },
+        "h24": {
+          "buys": 273,
+          "sells": 264
+        }
+      },
+      "volume": {
+        "h24": 15272.62,
+        "h6": 5701.71,
+        "h1": 425.4,
+        "m5": 0.74
+      },
+      "priceChange": {
+        "h1": -0.65,
+        "h6": 5.06,
+        "h24": -1.15
+      },
+      "liquidity": {
+        "usd": 250381.14,
+        "base": 469794,
+        "quote": 125190
+      },
+      "fdv": 266480109,
+      "marketCap": 136477788,
+      "pairCreatedAt": 1767959759000,
+      "info": {
+        "imageUrl": "https://cdn.dexscreener.com/cms/images/q3i0-WadOACbQlHt?width=800&height=800&quality=95&format=auto",
+        "header": "https://cdn.dexscreener.com/cms/images/ADMzStNBzL-b7JpU?width=1500&height=500&quality=95&format=auto",
+        "openGraph": "https://cdn.dexscreener.com/token-images/og/solana/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS?timestamp=1790664000000",
+        "websites": [
+          {
+            "url": "https://seasons.wtf/",
+            "label": "Website"
+          },
+          {
+            "url": "https://seasons.gitbook.io/seasons-docs/",
+            "label": "Docs"
+          },
+          {
+            "url": "https://www.facebook.com/seasons.protocol/",
+            "label": "Facebook"
+          },
+          {
+            "url": "https://linktr.ee/SEASonchain",
+            "label": "LinkTree"
+          },
+          {
+            "url": "https://beacons.ai/seasonchain",
+            "label": "Beacons"
+          }
+        ],
+        "socials": [
+          {
+            "url": "https://x.com/SEAS_onchain",
+            "type": "twitter"
+          },
+          {
+            "url": "https://t.me/SeasonsCommunity",
+            "type": "telegram"
+          },
+          {
+            "url": "https://www.instagram.com/seasonsprotocol",
+            "type": "instagram"
+          },
+          {
+            "url": "https://www.reddit.com/user/SeasonsSEAS/",
+            "type": "reddit"
+          }
+        ]
+      }
+    }
+  ],
+  "pair": null
+}

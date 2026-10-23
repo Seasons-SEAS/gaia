@@ -1,0 +1,29 @@
+{
+  "name": "gaia-stage",
+  "version": "0.1.0",
+  "description": "GAIA 2.0 stage: the one-screen presentation of Seasons' AI agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "idle-voice": "node --experimental-strip-types scripts/idle-voice.mjs",
+    "demo-voice": "node --experimental-strip-types scripts/demo-voice.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "^5.6.3",
+    "vite": "^8.3.1"
+  }
+}

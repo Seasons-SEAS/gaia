@@ -1,0 +1,1050 @@
+/* GAIA presentation one-screener (/[locale]/gaia).
+   A fixed full-viewport stage above the site chrome: logo, living core,
+   subtitles and one input line. Palette follows the GAIA avatar: deep
+   indigo, violet orbit light, lavender type, lime only as a signal. */
+
+@property --gs-core-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 44%;
+}
+
+@property --gs-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.gaia-stage {
+  --gs-bg: #05020f;
+  --gs-ink: #f0e9ff;
+  --gs-ink-soft: rgba(240, 233, 255, 0.64);
+  --gs-ink-faint: rgba(240, 233, 255, 0.36);
+  --gs-line: rgba(240, 233, 255, 0.12);
+  --gs-violet: #7a20f9;
+  --gs-violet-on-dark: #a97dff;
+  --gs-lime: #8dfa44;
+  --gs-lime-soft: #c9fca6;
+  --gs-on-ink: #0b0526;
+  --gs-dot: var(--gs-violet-on-dark);
+  --gs-core-y: 44%;
+
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100dvh;
+  /* clip, not hidden: the oversized grain layer must never become a
+     programmatically scrollable overflow (focus would scroll the stage). */
+  overflow: clip;
+  overscroll-behavior: none;
+  isolation: isolate;
+  color: var(--gs-ink);
+  background:
+    radial-gradient(
+      90% 70% at 50% var(--gs-core-y),
+      rgba(44, 15, 138, 0.55) 0%,
+      rgba(11, 5, 38, 0) 70%
+    ),
+    radial-gradient(140% 100% at 50% 40%, #120833 0%, #070317 55%, #030109 100%);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  transition: --gs-core-y 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* The core rises while an answer is on screen (kept in step with the
+   WebGL lift in createGaiaCore). */
+.gaia-stage[data-mode="chat"] {
+  --gs-core-y: 31%;
+}
+
+/* The stage is the whole page: hide the site chrome and the floating chat. */
+body:has(.gaia-stage) {
+  overflow: hidden;
+}
+
+body:has(.gaia-stage) .nav,
+body:has(.gaia-stage) .site-footer,
+body:has(.gaia-stage) .gaia-fab,
+body:has(.gaia-stage) .gaia-panel,
+body:has(.gaia-stage) .gaia-scrim {
+  display: none;
+}
+
+/* Vignette and film grain. */
+.gaia-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.gaia-stage::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: gs-grain 1.2s steps(6) infinite;
+}
+
+@keyframes gs-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -3%);
+  }
+  60% {
+    transform: translate(-2%, -1%);
+  }
+  80% {
+    transform: translate(3%, 3%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ---------- core ---------- */
+
+.gaia-stage__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gaia-stage__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      22% 20% at 50% var(--gs-core-y),
+      rgba(122, 32, 249, 0.42) 0%,
+      rgba(122, 32, 249, 0) 70%
+    ),
+    radial-gradient(
+      42% 38% at 50% var(--gs-core-y),
+      rgba(65, 20, 192, 0.3) 0%,
+      rgba(65, 20, 192, 0) 75%
+    );
+  opacity: 0.8;
+  transform: scale(1);
+  transition:
+    opacity 900ms ease,
+    transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.gaia-stage__glow--lime {
+  background: radial-gradient(
+    18% 16% at 50% var(--gs-core-y),
+    rgba(141, 250, 68, 0.16) 0%,
+    rgba(141, 250, 68, 0) 70%
+  );
+  opacity: 0;
+}
+
+.gaia-stage[data-state="listening"] .gaia-stage__glow {
+  opacity: 0.95;
+}
+.gaia-stage[data-state="thinking"] .gaia-stage__glow {
+  opacity: 1;
+  transform: scale(0.94);
+}
+.gaia-stage[data-state="tool"] .gaia-stage__glow {
+  opacity: 0.9;
+}
+.gaia-stage[data-state="speaking"] .gaia-stage__glow {
+  opacity: 1;
+  transform: scale(1.06);
+}
+.gaia-stage[data-state="guard"] .gaia-stage__glow {
+  opacity: 0.7;
+  transform: scale(0.86);
+}
+.gaia-stage[data-state="tool"] .gaia-stage__glow--lime {
+  opacity: 0.8;
+}
+.gaia-stage[data-state="verified"] .gaia-stage__glow--lime {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Static core for reduced motion or when WebGL is unavailable. */
+.gaia-stage__orb {
+  position: absolute;
+  left: 50%;
+  top: var(--gs-core-y);
+  z-index: 1;
+  display: none;
+  width: min(38vh, 64vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at 42% 38%,
+    #f0e9ff 0%,
+    #a97dff 20%,
+    #541ef6 46%,
+    #2c0f8a 66%,
+    rgba(44, 15, 138, 0) 71%
+  );
+  box-shadow: 0 0 140px 30px rgba(122, 32, 249, 0.32);
+}
+
+.gaia-stage[data-webgl="false"] .gaia-stage__orb {
+  display: block;
+}
+.gaia-stage[data-webgl="false"] .gaia-stage__canvas {
+  display: none;
+}
+
+/* ---------- top ---------- */
+
+.gaia-stage__top {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: max(26px, env(safe-area-inset-top)) 16px 0;
+}
+
+.gaia-stage__logo {
+  display: block;
+  width: auto;
+  height: 26px;
+  opacity: 0.96;
+}
+
+.gaia-stage__badge {
+  padding: 3px 10px;
+  border: 1px solid var(--gs-line);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gs-ink-faint);
+}
+
+/* ---------- subtitles ---------- */
+
+.gaia-stage__middle {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 0;
+  padding: 0 16px 22px;
+}
+
+.gaia-word {
+  display: inline;
+  animation: gs-word 640ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes gs-word {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes gs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.gaia-stage__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.16em;
+  border-radius: 2px;
+  background: var(--gs-violet-on-dark);
+  box-shadow: 0 0 10px var(--gs-violet-on-dark);
+  animation: gs-blink 1s steps(2) infinite;
+}
+
+@keyframes gs-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.gaia-stage__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- dock ---------- */
+
+.gaia-stage__dock {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 0 16px max(30px, calc(env(safe-area-inset-bottom) + 14px));
+}
+
+.gaia-stage__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gs-ink-soft);
+}
+
+.gaia-stage__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gs-dot);
+  box-shadow: 0 0 12px var(--gs-dot);
+  transition:
+    background 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.gaia-stage[data-state="listening"] {
+  --gs-dot: var(--gs-ink);
+}
+.gaia-stage[data-state="tool"],
+.gaia-stage[data-state="verified"] {
+  --gs-dot: var(--gs-lime);
+}
+.gaia-stage[data-state="thinking"] .gaia-stage__dot,
+.gaia-stage[data-state="tool"] .gaia-stage__dot {
+  animation: gs-dot 900ms ease-in-out infinite;
+}
+
+@keyframes gs-dot {
+  50% {
+    transform: scale(0.55);
+    opacity: 0.6;
+  }
+}
+
+.gaia-stage__form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: min(40rem, 100%);
+  height: 60px;
+  border: 1px solid var(--gs-line);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(34, 18, 82, 0.62), rgba(14, 7, 38, 0.62));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 24px 70px -24px rgba(84, 30, 246, 0.55);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.gaia-stage__form:focus-within {
+  border-color: rgba(169, 125, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 4px rgba(122, 32, 249, 0.14),
+    0 24px 80px -20px rgba(122, 32, 249, 0.6);
+}
+
+/* A light that runs around the pill while GAIA thinks or reads the chain. */
+.gaia-stage__form::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--gs-angle),
+    rgba(169, 125, 255, 0) 0deg 210deg,
+    rgba(169, 125, 255, 0.95) 280deg,
+    rgba(141, 250, 68, 0.85) 320deg,
+    rgba(169, 125, 255, 0) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  animation: gs-spin 2.2s linear infinite;
+}
+
+.gaia-stage[data-state="thinking"] .gaia-stage__form::before,
+.gaia-stage[data-state="tool"] .gaia-stage__form::before {
+  opacity: 1;
+}
+
+@keyframes gs-spin {
+  to {
+    --gs-angle: 360deg;
+  }
+}
+
+.gaia-stage__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 66px 0 26px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--gs-ink);
+  caret-color: var(--gs-violet-on-dark);
+}
+
+.gaia-stage__input::placeholder {
+  color: var(--gs-ink-faint);
+}
+
+.gaia-stage__ghost {
+  position: absolute;
+  top: 50%;
+  left: 26px;
+  right: 66px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.gaia-stage__ghost-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: var(--gs-ink-faint);
+}
+
+.gaia-stage__key {
+  flex: none;
+  padding: 3px 10px;
+  border: 1px solid rgba(240, 233, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(240, 233, 255, 0.04);
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--gs-ink-soft);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.gaia-stage__send {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: var(--gs-ink);
+  color: var(--gs-on-ink);
+  box-shadow: 0 0 24px rgba(169, 125, 255, 0.45);
+  cursor: pointer;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.gaia-stage__send:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 0 32px rgba(169, 125, 255, 0.7);
+}
+
+.gaia-stage__send:disabled {
+  opacity: 0.28;
+  box-shadow: none;
+  cursor: default;
+}
+
+.gaia-stage__send:focus-visible,
+.gaia-stage__key:focus-visible {
+  outline: 2px solid var(--gs-violet-on-dark);
+  outline-offset: 3px;
+}
+
+@media (max-width: 699px) {
+  .gaia-stage {
+    --gs-core-y: 40%;
+  }
+  .gaia-stage[data-mode="chat"] {
+    --gs-core-y: 27%;
+  }
+  .gaia-stage__logo {
+    height: 22px;
+  }
+  .gaia-stage__form {
+    height: 56px;
+  }
+  .gaia-stage__input {
+    padding-left: 22px;
+  }
+  .gaia-stage__ghost {
+    left: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gaia-stage::after,
+  .gaia-stage__form::before,
+  .gaia-stage__caret,
+  .gaia-stage__dot,
+  .gaia-word,
+  .gaia-stage__aura::before,
+  .gaia-stage__aura::after {
+    animation: none;
+  }
+}
+
+/* ---------- aurora: slow colour fields that carry the mood ---------- */
+
+@property --gs-aura-a {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(84, 30, 246, 0.34);
+}
+
+@property --gs-aura-b {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(44, 15, 138, 0.42);
+}
+
+.gaia-stage {
+  --gs-aura-a: rgba(84, 30, 246, 0.34);
+  --gs-aura-b: rgba(44, 15, 138, 0.42);
+  transition:
+    --gs-core-y 1.1s cubic-bezier(0.2, 0.7, 0.2, 1),
+    --gs-aura-a 1.6s ease,
+    --gs-aura-b 1.6s ease;
+}
+
+.gaia-stage[data-state="thinking"] {
+  --gs-aura-a: rgba(65, 20, 192, 0.5);
+  --gs-aura-b: rgba(20, 8, 70, 0.55);
+}
+.gaia-stage[data-state="tool"] {
+  --gs-aura-b: rgba(70, 150, 60, 0.22);
+}
+.gaia-stage[data-state="speaking"] {
+  --gs-aura-a: rgba(122, 32, 249, 0.42);
+}
+.gaia-stage[data-state="guard"] {
+  --gs-aura-a: rgba(30, 14, 90, 0.4);
+  --gs-aura-b: rgba(12, 6, 40, 0.5);
+}
+.gaia-stage[data-state="verified"],
+.gaia-stage[data-shape="check"] {
+  --gs-aura-b: rgba(110, 200, 70, 0.26);
+}
+.gaia-stage[data-shape="heart"] {
+  --gs-aura-a: rgba(214, 60, 170, 0.34);
+  --gs-aura-b: rgba(122, 32, 249, 0.36);
+}
+.gaia-stage[data-shape="mark"] {
+  --gs-aura-a: rgba(169, 125, 255, 0.36);
+}
+
+.gaia-stage__aura {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.gaia-stage__aura::before,
+.gaia-stage__aura::after {
+  content: "";
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.9;
+}
+
+.gaia-stage__aura::before {
+  left: -18vmax;
+  top: -26vmax;
+  background: radial-gradient(circle, var(--gs-aura-a) 0%, rgba(0, 0, 0, 0) 68%);
+  animation: gs-drift-a 38s ease-in-out infinite alternate;
+}
+
+.gaia-stage__aura::after {
+  right: -22vmax;
+  bottom: -30vmax;
+  background: radial-gradient(circle, var(--gs-aura-b) 0%, rgba(0, 0, 0, 0) 68%);
+  animation: gs-drift-b 46s ease-in-out infinite alternate;
+}
+
+@keyframes gs-drift-a {
+  to {
+    transform: translate(22vmax, 14vmax) scale(1.15);
+  }
+}
+
+@keyframes gs-drift-b {
+  to {
+    transform: translate(-18vmax, -12vmax) scale(0.9);
+  }
+}
+
+/* ---------- conversation ---------- */
+
+.gaia-stage__thread {
+  width: min(44rem, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  font-size: clamp(16px, 0.7vw + 11px, 19px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.gaia-stage__thread::-webkit-scrollbar {
+  display: none;
+}
+
+/* The fade sits on the non-scrolling parent: a mask on the scroll container
+   itself composites badly in some renderers. */
+.gaia-stage[data-mode="chat"] .gaia-stage__middle {
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 44vh,
+    #000 calc(44vh + 72px)
+  );
+}
+
+.gaia-stage[data-mode="intro"] .gaia-stage__thread {
+  text-align: center;
+  font-size: clamp(18px, 1vw + 11px, 23px);
+}
+
+/* In chat the thread takes the lower half, the core stays large above it. */
+.gaia-stage[data-mode="chat"] .gaia-stage__middle {
+  padding-top: 44vh;
+}
+
+.gaia-stage__msg {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 18px;
+  animation: gs-rise 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.gaia-stage__msg__text {
+  margin: 0;
+}
+
+.gaia-stage__msg__who {
+  margin-bottom: 4px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--gs-violet-on-dark);
+}
+
+.gaia-stage__msg--gaia .gaia-stage__msg__text {
+  color: var(--gs-ink);
+}
+
+.gaia-stage__msg--user {
+  align-items: flex-end;
+}
+
+.gaia-stage__msg--user .gaia-stage__msg__text {
+  max-width: 80%;
+  padding: 10px 18px;
+  border: 1px solid var(--gs-line);
+  border-radius: 22px 22px 6px 22px;
+  background: rgba(240, 233, 255, 0.07);
+  font-size: 0.92em;
+  color: var(--gs-ink-soft);
+}
+
+@media (max-width: 699px) {
+  .gaia-stage[data-mode="chat"] .gaia-stage__middle {
+    padding-top: 46vh;
+  }
+}
+
+/* The conversation column. On phones it dissolves into the page grid (the
+   thread and dock flow as before) and its head floats top-right with the voice
+   toggle; on desktop it is a glass column on the right. */
+.gaia-stage__panel {
+  display: contents;
+}
+
+.gaia-stage__panel-head {
+  position: absolute;
+  top: max(24px, env(safe-area-inset-top));
+  right: 16px;
+  z-index: 5;
+}
+
+.gaia-stage__panel-title {
+  display: none;
+}
+
+/* Voice toggle: a round pill. */
+.gaia-stage__voice {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gs-line);
+  border-radius: 999px;
+  background: rgba(240, 233, 255, 0.05);
+  color: var(--gs-ink-soft);
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.gaia-stage__voice[aria-pressed="true"] {
+  border-color: rgba(169, 125, 255, 0.45);
+  color: var(--gs-ink);
+}
+
+.gaia-stage__voice:hover {
+  background: rgba(240, 233, 255, 0.1);
+}
+
+.gaia-stage__voice:focus-visible {
+  outline: 2px solid var(--gs-violet-on-dark);
+  outline-offset: 3px;
+}
+
+/* Receipts: folded into one proof pill; open it to see what GAIA checked,
+   each line opens its source. */
+.gaia-stage__proof {
+  margin-top: 10px;
+  animation: gs-rise 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.gaia-stage__proof summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 9px;
+  border: 1px solid rgba(141, 250, 68, 0.28);
+  border-radius: 999px;
+  background: rgba(141, 250, 68, 0.06);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--gs-ink-soft);
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background 200ms ease;
+}
+
+.gaia-stage__proof summary::-webkit-details-marker {
+  display: none;
+}
+
+.gaia-stage__proof summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+.gaia-stage__proof[open] summary::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.gaia-stage__proof summary:hover,
+.gaia-stage__proof summary:focus-visible {
+  border-color: rgba(141, 250, 68, 0.55);
+  color: var(--gs-ink);
+  background: rgba(141, 250, 68, 0.1);
+}
+
+.gaia-stage__proof summary:focus-visible {
+  outline: 2px solid var(--gs-lime);
+  outline-offset: 3px;
+}
+
+.gaia-stage__proof-mark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gs-lime);
+  box-shadow: 0 0 10px var(--gs-lime);
+}
+
+.gaia-stage__proof-count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(240, 233, 255, 0.1);
+  font-size: 11px;
+  text-align: center;
+  color: var(--gs-ink);
+}
+
+.gaia-stage__receipts {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  animation: gs-rise 360ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.gaia-stage__receipt {
+  max-width: 100%;
+  padding: 6px 14px;
+  border: 1px solid var(--gs-line);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--gs-ink-soft);
+  background: rgba(240, 233, 255, 0.04);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gaia-stage__receipt b {
+  font-weight: 600;
+  color: var(--gs-ink);
+}
+
+.gaia-stage__receipt--chain b,
+.gaia-stage__receipt--api b {
+  color: var(--gs-lime-soft);
+}
+
+.gaia-stage__receipt a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gaia-stage__receipt a:hover,
+.gaia-stage__receipt a:focus-visible {
+  color: var(--gs-ink);
+  text-decoration: underline;
+}
+
+/* The WebGL core now renders its own living background (nebula, horizon,
+   rays), so the CSS aurora and glow layers stay only as the no-WebGL fallback. */
+.gaia-stage[data-webgl="true"] .gaia-stage__aura,
+.gaia-stage[data-webgl="true"] .gaia-stage__glow {
+  display: none;
+}
+
+/* ---------- desktop: GAIA on the left, the conversation on the right ---------- */
+
+@media (min-width: 960px) {
+  .gaia-stage[data-layout="split"] {
+    grid-template-columns: minmax(0, 1fr) clamp(380px, 34vw, 520px);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__top {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: max(34px, env(safe-area-inset-top));
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__panel {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: 100dvh;
+    border-left: 1px solid var(--gs-line);
+    background: linear-gradient(180deg, rgba(14, 7, 36, 0.58), rgba(6, 3, 18, 0.72));
+    box-shadow: -40px 0 120px -60px rgba(84, 30, 246, 0.35);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__panel-head {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: max(28px, env(safe-area-inset-top)) 24px 16px;
+    border-bottom: 1px solid var(--gs-line);
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__panel-title {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gs-ink-soft);
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__middle,
+  .gaia-stage[data-layout="split"][data-mode="chat"] .gaia-stage__middle {
+    align-items: stretch;
+    padding: 0 24px 18px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 56px);
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__thread,
+  .gaia-stage[data-layout="split"][data-mode="intro"] .gaia-stage__thread {
+    width: 100%;
+    padding-top: 56px;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__dock {
+    justify-items: stretch;
+    padding: 0 24px max(26px, calc(env(safe-area-inset-bottom) + 14px));
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__status {
+    justify-self: start;
+    padding-left: 6px;
+  }
+
+  .gaia-stage[data-layout="split"] .gaia-stage__form {
+    width: 100%;
+    height: 56px;
+  }
+}
+
+/* Phones and narrow windows: the text sits over the field, so a soft night
+   scrim rises behind it (the grass stays visible above). */
+.gaia-stage[data-layout="stack"] .gaia-stage__middle::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -40vh;
+  left: 0;
+  z-index: -1;
+  height: 84vh;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(5, 2, 15, 0.92) 0%,
+    rgba(5, 2, 15, 0.78) 48%,
+    rgba(5, 2, 15, 0.35) 72%,
+    rgba(5, 2, 15, 0) 100%
+  );
+}
+
+/* A quiet credit at the foot of the stage: "Powered by" and the Seasons logo. */
+.gaia-stage__powered {
+  position: absolute;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gs-ink-faint);
+  text-decoration: none;
+  opacity: 0.85;
+  transform: translateX(-50%);
+  transition:
+    color 200ms ease,
+    opacity 200ms ease;
+}
+
+.gaia-stage__powered-logo {
+  display: block;
+  width: 66px;
+  height: 10px;
+  background: currentColor;
+  mask: url("/assets/logo.svg") center / contain no-repeat;
+}
+
+.gaia-stage__powered:hover,
+.gaia-stage__powered:focus-visible {
+  color: var(--gs-ink);
+  opacity: 1;
+}
+
+.gaia-stage__powered:focus-visible {
+  outline: 2px solid var(--gs-violet-on-dark);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.gaia-stage[data-layout="stack"] .gaia-stage__dock {
+  padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 30px));
+}
+
+@media (min-width: 960px) {
+  /* Centred under GAIA, in the space left of the conversation column. */
+  .gaia-stage[data-layout="split"] .gaia-stage__powered {
+    bottom: 24px;
+    left: calc((100% - clamp(380px, 34vw, 520px)) / 2);
+  }
+}

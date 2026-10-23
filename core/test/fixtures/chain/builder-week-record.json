@@ -1,0 +1,24 @@
+{
+  "_note": "WeekRecord PDA [\"week\", 8u32le] = 3rHQ23oJbipSBqaP44Qsq8z5JgZ8enNb4FciHDbtLJ4w",
+  "response": {
+    "jsonrpc": "2.0",
+    "result": {
+      "context": {
+        "apiVersion": "4.3.0",
+        "slot": 451563667
+      },
+      "value": {
+        "data": [
+          "7H0fLT3Nj6sIAAAA/J/3/aWqDzi9bziKmAp/UYVEiVvGawmgZ841TsTI9pd5AAAACjiH/k8AAAAwgeEaAAAAAP8=",
+          "base64"
+        ],
+        "executable": false,
+        "lamports": 980440,
+        "owner": "GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf",
+        "rentEpoch": 18446744073709552000,
+        "space": 65
+      }
+    },
+    "id": 174
+  }
+}

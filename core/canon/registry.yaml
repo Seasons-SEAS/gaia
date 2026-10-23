@@ -1,0 +1,578 @@
+# GAIA canon: the Official Registry
+#
+# The only domains, URLs, handles, emails and addresses GAIA may link or name.
+# The verifier defangs any other domain, and verify_link / verify_address check
+# pasted items against this list (look-alikes included).
+#
+#   status official  current and safe to link or name
+#   status outdated  once used by Seasons, no longer current: never link it,
+#                    point to the official one instead
+#   status inactive  a real Seasons address that no longer does its old job
+#
+# Third-party sites (explorers, DEXs, aggregators) are listed only so GAIA can
+# link to public evidence; their labels say they are not operated by Seasons.
+# Sources: GitBook Socials, Blogs, $SEAS, Tokenomics, LPs, Inclusion Set
+# Archives, Ambassadors and How-To pages (fetched 2026-09-28);
+# Only published addresses are listed (decisions D4, D12).
+
+# --- Seasons domains ------------------------------------------------------------
+
+- { kind: domain, value: seasons.wtf, label: "Seasons website", status: official }
+- {
+    kind: domain,
+    value: terminal.seasons.wtf,
+    label: "Seasons Terminal (node status, Builder claims)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: tutorials.seasons.wtf,
+    label: "Seasons interactive tutorials (linked from the docs How-To pages)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: access.seasons.wtf,
+    label: "Seasons Partner Program application (linked from the docs)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: partners.seasons.wtf,
+    label: "Seasons Partner Program login (linked from the docs)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: seasons.gitbook.io,
+    label: "Seasons documentation (GitBook, /seasons-docs)",
+    status: official,
+  }
+
+# --- Seasons URLs ---------------------------------------------------------------
+
+- {
+    kind: url,
+    value: "https://seasons.gitbook.io/seasons-docs",
+    label: "Seasons docs",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasons.wtf/blog",
+    label: "Seasons blog (first publication for all posts)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasons.wtf/legal/terms",
+    label: "Seasons Terms of use",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasons.wtf/tutorials",
+    label: "Seasons step-by-step guides (wallet setup, becoming a node, buying $SEAS, bridging)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://tutorials.seasons.wtf/demo/cmq47xk7y06yv1p0jqbvnsbvj",
+    label: "Interactive guide: become a node with Jupiter Wallet",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://tutorials.seasons.wtf/demo/cmq57jj0x0b7z0a0kcqaba33i",
+    label: "Interactive guide: move a Phantom wallet to Jupiter Mobile",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasons.wtf/company/team",
+    label: "Seasons team page (first names and roles)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasons.wtf/legal/privacy",
+    label: "Seasons Privacy policy",
+    status: official,
+  }
+- { kind: url, value: "https://terminal.seasons.wtf", label: "Seasons Terminal", status: official }
+- {
+    kind: url,
+    value: "https://seasons.wtf/blog/more-to-build-on-with-confidence",
+    label: "Team post of 14 Sep 2026: QuillAudits token audit and token authorities",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://x.com/SeasonsDEFI",
+    label: "Seasons on X (Twitter)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://t.me/SeasonsCommunity",
+    label: "Seasons Telegram community",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://t.me/SeasonsHQ",
+    label: "Seasons Telegram announcements",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://t.me/GAIA_Seasons_Bot",
+    label: "GAIA on Telegram (official bot)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://www.youtube.com/@SeasonsDEFI",
+    label: "Seasons on YouTube",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://www.linkedin.com/company/seasons-seas",
+    label: "Seasons on LinkedIn",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://www.pinterest.com/seasonsdefi/",
+    label: "Seasons on Pinterest",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://www.facebook.com/seasonsDeFi/",
+    label: "Seasons on Facebook (linked from the website)",
+    status: official,
+  }
+- { kind: url, value: "https://linktr.ee/SeasonsDEFI", label: "Seasons Linktree", status: official }
+- {
+    kind: url,
+    value: "https://linktr.ee/SeasonsSEAS",
+    label: "$SEAS Linktree (listed on the docs Socials page)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://beacons.ai/seasonsdefi",
+    label: "Seasons Beacons page (listed on the docs Socials page)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://seasonchain.substack.com/",
+    label: "Seasons on Substack (mirror of the blog)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://medium.com/seasons-blog",
+    label: "Seasons on Medium (mirror of the blog)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://paragraph.com/@seasonsdefi",
+    label: "Seasons on Paragraph (mirror of the blog)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "http://x.com/SEAS_onchain",
+    label: "Old Seasons X account; use @SeasonsDEFI",
+    status: outdated,
+  }
+- {
+    kind: url,
+    value: "https://linktr.ee/SEASonchain",
+    label: "Old Seasons Linktree; use linktr.ee/SeasonsDEFI",
+    status: outdated,
+  }
+
+# --- third-party evidence sites (not operated by Seasons) --------------------------
+
+- {
+    kind: domain,
+    value: solscan.io,
+    label: "Solscan block explorer (third party, not Seasons)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: dexscreener.com,
+    label: "DexScreener market data (third party, not Seasons)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: jup.ag,
+    label: "Jupiter aggregator (third party, not Seasons)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: raydium.io,
+    label: "Raydium DEX (third party, hosts official $SEAS pools)",
+    status: official,
+  }
+- {
+    kind: domain,
+    value: meteora.ag,
+    label: "Meteora DEX (third party, hosts official $SEAS pools)",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+    label: "$SEAS mint on Solscan",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://jup.ag/tokens/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+    label: "$SEAS on Jupiter",
+    status: official,
+  }
+- {
+    kind: url,
+    value: "https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+    label: "Deepest $SEAS/USDC pool on DexScreener",
+    status: official,
+  }
+
+# --- handles ----------------------------------------------------------------------
+
+- { kind: handle, value: "@SeasonsDEFI", label: "Seasons on X and YouTube", status: official }
+- {
+    kind: handle,
+    value: "@SeasonsCommunity",
+    label: "Seasons Telegram community",
+    status: official,
+  }
+- { kind: handle, value: "@SeasonsHQ", label: "Seasons Telegram announcements", status: official }
+- { kind: handle, value: "@GAIA_Seasons_Bot", label: "GAIA on Telegram", status: official }
+- {
+    kind: handle,
+    value: "@SEAS_onchain",
+    label: "Old Seasons X handle; use @SeasonsDEFI",
+    status: outdated,
+  }
+
+# --- email ------------------------------------------------------------------------
+
+- {
+    kind: email,
+    value: contact@seasons.wtf,
+    label: "Seasons support and questions",
+    status: official,
+  }
+- {
+    kind: email,
+    value: hello@seasons.wtf,
+    label: "Seasons ideas, strategies and use cases",
+    status: official,
+  }
+
+# --- token and protocol addresses ----------------------------------------------------
+
+- {
+    kind: address,
+    value: 7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS,
+    label: "$SEAS mint (the only official contract address)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a,
+    label: "Inclusion Set #2 distributor (Director payouts since 1 Apr 2026)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: A4coF6LeFfrEVTpRQUeTrUfNxHVefmuiirrVYkutx5mo,
+    label: "Inclusion Set #1 distributor (retired 31 Mar 2026)",
+    status: inactive,
+  }
+- {
+    kind: address,
+    value: HKGnLzbEGadPVes9yVvi1DSeAuCkAU7D8TWCZrkcFyta,
+    label: "genesis allocation address (inactive; the docs call it 'Distributor')",
+    status: inactive,
+  }
+# Names of the two fee authorities follow the interim D12 wording (fact wallets.public_names).
+- {
+    kind: address,
+    value: E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8,
+    label: "Seasons creator address (fee-config authority; single-signature)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7,
+    label: "fee-withdraw authority wallet (single-signature)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf,
+    label: "Builder claims program",
+    status: official,
+  }
+- {
+    kind: address,
+    value: GPik4LzwFr8chVvdEMDLJvZ7BgmvKXdqqcoj78wWzK8p,
+    label: "Builder claims config account",
+    status: official,
+  }
+- {
+    kind: address,
+    value: Hb5NCcuDVwDPMWoUK44sEkykyfF1rUmvVQtVQYtjUXA1,
+    label: "Builder claims vault",
+    status: official,
+  }
+- {
+    kind: address,
+    value: CXHaE1gdLSB1AAA28QELNZNPgmDAuxafCjegSwxmSJ8k,
+    label: "Squads 2-of-3 vault (Builder claims upgrade authority and funding)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: Fm1TPALsbL3Bx7T9mnRWem75jSgABDtZoZbrhfAknvw5,
+    label: "Squads 2-of-3 multisig behind the Builder claims vault",
+    status: official,
+  }
+- {
+    kind: address,
+    value: Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju,
+    label: "third-party time-lock program holding the treasury locks (not operated by Seasons)",
+    status: official,
+  }
+
+# --- official liquidity pools (GitBook LPs: 6 pools; Raydium gives no pool IDs) ---------
+
+- {
+    kind: address,
+    value: Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy,
+    label: "Raydium CLMM $SEAS/USDC pool (deepest pool)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: D12EGYWwgj7S981m6rbvs8LJrWo6s9JZVNVpLDHiHVbJ,
+    label: "Meteora DAMM v2 $SEAS/USDC 0.25% pool",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 3aKbJcGeZtsKGqcXBViLnbeB9oK3F3KsFdej5zwtUijm,
+    label: "Meteora DAMM v2 $SEAS/USDC 0.3% pool",
+    status: official,
+  }
+- {
+    kind: address,
+    value: DRADrcWifJpmuSHQv9Ug415PDDUuiqytBP2JPbizQNhw,
+    label: "Meteora DAMM v2 $SEAS/USDT 1% pool",
+    status: official,
+  }
+- {
+    kind: address,
+    value: FYrbvqozdNyrmVFVD6AMcNx1h8DbUNNpP6quRfQQ1kYf,
+    label: "Meteora DAMM v2 $SEAS/USDT 0.25% pool",
+    status: official,
+  }
+
+# --- payout assets (Inclusion Set #2) --------------------------------------------------
+
+- {
+    kind: address,
+    value: AymATz4TCL9sWNEEV9Kvyz45CHVhDZ6kUgjTJPzLpU9P,
+    label: "XAUt0 (Tether Gold) mint, 30% of Set #2",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh,
+    label: "wBTC (Wormhole) mint, 30% of Set #2",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 9BEcn9aPEmhSPbPQeFGjidRiEKki46fVQDyPpSQXPA2D,
+    label: "jlUSDc (Jupiter Lend USDC) mint, 40% of Set #2",
+    status: official,
+  }
+
+# --- published treasury wallets (GitBook Tokenomics) -----------------------------------
+
+- {
+    kind: address,
+    value: SEaSJ92QrSz6daa7WpAppWxrmyPrRioFFQremSbsg88,
+    label: "Foundation wallet 1 of 5 (allocation in time-locks)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SeaS835vNPk3xvf2KLFHi2rFqNtqfLrgpgCpwkbRxjG,
+    label: "Foundation wallet 2 of 5 (allocation in time-locks)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEAsij8MjMBeVdUGeKjAzQ9Pvh2Hh1xuZfiRqyC6yMw,
+    label: "Foundation wallet 3 of 5 (allocation in time-locks)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: seASCXmgjq4kG2G5LwmqZxezMV1Q4JNPD6adJLswyem,
+    label: "Foundation wallet 4 of 5 (allocation in time-locks)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: sEasnk5yBwPmzohVhPfj5NZVrHazsAKMAysfsn1xU66,
+    label: "Foundation wallet 5 of 5 (allocation in time-locks)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASP5s8HbTqbcCFbh9ueapiZvTKATNg6Z9wDx2LRtC,
+    label: "Incentives wallet 1 of 6 (8M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASrhAnTMxq71QKBd7dsqpW5D8tGpCAe2HZAdgrP1j,
+    label: "Incentives wallet 2 of 6 (8M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASvSRNKSzhNpSvV3R5JtiUF518Xha5v2qLNLvqVoC,
+    label: "Incentives wallet 3 of 6 (8.5M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASZe8eXi8pci9BMj8HtJem6S5jo6ieGKANeQTncpr,
+    label: "Incentives wallet 4 of 6 (8.5M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASoaUxbBRRGf65dYtBpT2PeK5f6qDo1G3qpN2QTFf,
+    label: "Incentives wallet 5 of 6 (8.5M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: SEASSYhEzuaomffx9Q3bKh21cGFGTNSca7GnpGVyYxH,
+    label: "Incentives wallet 6 of 6 (8.5M; not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 4XvefY42NUkh2nsJnyEv72mZTZq5vodQqnAy1wSTjfTx,
+    label: "Growth wallet 1 of 4 (not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: BkCTmoghy6g2PqrHXSNzddGEVnHuGmaDRA39waJNFpwZ,
+    label: "Growth wallet 2 of 4 (not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 9QWpFQHKjpq8jpMrKBRqz4CeuErxnt5We2RJcwPskDJK,
+    label: "Growth wallet 3 of 4 (not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 1cNXa2PfeQ4122WyuHAEXFaKjvjVUtuvC7JzJxAabYi,
+    label: "Growth wallet 4 of 4 (not in a lock program)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: BhnruTRw2rZpv8X7r8B5ver19w97rZYcoYTk2K8rVk3A,
+    label: "Partner wallet 1 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 6dzTy6BmNrbyTn2sA7wp6wBDFwyeAmroRe4zmFnf98aR,
+    label: "Partner wallet 2 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 9fPq97PC3k2XSVr5cePqTbQ35p39js8GWfx5YdtHYvKM,
+    label: "Partner wallet 3 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 6AcRyW5ywRjZdowG7SUQ7djieHTcyUQtPxqDi4GMb7Ns,
+    label: "Partner wallet 4 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: D571MbiSHzXknUENZXUC8Qv1xk1zv5ug4zyiqEgAhPsM,
+    label: "Partner wallet 5 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 4nVN2MQdbpo94UiWD3v4yhGAXXkxX1D9wuZ63CZi6idP,
+    label: "Partner wallet 6 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: AuNoRKBL6tDNuDXWjdHJccxgumA3z1hidQDCvh9Y1eZs,
+    label: "Partner wallet 7 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 3arATicDSNeqYXQJKHYmqSpnAx3rBcFpFL66MKmbmYKW,
+    label: "Partner wallet 8 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: GR2TkTNHFVvFYve7LtSpvEL15DxgFbkBACn25UPHABxh,
+    label: "Partner wallet 9 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: CFK7happPRquDTqZViQyCwLez76UpekxYtxUvx39zqrc,
+    label: "Partner wallet 10 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: DfaPsTi9eUhRuPqnuJGpYAVFdievUqmr2QmZ9wAkeJ9v,
+    label: "Partner wallet 11 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }
+- {
+    kind: address,
+    value: 6pCwPPCdYVxZ4StNdE57U8LGhoPW9YJrktyxr3NNqufg,
+    label: "Partner wallet 12 of 12 (locked until 30 Jan 2027)",
+    status: official,
+  }

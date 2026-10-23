@@ -1,0 +1,41 @@
+# GAIA Core: Seasons' official AI agent (GAIA 2.0).
+# Local: `npm run dev` (port 8788; the stage's Vite dev server proxies /api/gaia/v2/* here).
+# Production is NOT configured yet: the zone route, secrets and a paid RPC need an
+# explicit publish decision (see docs/RUNBOOK.md, "Production").
+name = "gaia-core"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SOLANA_RPC_URL = "https://api.mainnet-beta.solana.com"
+ALLOWED_ORIGINS = "https://seasons.wtf,https://www.seasons.wtf,http://localhost:3106,http://127.0.0.1:3106,http://localhost:3110,http://127.0.0.1:3110"
+GAIA_MODEL = "claude-opus-5-5"
+JUDGE_MODEL = "claude-haiku-4-5"
+# Languages GAIA answers in, first = default. English only for now (2026-09-29);
+# the five-language templates stay in the code: add ru,de,es,ja back here to switch them on.
+GAIA_LANGUAGES = "en"
+
+[[durable_objects.bindings]]
+name = "CONVERSATIONS"
+class_name = "ConversationDO"
+
+[[durable_objects.bindings]]
+name = "LIMITER"
+class_name = "LimiterDO"
+
+[[durable_objects.bindings]]
+name = "CHAIN_CACHE"
+class_name = "ChainCacheDO"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ConversationDO", "LimiterDO", "ChainCacheDO"]
+
+[observability]
+enabled = true
+
+# Secrets (wrangler secret put …): ANTHROPIC_API_KEY, ELEVENLABS_API_KEY,
+# AI_GATEWAY_API_KEY (Jev shadow, eval sets only), GAIA_CANARY, GAIA_MEMORY_KEY,
+# and SOLANA_RPC_URL (a paid RPC; public RPC refuses Workers) — remove the
+# SOLANA_RPC_URL entry from [vars] above first: a var and a secret cannot share a name.

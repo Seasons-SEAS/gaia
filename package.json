@@ -1,0 +1,14 @@
+{
+  "name": "seasons-gaia",
+  "private": true,
+  "description": "GAIA 2.0 — Seasons' AI agent: Core service and the stage",
+  "scripts": {
+    "setup": "npm ci --prefix core && npm ci --prefix stage",
+    "dev:core": "npm run dev --prefix core",
+    "dev:stage": "npm run dev --prefix stage",
+    "test": "npm test --prefix core",
+    "typecheck": "npm run typecheck --prefix core && npm run typecheck --prefix stage",
+    "build:stage": "npm run build --prefix stage"
+  },
+  "engines": { "node": ">=24" }
+}

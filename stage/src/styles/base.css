@@ -1,0 +1,59 @@
+/* Alcyone (the Seasons typeface) and the page base the stage sits on. */
+@font-face {
+  font-family: "Alcyone";
+  src: url("/assets/fonts/Alcyone-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alcyone";
+  src: url("/assets/fonts/Alcyone-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alcyone";
+  src: url("/assets/fonts/Alcyone-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alcyone";
+  src: url("/assets/fonts/Alcyone-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alcyone";
+  src: url("/assets/fonts/Alcyone-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #05020f;
+}
+
+body {
+  color: #f0e9ff;
+  font-family:
+    "Alcyone",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

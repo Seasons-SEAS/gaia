@@ -1,0 +1,3771 @@
+{
+ "version": "d8548d2681d27a49",
+ "facts": [
+  {
+   "key": "token.mint",
+   "text": "The only official $SEAS mint is 7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS, a Solana Token-2022 token with 8 decimals whose metadata (name \"Seasons\", ticker $SEAS) has been immutable since 13 May 2026; copy it only from seasons.wtf or the docs and compare every character.",
+   "numbers": [
+    8,
+    13,
+    2026
+   ],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "Mint account (getAccountInfo, jsonParsed, slot 451,289,968); metadata authority set to none on 2026-05-13 11:50:50 UTC; GitBook $SEAS page (CA)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "token.supply_total",
+   "text": "1 billion $SEAS were minted at genesis on 9 Dec 2025 and the supply is fixed; the on-chain total is 999,999,999.80 because about 0.2 $SEAS has been burned in small amounts.",
+   "numbers": [
+    0.2,
+    1,
+    9,
+    2025,
+    999999999.8,
+    999999999.804,
+    1000000000
+   ],
+   "as_of": "2026-09-28T10:53:06Z",
+   "source_kind": "chain",
+   "source": "getTokenSupply (raw 99,999,999,980,449,592 base units); genesis tx tHKLAgg3…1vw (2025-12-09 18:30:44 UTC)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_supply"
+  },
+  {
+   "key": "token.mint_authority",
+   "text": "The $SEAS mint authority is null, so nobody, the team included, can create more $SEAS.",
+   "numbers": [],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "Mint account mintAuthority = null (slot 451,289,968)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "token.freeze_authority",
+   "text": "The $SEAS freeze authority is null, so nobody can freeze a holder's tokens.",
+   "numbers": [],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "Mint account freezeAuthority = null (slot 451,289,968)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "token.holder_safety",
+   "text": "The mint has no freeze authority, transfer hook or permanent delegate, so nobody can freeze, seize or spend a holder's $SEAS; the only thing that can leave a holder's token account without their signature is the 10% fee withheld on tokens they received, which was never part of their spendable balance.",
+   "numbers": [
+    0.1,
+    10
+   ],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "Mint extensions: only transferFeeConfig, metadataPointer, tokenMetadata (no transferHook, permanentDelegate, defaultAccountState, pausable)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "fee.rate",
+   "text": "Every $SEAS transfer carries a 10% fee (1000 basis points) set in the token contract itself.",
+   "numbers": [
+    0.1,
+    10,
+    1000
+   ],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "Mint transferFeeConfig newerTransferFee.transferFeeBasisPoints = 1000",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "fee.scope",
+   "text": "The 10% applies to every movement of $SEAS: buys, sells, wallet-to-wallet transfers (including between your own wallets), liquidity deposits and withdrawals, and releases from time-locks.",
+   "numbers": [
+    0.1,
+    10
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook TTT F.A.Q. (every movement triggers the TTT); Token-2022 transfer-fee extension",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt",
+   "status": "approved"
+  },
+  {
+   "key": "fee.history",
+   "text": "The fee has been exactly 10% since the genesis epoch 892 (9 Dec 2025), and no change was pending at epoch 1044 on 28 Sep 2026.",
+   "numbers": [
+    0.1,
+    9,
+    10,
+    28,
+    892,
+    1044,
+    2025,
+    2026
+   ],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "olderTransferFee = newerTransferFee = {epoch 892, 1000 bps}; current epoch 1044",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "fee.change_delay",
+   "text": "Under Token-2022 a new fee rate only takes effect two Solana epochs after it is submitted, about 2 to 4 days, and the pending rate is visible on-chain from the moment it is submitted.",
+   "numbers": [
+    2,
+    4
+   ],
+   "as_of": "2026-09-28T10:18:40Z",
+   "source_kind": "chain",
+   "source": "token-2022 transfer_fee/processor.rs SetTransferFee (epoch = current + 2); measured epoch ≈1.93 days",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts"
+  },
+  {
+   "key": "fee.config_authority",
+   "text": "The fee-config authority is a single-signature wallet, the Seasons creator address E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8, not a multisig and not the DAO, and Token-2022 lets it set any rate from 0 to 100% and any per-transfer cap (currently 100,000,000 $SEAS, so in practice uncapped).",
+   "numbers": [
+    0,
+    1,
+    100,
+    100000000
+   ],
+   "as_of": "2026-09-28T10:19:46Z",
+   "source_kind": "chain",
+   "source": "transferFeeConfigAuthority = E1J26…Jzm8: system-owned, on-curve (EOA); maximumFee 1e16 base units",
+   "url": "https://solscan.io/account/E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts",
+   "on_request": true
+  },
+  {
+   "key": "fee.withdraw_authority",
+   "text": "The 10% is not sent anywhere automatically: it stays withheld in the token accounts involved, including the pools, and only the token's fee-withdraw authority, the single-signature wallet CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7, can collect it; it has held that role since genesis and is a different key from the creator address.",
+   "numbers": [
+    0.1,
+    10
+   ],
+   "as_of": "2026-09-28T10:19:47Z",
+   "source_kind": "chain",
+   "source": "withdrawWithheldAuthority = CY3fa3…MDK7: system-owned, on-curve (EOA), set by initializeTransferFeeConfig in the genesis tx",
+   "url": "https://solscan.io/account/CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7",
+   "status": "approved",
+   "live_tool": "get_token_trust_facts",
+   "on_request": true
+  },
+  {
+   "key": "fees.withheld_summary",
+   "text": "At least 75.9M $SEAS of fees sat withheld on-chain on 28 Sep 2026, collectable only by the fee-withdraw authority; 66.7M of it is the one-time fee charged when allocations moved into time-locks in January 2026, not trading fees.",
+   "numbers": [
+    28,
+    66.7,
+    75.9,
+    2026,
+    66700000,
+    66701001.56,
+    75900000,
+    75936692.7
+   ],
+   "as_of": "2026-09-28T10:59:23Z",
+   "source_kind": "chain",
+   "source": "Withheld amounts on known accounts: lock escrows 66,701,001.56; Raydium CLMM vault 7,374,977.34; Meteora vaults 332,941.61; mint 288,471.41; others. Holder accounts not counted (lower bound)",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "fees.last_collected",
+   "text": "The fee-withdraw authority last collected withheld fees on launch day, 9 Dec 2025 (about 100.6M $SEAS, the fees charged on the genesis allocation), and had collected none since as of 28 Sep 2026.",
+   "numbers": [
+    9,
+    28,
+    100.6,
+    2025,
+    2026,
+    100600000,
+    100637332.65
+   ],
+   "as_of": "2026-09-28T10:27:00Z",
+   "source_kind": "chain",
+   "source": "Full history of CY3fa3 (163 signatures): 10 × WithdrawWithheldTokensFromAccounts, all 2025-12-09 19:14 UTC; none since",
+   "url": "https://solscan.io/account/CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "team.statement_2026_09_14",
+   "text": "In its 14 Sep 2026 post the team said QuillAudits audited the $SEAS token's configuration and extensions and found no critical, high or medium issues (the scope is the token, not the whole protocol), that certain fee-related settings stay adjustable, and that it plans to move fee-withdrawal authority to a multisig, which had not happened on-chain as of 28 Sep 2026.",
+   "numbers": [
+    14,
+    28,
+    2026
+   ],
+   "as_of": "2026-09-14",
+   "source_kind": "team_statement",
+   "source": "seasons.wtf blog 'More to build on, with confidence' (2026-09-14); report listed on QuillAudits' GitHub; on-chain authorities read 2026-09-28",
+   "url": "https://seasons.wtf/blog/more-to-build-on-with-confidence",
+   "status": "team_reported"
+  },
+  {
+   "key": "wallets.public_names",
+   "text": "GAIA names the two fee-authority wallets by their on-chain roles: E1J26…Jzm8 is the Seasons creator address, which holds the fee-config authority, and CY3fa3…MDK7 is the fee-withdraw authority wallet.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "chain",
+   "source": "Mint transferFeeConfig authorities; naming pending team decision D12",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "supply.allocation",
+   "text": "The GitBook Tokenomics table allocates the 1B supply as Liquidity 10%, Privates 20%, Foundation 25%, Public 25%, Team 5%, Incentives 5% and Growth 10%, but the published wallets and some older Seasons pages don't fully match it, and the team hasn't reconciled the differences yet.",
+   "numbers": [
+    0.05,
+    0.1,
+    0.2,
+    0.25,
+    1,
+    5,
+    10,
+    20,
+    25,
+    1000000000
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Tokenomics allocation table; published wallets (Growth 4 × 12.5M, Partner 12 × 8.33M); website Public 30% (protocol.ts)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "supply.circulating",
+   "text": "About 333M $SEAS (33.3% of supply) is circulating, counted as total supply minus the time-lock escrows and the fees withheld in them; this matches the docs, includes the unlocked Incentives and Growth wallets, and market caps quoted elsewhere may use other circulating figures.",
+   "numbers": [
+    0.333,
+    33.3,
+    333,
+    332989984.15,
+    333000000
+   ],
+   "as_of": "2026-09-28T10:51:47Z",
+   "source_kind": "chain",
+   "source": "999,999,999.80 − 667,010,015.65 (61 escrows, net + withheld); GitBook Tokenomics 333,000,000",
+   "url": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "live_tool": "get_supply"
+  },
+  {
+   "key": "locks.total",
+   "text": "About 600.3M $SEAS (60% of supply) sits in 61 time-lock escrows, plus 66.7M withheld as fees when it was locked, so 667.0M is out of circulation in total.",
+   "numbers": [
+    0.6,
+    60,
+    61,
+    66.7,
+    600.3,
+    667,
+    66700000,
+    66701001.56,
+    600300000,
+    600309014.08,
+    667000000,
+    667010015.65
+   ],
+   "as_of": "2026-09-28T10:51:47Z",
+   "source_kind": "chain",
+   "source": "61 vesting accounts of lock program Lock1z…eju (= the Terminal's TREASURY_ADDRESSES)",
+   "url": "https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju",
+   "status": "approved",
+   "live_tool": "get_supply"
+  },
+  {
+   "key": "locks.published_groups",
+   "text": "The Foundation's 250M $SEAS (5 wallets) is time-locked, 225M net after fees, opening about 94.5M on 8 Jul 2027, 85.5M on 17 and 29 Jan 2028 and 45M on 8 Jul 2028, and the Partner allocation (12 wallets, 100M) is locked as 90M net until 30 Jan 2027.",
+   "numbers": [
+    5,
+    8,
+    12,
+    17,
+    29,
+    30,
+    45,
+    85.5,
+    90,
+    94.5,
+    100,
+    225,
+    250,
+    2027,
+    2028,
+    45000000,
+    85500000,
+    90000000,
+    94500000,
+    100000000,
+    225000000,
+    250000000
+   ],
+   "as_of": "2026-09-28T10:43:49Z",
+   "source_kind": "chain",
+   "source": "Lock1z vesting accounts: Foundation 9 escrows (locked 2026-01-18/27); Partner 12 escrows (locked 2026-01-13, unlock 2027-01-30 04:00–04:11 UTC)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics",
+   "status": "approved",
+   "live_tool": "get_supply"
+  },
+  {
+   "key": "locks.unlocked_groups",
+   "text": "The Incentives wallets (6 wallets, 50M $SEAS) haven't moved since launch and the Growth wallets (4 wallets, 50M) have sent out about 25.6M since January 2026, leaving about 24.4M, and neither group is in any lock program.",
+   "numbers": [
+    4,
+    6,
+    24.4,
+    25.6,
+    50,
+    2026,
+    24400000,
+    24411885.78,
+    25588114.22,
+    25600000,
+    50000000
+   ],
+   "as_of": "2026-09-28T10:37:49Z",
+   "source_kind": "chain",
+   "source": "getTokenAccountsByOwner on the 6 Incentives and 4 Growth wallets published in the GitBook; full signature histories",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "growth.fund_use",
+   "text": "Transfers out of the published Growth wallets are visible on-chain, but no fund-use record explaining them has been published yet, so what they were for is for the team to state.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "chain",
+   "source": "Growth wallet histories; GitBook Tokenomics 'Fund Use … shall be publicly recorded'; pending team decision D9",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "locks.upcoming_unlocks",
+   "text": "About 194.4M $SEAS unlocks by 30 Jan 2027, about 5.4M on 11 Dec 2026, 99.0M from 31 Dec 2026 to 10 Jan 2027 (9M a day) and 90.0M on 30 Jan 2027, about 19.4% of supply.",
+   "numbers": [
+    0.194,
+    5.4,
+    9,
+    10,
+    11,
+    19.4,
+    30,
+    31,
+    90,
+    99,
+    194.4,
+    2026,
+    2027,
+    5400000,
+    9000000,
+    90000000,
+    99000000,
+    194400000
+   ],
+   "as_of": "2026-09-28T10:51:47Z",
+   "source_kind": "chain",
+   "source": "Release schedules of the 61 Lock1z vesting accounts (net escrow amounts)",
+   "url": "https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju",
+   "status": "approved",
+   "live_tool": "get_supply",
+   "on_request": true
+  },
+  {
+   "key": "locks.unlabelled",
+   "text": "About 227M $SEAS net sits in time-locks whose beneficiary wallets aren't published in the docs, with unlocks spread from Dec 2026 to Dec 2030.",
+   "numbers": [
+    226.96,
+    227,
+    2026,
+    2030,
+    226960000,
+    227000000
+   ],
+   "as_of": "2026-09-28T10:51:47Z",
+   "source_kind": "chain",
+   "source": "Lock1z vesting accounts whose beneficiaries are not in the GitBook's published wallet lists (aggregate only)",
+   "url": "https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "locks.bucket_labels",
+   "text": "Wallet-level details for the Team, Privates, Public and Liquidity allocations aren't published in the docs, so which time-lock belongs to which allocation is for the team to publish.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Tokenomics (no wallets or vesting for Team, Privates, Public, Liquidity); pending team decision D4",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/seas-token/tokenomics",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "locks.program",
+   "text": "The time-locks run on a third-party, upgradeable lock program whose upgrade key is a Squads multisig vault that isn't Seasons' and whose operator isn't confirmed, and at unlock the tokens return to ordinary single-signature wallets, with the release transfer itself paying the 10% fee.",
+   "numbers": [
+    0.1,
+    10
+   ],
+   "as_of": "2026-09-28T10:44:36Z",
+   "source_kind": "chain",
+   "source": "Lock1z…eju programData upgrade authority SH5WSy…Luv3 (off-curve Squads v4 vault); all 61 beneficiaries on-curve",
+   "url": "https://solscan.io/account/Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "node.director",
+   "text": "A Director Node is a self-custody Solana wallet holding 10,000 $SEAS or more at a round's snapshot; Directors are paid on Sundays and Wednesdays in the Inclusion Set basket straight to the wallet, with nothing to claim, and each Director's share is its balance divided by all Directors' balances at that snapshot.",
+   "numbers": [
+    10000
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Director Nodes (Director Yield Implementation v2, weight formula)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/nodes/director-nodes",
+   "status": "approved",
+   "live_tool": "get_wallet_tier"
+  },
+  {
+   "key": "node.builder",
+   "text": "A Builder Node holds 1,000 to 9,999 $SEAS; since August 2026 Builders accrue $SEAS weekly at 0.8× the network rate, published each Sunday after the Director round, and claim it themselves in the Terminal.",
+   "numbers": [
+    0.8,
+    1000,
+    2026,
+    9999
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Builder Nodes (Builder Yield Implementation v1); blog 'Builder claim is live' (2026-09-02); week-8 root 2026-09-27",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/nodes/builder-nodes",
+   "status": "approved",
+   "live_tool": "get_wallet_tier"
+  },
+  {
+   "key": "node.builder_funding",
+   "text": "Builder payouts come from a finite, dedicated allocation of existing $SEAS supply, not newly minted tokens; its size and runway aren't published, and the claims vault is funded through a 2-of-3 Squads multisig.",
+   "numbers": [
+    2,
+    3
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Builder Nodes (yield sourced from a limited, dedicated allocation); blog 'A budget for builders' (2026-09-24); Squads funding txs",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/nodes/builder-nodes",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "node.identity",
+   "text": "One address is one node and only ordinary self-custody wallets count, not tokens on an exchange, in a pool or in a smart contract, and eligibility is read from the balance at each round's snapshot, so a wallet below its threshold at the snapshot gets nothing that round.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Nodes ('One Address = One Node'), Director and Builder criteria (EOA, not a smart contract); blog 'One address, one node' (2026-08-28)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/nodes",
+   "status": "approved",
+   "live_tool": "get_wallet_tier"
+  },
+  {
+   "key": "distribution.schedule",
+   "text": "Director rounds run on Sundays and Wednesdays and Builder accruals are published weekly on Sunday after the Director round; the exact time varies, and rounds usually land in the morning UTC.",
+   "numbers": [],
+   "as_of": "2026-09-28T10:33:10Z",
+   "source_kind": "chain",
+   "source": "GitBook F.A.Q. ('Twice a week, every Sunday and Wednesday'); distributor rounds 2026-07-26 → 2026-09-27 started 03:42–18:57 UTC",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution",
+   "status": "approved",
+   "live_tool": "get_payout_schedule"
+  },
+  {
+   "key": "distribution.weekday_streak",
+   "text": "All 19 Director rounds from 26 Jul to 27 Sep 2026 landed on a Sunday or a Wednesday, each visible on-chain from the Set #2 distributor.",
+   "numbers": [
+    2,
+    19,
+    26,
+    27,
+    2026
+   ],
+   "as_of": "2026-09-28T10:33:10Z",
+   "source_kind": "chain",
+   "source": "Distributor 2yHa1U…k9a signatures (1,500, clustered by >3 h gaps)",
+   "url": "https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a",
+   "status": "approved",
+   "live_tool": "get_distribution_receipts"
+  },
+  {
+   "key": "distribution.last_round",
+   "text": "In the last observed round, Sunday 27 Sep 2026 from 03:42 to 06:19 UTC, the distributor swapped about 25,011 $SEAS on public pools and paid about 370 wallets 0.4161 XAUt0, 0.02108 wBTC and 2,238.61 jlUSDc, worth about $5,858 at 28 Sep prices.",
+   "numbers": [
+    0.02108,
+    0.02108091,
+    0.4161,
+    0.416109,
+    3,
+    6,
+    19,
+    27,
+    28,
+    42,
+    370,
+    2026,
+    2238.609157,
+    2238.61,
+    5858,
+    5858.18,
+    25011,
+    25011.11
+   ],
+   "as_of": "2026-09-28T10:54:27Z",
+   "source_kind": "chain",
+   "source": "69 × getTransaction of the 2026-09-27 round (8 swaps, 57 batched payouts, 3 ATA creations); valued at Jupiter price v3",
+   "url": "https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a",
+   "status": "approved",
+   "live_tool": "get_distribution_receipts"
+  },
+  {
+   "key": "inclusion_set.current",
+   "text": "The active Inclusion Set #2, \"Perfect Order\" (since 1 Apr 2026), pays Directors 30% XAUt0 (Tether Gold), 30% wBTC (Wormhole) and 40% jlUSDc (Jupiter Lend USDC) through the distributor 2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a; Set #1, which paid memecoins (PENGU, FARTCOIN, BONK, WIF, JBMB), ended on 31 Mar 2026.",
+   "numbers": [
+    0.3,
+    0.4,
+    1,
+    2,
+    30,
+    31,
+    40,
+    2026
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Inclusion Sets and Inclusion Set Archives; last round split 29.6/29.9/40.6 by value",
+   "url": "https://seasons.gitbook.io/seasons-docs/resources/inclusion-set-archives",
+   "status": "approved"
+  },
+  {
+   "key": "funding.observed_path",
+   "text": "Each round is public on-chain: shortly before it, $SEAS arrives at the Set #2 distributor, which swaps it into XAUt0, wBTC and jlUSDc and pays node wallets.",
+   "numbers": [
+    2
+   ],
+   "as_of": "2026-09-28T10:33:10Z",
+   "source_kind": "chain",
+   "source": "Distributor inflows before each round (e.g. 2 × 23,456.789 gross on 2026-09-27); swap and payout txs; pending team decision D3",
+   "url": "https://solscan.io/account/2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "funding.reconciliation",
+   "text": "No per-round reconciliation of fees withheld, $SEAS swapped and payouts made has been published, so the chain shows each round but not a fee-by-fee accounting of it.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "chain",
+   "source": "No reconciliation in the GitBook, website or Terminal; withheld fees uncollected since 2025-12-09",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "yield.distributed_share",
+   "text": "The team's quarterly reports show the distributed share of generated yield rising: Q1 2026 distributed $101,045 of $171,622 generated (58.9%) and Q2 $118,585 of $157,233 (75.4%), with the rest reported as unrealized.",
+   "numbers": [
+    0.589,
+    0.754,
+    58.9,
+    75.4,
+    2026,
+    101045,
+    118585,
+    118585.08,
+    157232.9,
+    157233,
+    171622
+   ],
+   "as_of": "2026-07-01",
+   "source_kind": "team_statement",
+   "source": "Seasons Q1 report (to 2026-03-12) and Q2 recap (2026-03-13 → 2026-07-01)",
+   "status": "team_reported"
+  },
+  {
+   "key": "apy.not_guaranteed",
+   "text": "The APY isn't fixed or guaranteed and has no floor: it changes every round; the docs' Director range of 6.58% to 21.07% is a design target with variance outside it expected, and the node table's \"100% APY\" and \"80% APY\" rows are share labels (Directors full rate, Builders 0.8×), not returns.",
+   "numbers": [
+    0.0658,
+    0.2107,
+    0.8,
+    1,
+    6.58,
+    21.07,
+    80,
+    100
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook APY F.A.Q. ('Is APY Fixed? No'), Director Nodes F.A.Q. (target 6.58%–21.07%), Nodes type table",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/apy",
+   "status": "approved"
+  },
+  {
+   "key": "apy.definition",
+   "text": "The APY Seasons reports is a per-round simple rate for one 10,000 $SEAS node, annualised over about 104 rounds a year on the $SEAS price at the time, and a new buyer's yield on what they paid is about 0.9× that figure because of the entry fee.",
+   "numbers": [
+    0.9,
+    104,
+    10000
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "team_statement",
+   "source": "Terminal 30d APY and Telegram 'LIVE APY' methodology; entry-fee cost basis",
+   "url": "https://terminal.seasons.wtf",
+   "status": "team_reported"
+  },
+  {
+   "key": "apy.last_reported",
+   "text": "For Round #84 on 25 Sep 2026 the team reported an APY of about 20.17% and more than $310,216 paid to Directors in total; a single round is history, not a forecast.",
+   "numbers": [
+    0.2017,
+    20.17,
+    25,
+    84,
+    2026,
+    310216
+   ],
+   "as_of": "2026-09-25",
+   "source_kind": "team_statement",
+   "source": "seasons.wtf blog '$300,000 where it counts' (2026-09-25)",
+   "url": "https://seasons.wtf/blog/300000-where-it-counts",
+   "status": "team_reported"
+  },
+  {
+   "key": "apy.history",
+   "text": "Team-reported round APYs ranged from 6.13% to 18.42% in Q1 2026 and from 5.76% to 12.17% in Q2 2026, averaging 8.66% in Q2.",
+   "numbers": [
+    0.0576,
+    0.0613,
+    0.0866,
+    0.1217,
+    0.1842,
+    5.76,
+    6.13,
+    8.66,
+    12.17,
+    18.42,
+    2026
+   ],
+   "as_of": "2026-07-01",
+   "source_kind": "team_statement",
+   "source": "Seasons Q1 report and Q2 recap",
+   "status": "team_reported"
+  },
+  {
+   "key": "tax.round_trip",
+   "text": "With 10% in and 10% out, buying and later selling at the same price keeps about 81% of the value, a round-trip cost of about 19% before pool fees, and the price would have to rise about 23.46% just to break even.",
+   "numbers": [
+    0.1,
+    0.19,
+    0.2346,
+    0.81,
+    10,
+    19,
+    23.46,
+    81
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "calc",
+   "source": "0.9 × 0.9 = 0.81; 1 / 0.81 − 1 = 0.2346",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "tax.gross_up",
+   "text": "Ending up with a net balance takes about 1.111× it before the fee, whether bought or sent from another wallet: netting 10,000 $SEAS takes about 11,111.12 and netting 1,000 about 1,111.12, while sending exactly 10,000 delivers 9,000, a Builder balance.",
+   "numbers": [
+    1.111,
+    1000,
+    1111.12,
+    9000,
+    10000,
+    11111.12
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "calc",
+   "source": "gross = net / (1 − 0.10)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation/ttt",
+   "status": "approved"
+  },
+  {
+   "key": "tax.earn_back_formula",
+   "text": "At a steady price and a rate r that the user chooses, earning back the entry fee takes about 0.11 ÷ r years and recovering a full round trip about 0.21 ÷ r years, and any real price move changes the result.",
+   "numbers": [
+    0.11,
+    0.21,
+    0.2111
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "calc",
+   "source": "t / ((1 − t)·r) and (1 − (1 − t)²) / ((1 − t)·r) with t = 0.10",
+   "status": "approved"
+  },
+  {
+   "key": "modules.status",
+   "text": "One of the three planned revenue modules is live, the TTT (the 10% fee); two more, the stablecoin module (SSYM) and the vaults (YAV), are planned as further sources of yield and have no confirmed date yet.",
+   "numbers": [
+    0.1,
+    10
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Generation, SSYM ('NOT YET ACTIVE'), YAV ('NOT YET ACTIVE')",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/generation",
+   "status": "approved"
+  },
+  {
+   "key": "dao.status",
+   "text": "The Seasons DAO is not operational and has no on-chain role yet; the docs tentatively earmark it for H2 2027.",
+   "numbers": [
+    2027
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook DAO ('NOT YET OPERATIONAL', 'Tentatively earmarked for development in H2 of 2027')",
+   "url": "https://seasons.gitbook.io/seasons-docs/ecosystem/dao",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "builder_claims.upgrade",
+   "text": "The Builder claims program (GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf) can only be upgraded by a 2-of-3 Squads multisig, which has no time lock, and its weekly claim roots are published by a single-signature key.",
+   "numbers": [
+    2,
+    3
+   ],
+   "as_of": "2026-09-28T10:22:01Z",
+   "source_kind": "chain",
+   "source": "programData EdGQRw…oH3 authority = Squads vault CXHa…SJ8k; multisig Fm1TPAL…nvw5 threshold 2, members 3, time_lock 0; config authority BMR2n6…dhMt (on-curve)",
+   "url": "https://solscan.io/account/GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "custody.self",
+   "text": "Holders keep their $SEAS and payouts in their own wallets, with no deposit, staking contract, lock-up or identity form to become a node.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Distribution ('No need to claim and no lock-ups'), LPs (pools deployed by the Seasons Foundation); home-v6 FAQ (no identity-verification form)",
+   "url": "https://seasons.gitbook.io/seasons-docs/protocol/yield-3.0-mechanism/distribution",
+   "status": "approved"
+  },
+  {
+   "key": "audit.protocol",
+   "text": "The published audit covers the $SEAS token; the distribution, Builder claims and lock programs don't have a published audit yet, and scanner badges such as Jupiter's \"mint authority disabled\" are checks, not audits.",
+   "numbers": [],
+   "as_of": "2026-09-28T10:53:57Z",
+   "source_kind": "docs",
+   "source": "No report in the GitBook, website or repos beyond the token audit; Jupiter tokens/v2: isVerified null, tags unknown and token-2022",
+   "url": "https://jup.ag/tokens/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "price.sources",
+   "text": "The $SEAS price is only quoted from a live read that names its pool and time, from DexScreener's deepest pool (Raydium CLMM $SEAS/USDC), Meteora and Jupiter, which can differ slightly; on 28 Sep 2026 they differed by about 1.26%.",
+   "numbers": [
+    0.0126,
+    1.26,
+    28,
+    2026
+   ],
+   "as_of": "2026-09-28T10:54:27Z",
+   "source_kind": "api",
+   "source": "DexScreener pair Fc6N…Zvy $0.2697; Jupiter price v3 $0.26629; Meteora D12EGY…VbJ $0.2663",
+   "url": "https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+   "status": "approved",
+   "live_tool": "get_price"
+  },
+  {
+   "key": "liquidity.exit_depth",
+   "text": "On 28 Sep 2026 the deepest pool held about $78.7k of USDC on its sell side and all pools about $207k, so a large sale moves the price noticeably.",
+   "numbers": [
+    28,
+    78.7,
+    207,
+    2026,
+    78683,
+    78700,
+    207000,
+    207027
+   ],
+   "as_of": "2026-09-28T10:53:53Z",
+   "source_kind": "api",
+   "source": "DexScreener pairs: Fc6N… 3,488,730 $SEAS + 78,683 USDC; stable side across pools $207.0k",
+   "url": "https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+   "status": "approved",
+   "live_tool": "get_price",
+   "on_request": true
+  },
+  {
+   "key": "volume.definition",
+   "text": "The Terminal's \"volume\" counts on-chain $SEAS transfer volume, not DEX trading volume, and volume, holder counts and transaction counts are not by themselves evidence of demand for any token.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "Terminal public API manifest (/v1/volume: 'NOT DEX trade volume')",
+   "url": "https://terminal.seasons.wtf",
+   "status": "approved",
+   "on_request": true
+  },
+  {
+   "key": "market.trading_activity",
+   "text": "GAIA doesn't have information about trading by Seasons-related wallets, and the team should answer that question on the record.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "almanac",
+   "source": "Pending team decision D-VOL",
+   "status": "needs_founder",
+   "on_request": true
+  },
+  {
+   "key": "official.channels",
+   "text": "Official Seasons sites are seasons.wtf and its subdomains such as terminal.seasons.wtf, plus the docs at seasons.gitbook.io/seasons-docs, and official channels are X @SeasonsDEFI, Telegram t.me/SeasonsCommunity and t.me/SeasonsHQ, YouTube @SeasonsDEFI and linktr.ee/SeasonsDEFI, while @SEAS_onchain and linktr.ee/SEASonchain are outdated.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Socials and Blogs pages; v1 persona and support FAQ (outdated handles)",
+   "url": "https://seasons.gitbook.io/seasons-docs/resources/socials",
+   "status": "approved"
+  },
+  {
+   "key": "support.tutorials",
+   "text": "Step-by-step interactive guides are at seasons.wtf/tutorials: becoming a node with Jupiter Wallet, moving a Phantom wallet to Jupiter Mobile, setting up and receiving tokens on a Backpack wallet, buying $SEAS on Jupiter and bridging tokens to Solana.",
+   "numbers": [],
+   "as_of": "2026-09-29",
+   "source_kind": "docs",
+   "source": "seasons.wtf Tutorials page",
+   "url": "https://seasons.wtf/tutorials",
+   "status": "approved"
+  },
+  {
+   "key": "gaia.surfaces",
+   "text": "The official GAIA is the assistant on seasons.wtf and the Telegram bot @GAIA_Seasons_Bot; she never DMs first, never asks for keys, and can be wrong, which is why every Seasons figure she gives comes with a receipt.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook G.A.I.A. page; website GaiaLauncher (t.me/GAIA_Seasons_Bot); blog 'GAIA is live on Seasons website' (2026-07-31)",
+   "url": "https://seasons.gitbook.io/seasons-docs/ecosystem/yield-3.0-mechanism",
+   "status": "approved"
+  },
+  {
+   "key": "security.keys",
+   "text": "Seasons and GAIA never ask for a seed phrase or private key and official staff never DM first, so anyone asking for one is running a scam, and addresses should be copied only from seasons.wtf or the docs and compared character by character, since look-alike dust addresses appear in wallet histories.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook G.A.I.A. ('GAIA WILL NEVER ASK YOU FOR YOUR PRIVATE KEYS'); website safety line; dust transfers to the creator address",
+   "url": "https://seasons.gitbook.io/seasons-docs/ecosystem/yield-3.0-mechanism",
+   "status": "approved"
+  },
+  {
+   "key": "market.where_to_buy",
+   "text": "$SEAS trades only on Solana DEXs, the docs list 6 official pools on Raydium and Meteora paired with USD stablecoins, and $SEAS is not listed on any centralised exchange, so a CEX offer is not official.",
+   "numbers": [
+    6
+   ],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook LPs ('6 official active pools', others 'treated with caution'); blog 'Anyone offering $SEAS on a CEX is a fraud'",
+   "url": "https://seasons.gitbook.io/seasons-docs/ecosystem/lps",
+   "status": "approved"
+  },
+  {
+   "key": "legal.entity",
+   "text": "The Terms say the Seasons website and Terminal are provided by Seasons Labs under the laws of the British Virgin Islands, are not a financial product or investment advice, exclude sanctioned persons and residents of sanctioned regions, and leave users responsible for their own taxes.",
+   "numbers": [],
+   "as_of": "2026-06-18",
+   "source_kind": "docs",
+   "source": "seasons.wtf/legal/terms (last updated 2026-06-18)",
+   "url": "https://seasons.wtf/legal/terms",
+   "status": "approved"
+  },
+  {
+   "key": "legal.insurance",
+   "text": "Holding $SEAS is not a bank deposit: it isn't insured by the FDIC or SIPC, isn't government-backed, and neither returns nor principal are guaranteed.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "Website home-v6 FAQ ('Returns and principal are not guaranteed'); v1 disclaimer",
+   "url": "https://seasons.wtf/legal/terms",
+   "status": "approved"
+  },
+  {
+   "key": "brand.name_origin",
+   "text": "Seasons takes its name from nature's cycles: the docs describe the design as inspired by nature, and the payout baskets are organised into Seasons.",
+   "numbers": [],
+   "as_of": "2026-09-28",
+   "source_kind": "docs",
+   "source": "GitBook Introduction ('Inspired by nature'), Inclusion Sets (Seasons)",
+   "url": "https://seasons.gitbook.io/seasons-docs/intro/introduction",
+   "status": "approved"
+  }
+ ],
+ "factMeta": {
+  "token.mint": {
+   "label": "Official $SEAS mint",
+   "value": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS (Token-2022, 8 decimals)"
+  },
+  "token.supply_total": {
+   "label": "Total $SEAS supply",
+   "value": "1,000,000,000 minted at genesis; 999,999,999.80 on-chain"
+  },
+  "token.mint_authority": {
+   "label": "Mint authority",
+   "value": "none (null)"
+  },
+  "token.freeze_authority": {
+   "label": "Freeze authority",
+   "value": "none (null)"
+  },
+  "token.holder_safety": {
+   "label": "What can touch a holder's balance",
+   "value": "no freeze, no transfer hook, no permanent delegate"
+  },
+  "fee.rate": {
+   "label": "Transfer fee on the $SEAS mint",
+   "value": "10% (1000 bps)"
+  },
+  "fee.scope": {
+   "label": "What the 10% applies to",
+   "value": "every movement of $SEAS"
+  },
+  "fee.history": {
+   "label": "Fee history",
+   "value": "1000 bps since epoch 892; no change pending at epoch 1044"
+  },
+  "fee.change_delay": {
+   "label": "Notice before a fee change applies",
+   "value": "2 epochs (about 2–4 days), visible on-chain at once"
+  },
+  "fee.config_authority": {
+   "label": "Fee-config authority",
+   "value": "single-signature wallet (Seasons creator address)"
+  },
+  "fee.withdraw_authority": {
+   "label": "Fee-withdraw authority",
+   "value": "single-signature wallet CY3fa3…MDK7"
+  },
+  "fees.withheld_summary": {
+   "label": "Fees withheld on-chain (lower bound)",
+   "value": "≥75.9M $SEAS, of which 66.7M from the lock transfers"
+  },
+  "fees.last_collected": {
+   "label": "Last fee collection",
+   "value": "9 Dec 2025 (launch day); none since"
+  },
+  "team.statement_2026_09_14": {
+   "label": "Team post of 14 Sep 2026 (audit and authorities)",
+   "value": "QuillAudits token audit; fee settings adjustable; multisig planned"
+  },
+  "wallets.public_names": {
+   "label": "How GAIA names the fee-authority wallets",
+   "value": "by on-chain role (interim)",
+   "decision": "D12",
+   "disputed": [
+    "\\bYMS\\b",
+    "operations wallet",
+    "operating wallet",
+    "treasury wallet",
+    "yield (management )?(system )?wallet",
+    "team('s)? wallet",
+    "reserve wallet"
+   ]
+  },
+  "supply.allocation": {
+   "label": "Tokenomics allocation (as documented)",
+   "value": "GitBook table; reconciliation pending",
+   "decision": "TOKENOMICS",
+   "disputed": [
+    "public (is |= ?)?30 ?%",
+    "(correct|right|accurate|real) (split|allocation|tokenomics)",
+    "team (allocation |tokens )?(is|are) (locked|vested|vesting)",
+    "growth (is|=) (5|10) ?%"
+   ]
+  },
+  "supply.circulating": {
+   "label": "Circulating supply",
+   "value": "≈333M (supply minus lock escrows and their withheld fees)"
+  },
+  "locks.total": {
+   "label": "Time-locked supply",
+   "value": "600.3M net in 61 escrows + 66.7M withheld"
+  },
+  "locks.published_groups": {
+   "label": "Foundation and Partner locks",
+   "value": "Foundation opens 2027-07-08 → 2028-07-08; Partner 2027-01-30"
+  },
+  "locks.unlocked_groups": {
+   "label": "Incentives and Growth (not locked)",
+   "value": "Incentives 50M unmoved; Growth 50M, ≈25.6M moved out"
+  },
+  "growth.fund_use": {
+   "label": "Growth wallet movements",
+   "value": "visible on-chain; no published fund-use record (interim)",
+   "decision": "D9",
+   "disputed": [
+    "(was|were) (used|spent|sent) (for|on|to pay)",
+    "marketing",
+    "market[- ]?mak",
+    "liquidity provision",
+    "\\bsold\\b",
+    "dump",
+    "builder (claims|funding)"
+   ]
+  },
+  "locks.upcoming_unlocks": {
+   "label": "Unlocks due by 30 Jan 2027",
+   "value": "≈194.4M $SEAS (5.4M + 99.0M + 90.0M)"
+  },
+  "locks.unlabelled": {
+   "label": "Locks without a published beneficiary",
+   "value": "≈227M net, unlocks Dec 2026 → Dec 2030"
+  },
+  "locks.bucket_labels": {
+   "label": "Which lock belongs to which allocation",
+   "value": "not published (interim)",
+   "decision": "D4",
+   "disputed": [
+    "team('s)? (tokens|allocation|wallets?|locks?) (is|are) (locked|in|held)",
+    "\\bpubx?\\b",
+    "team[- ]labell?ed",
+    "belongs? to the team",
+    "(team|private|public|liquidity)('s)? (lock|escrow|tranche)s? (unlock|open)s?",
+    "internal label",
+    "all team tokens"
+   ]
+  },
+  "locks.program": {
+   "label": "Lock program",
+   "value": "third-party, upgradeable (Squads vault holds the upgrade key)"
+  },
+  "node.director": {
+   "label": "Director Node",
+   "value": "≥10,000 $SEAS; Sun + Wed; basket; no claim"
+  },
+  "node.builder": {
+   "label": "Builder Node",
+   "value": "1,000–9,999 $SEAS; weekly $SEAS at 0.8× the network rate; claim"
+  },
+  "node.builder_funding": {
+   "label": "Where Builder payouts come from",
+   "value": "finite allocation of existing supply; vault via 2-of-3 multisig"
+  },
+  "node.identity": {
+   "label": "What counts as a node",
+   "value": "one self-custody address = one node, read at the snapshot"
+  },
+  "distribution.schedule": {
+   "label": "Distribution schedule",
+   "value": "Directors Sun + Wed; Builders weekly (Sunday); time varies"
+  },
+  "distribution.weekday_streak": {
+   "label": "Round weekdays",
+   "value": "19 of 19 rounds on Sun/Wed (26 Jul → 27 Sep 2026)"
+  },
+  "distribution.last_round": {
+   "label": "Last observed round",
+   "value": "Sun 27 Sep 2026, ~370 wallets, ≈$5,858"
+  },
+  "inclusion_set.current": {
+   "label": "Active Inclusion Set",
+   "value": "Set #2 'Perfect Order': 30% XAUt0, 30% wBTC, 40% jlUSDc"
+  },
+  "funding.observed_path": {
+   "label": "How a round moves on-chain",
+   "value": "wallet → distributor → basket swaps → node wallets (interim)",
+   "decision": "D3",
+   "disputed": [
+    "funded (by|from|with|out of) (the |its )?(collected |trading |transaction |transfer )?(fees|tax)",
+    "reserve",
+    "(fees?|tax) (go|goes|are sent|is sent|flows?) (directly |straight |automatically )?to (node )?(holders|nodes|wallets)",
+    "last 48",
+    "in full",
+    "fee revenue pays",
+    "(payouts?|rounds?|distributions?|yield|rewards?)\\b[^.;]{0,40}\\b(come|comes|paid|financed|funded)\\s+(from|by|out of|with)\\b[^.;]{0,30}\\b(fees?|tax)",
+    "(fees?|tax)\\b[^.;]{0,40}\\b(funds?|pays? for|finances?|covers?|feeds?)\\b[^.;]{0,30}\\b(payouts?|rounds?|distributions?|yield|rewards?)"
+   ]
+  },
+  "funding.reconciliation": {
+   "label": "Per-round reconciliation",
+   "value": "not published"
+  },
+  "yield.distributed_share": {
+   "label": "Share of generated yield distributed (team-reported)",
+   "value": "Q1 58.9%, Q2 75.4%"
+  },
+  "apy.not_guaranteed": {
+   "label": "Is the APY fixed?",
+   "value": "no; no floor; target range is a design target"
+  },
+  "apy.definition": {
+   "label": "How the reported APY is computed (team method)",
+   "value": "per-round simple rate × 104, one 10,000 $SEAS node"
+  },
+  "apy.last_reported": {
+   "label": "Last reported APY (team-reported)",
+   "value": "≈20.17% (Round"
+  },
+  "apy.history": {
+   "label": "Reported APY ranges (team-reported)",
+   "value": "Q1 6.13–18.42%; Q2 5.76–12.17% (avg 8.66%)"
+  },
+  "tax.round_trip": {
+   "label": "Round-trip cost of the 10% fee",
+   "value": "keeps ≈81%; ≈19% cost; break-even ≈+23.46%"
+  },
+  "tax.gross_up": {
+   "label": "Gross amount needed to net a balance",
+   "value": "net ÷ 0.9 (10,000 → 11,111.12)"
+  },
+  "tax.earn_back_formula": {
+   "label": "Time to earn back the fee (formula)",
+   "value": "entry fee ≈ 0.11 ÷ r years; round trip ≈ 0.21 ÷ r years"
+  },
+  "modules.status": {
+   "label": "Revenue modules live",
+   "value": "1 of 3 (TTT); SSYM and YAV not active"
+  },
+  "dao.status": {
+   "label": "DAO status",
+   "value": "not operational; tentatively H2 2027"
+  },
+  "builder_claims.upgrade": {
+   "label": "Builder claims program control",
+   "value": "upgrade by 2-of-3 Squads multisig (no time lock); roots by a single key"
+  },
+  "custody.self": {
+   "label": "Custody",
+   "value": "self-custody; no deposit, staking contract, lock-up or ID form"
+  },
+  "audit.protocol": {
+   "label": "Audit coverage beyond the token",
+   "value": "no published audit of distribution, claims or lock programs"
+  },
+  "price.sources": {
+   "label": "$SEAS price sources",
+   "value": "live only; pool and time named"
+  },
+  "liquidity.exit_depth": {
+   "label": "Exit-side liquidity",
+   "value": "≈$78.7k USDC on the deepest pool; ≈$207k across pools"
+  },
+  "volume.definition": {
+   "label": "What \"volume\" means",
+   "value": "Terminal volume = on-chain transfer volume"
+  },
+  "market.trading_activity": {
+   "label": "Trading by Seasons-related wallets",
+   "value": "no information; team to answer on the record (interim)",
+   "decision": "D-VOL",
+   "disputed": [
+    "no (market[- ]?makers?|bots?)",
+    "organic",
+    "wash[- ]trad\\w*.{0,20}(costly|pointless|expensive|impossible)",
+    "(runs?|operates?|uses?) (a )?(trading )?(bots?|fleet|market[- ]?makers?)",
+    "100 ?%",
+    "fake"
+   ]
+  },
+  "official.channels": {
+   "label": "Official Seasons sites and channels",
+   "value": "seasons.wtf, terminal.seasons.wtf, GitBook docs, @SeasonsDEFI, t.me/SeasonsCommunity"
+  },
+  "support.tutorials": {
+   "label": "Step-by-step guides",
+   "value": "seasons.wtf/tutorials"
+  },
+  "gaia.surfaces": {
+   "label": "Official GAIA surfaces",
+   "value": "seasons.wtf assistant; Telegram @GAIA_Seasons_Bot"
+  },
+  "security.keys": {
+   "label": "Seed phrases and DMs",
+   "value": "never asked for; staff never DM first"
+  },
+  "market.where_to_buy": {
+   "label": "Where $SEAS trades",
+   "value": "Solana DEXs; 6 official pools; no CEX listing"
+  },
+  "legal.entity": {
+   "label": "Terms of use",
+   "value": "Seasons Labs; British Virgin Islands law; not advice"
+  },
+  "legal.insurance": {
+   "label": "Not a bank deposit",
+   "value": "not insured, not government-backed, nothing guaranteed"
+  },
+  "brand.name_origin": {
+   "label": "Why \"Seasons\"",
+   "value": "named for nature's cycles"
+  }
+ },
+ "hardAnswers": [
+  {
+   "id": "HA-LEGIT",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "scam",
+    "ponzi",
+    "pyramid",
+    "is_it_legit",
+    "rug_pull_generic"
+   ],
+   "examples": {
+    "en": [
+     "Is Seasons a scam?",
+     "Is this a Ponzi?",
+     "New buyers pay old holders, right?",
+     "Is Seasons legit?",
+     "This looks like a pyramid scheme",
+     "Is this a rug pull?"
+    ],
+    "ru": [
+     "Это пирамида?",
+     "Seasons — это скам?",
+     "Это финансовая пирамида или нет?",
+     "Это лохотрон?",
+     "Новые покупатели платят старым?"
+    ],
+    "de": [
+     "Ist Seasons ein Schneeballsystem?",
+     "Ist das Betrug?",
+     "Ist Seasons seriös?",
+     "Ist das ein Ponzi-System?"
+    ],
+    "es": [
+     "¿Es una estafa?",
+     "¿Seasons es un esquema Ponzi?",
+     "¿Es una pirámide?",
+     "¿Seasons es legítimo?"
+    ],
+    "ja": [
+     "これは詐欺ですか？",
+     "Seasonsはポンジスキームですか？",
+     "ねずみ講じゃないの？",
+     "Seasonsは信頼できますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "token.mint_authority",
+    "token.freeze_authority",
+    "custody.self",
+    "distribution.last_round",
+    "distribution.weekday_streak",
+    "apy.not_guaranteed",
+    "tax.round_trip",
+    "fee.config_authority",
+    "funding.observed_path",
+    "fees.last_collected",
+    "funding.reconciliation",
+    "modules.status"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Answer with evidence, calmly and confidently, and never repeat the hostile label as your own words.",
+     "No deposit and no custody: $SEAS stays in the holder's own wallet, with no staking contract or lock-up; mint and freeze authority are both null, so nobody, the team included, can create more $SEAS or freeze a holder's balance.",
+     "Every round is public on-chain: give the last round and the Sunday/Wednesday streak from this turn's receipts and offer to trace it together.",
+     "Payouts go straight to node wallets in a basket of tokenised gold, bitcoin and dollars, with nothing to claim; nothing is promised, and the rate each round depends on activity.",
+     "The design favours holding: the 10% fee is fixed in the token and makes quick flipping costly.",
+     "Next step: offer to show the last round on-chain or to read the mint live."
+    ],
+    "short_form": "Fair question, and the chain answers it. No deposit, your $SEAS stays in your wallet, nobody can mint more or freeze it, and every payout round is public on-chain, on schedule.",
+    "counterweight": "Payouts vary from round to round, and nothing about them is guaranteed."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "not a scam",
+      "100% safe",
+      "completely safe",
+      "no ponzi mechanics",
+      "fees go straight to holders",
+      "fees go directly to holders",
+      "seasons holds no assets",
+      "seasons doesn't hold any assets",
+      "nothing leaves your wallet without your signature",
+      "guaranteed return",
+      "guaranteed yield",
+      "risk-free",
+      "rounds are funded by fees",
+      "funded by trading fees",
+      "last 48 hours of fees"
+     ],
+     "ru": [
+      "не скам",
+      "не пирамида",
+      "100% безопасно",
+      "гарантированный доход",
+      "без риска",
+      "ничего не уходит из кошелька без вашей подписи"
+     ],
+     "de": [
+      "kein Betrug",
+      "kein Schneeballsystem",
+      "100% sicher",
+      "garantierte Rendite",
+      "risikofrei"
+     ],
+     "es": [
+      "no es una estafa",
+      "100% seguro",
+      "rentabilidad garantizada",
+      "sin riesgo"
+     ],
+     "ja": [
+      "詐欺ではありません",
+      "100%安全",
+      "保証された利回り",
+      "リスクはありません"
+     ]
+    },
+    "forbidden_implicatures": [
+     "today's rounds are funded by collected fees",
+     "on-time payouts prove trading demand",
+     "self-custody removes all risk",
+     "Seasons holds no assets or keys"
+    ],
+    "cooccurrence_block": {
+     "concede": {
+      "en": [
+       "you're right",
+       "you are right",
+       "you're partly right",
+       "you have a point"
+      ],
+      "ru": [
+       "Вы правы",
+       "вы правы",
+       "отчасти правы",
+       "в чём-то правы"
+      ],
+      "de": [
+       "Sie haben recht",
+       "teilweise recht",
+       "da haben Sie recht"
+      ],
+      "es": [
+       "tiene razón",
+       "tiene parte de razón",
+       "en parte tiene razón"
+      ],
+      "ja": [
+       "おっしゃる通り",
+       "一理あります",
+       "その通りです"
+      ]
+     },
+     "label": {
+      "en": [
+       "ponzi",
+       "scam",
+       "pyramid"
+      ],
+      "ru": [
+       "пирамид",
+       "скам",
+       "мошенн",
+       "лохотрон"
+      ],
+      "de": [
+       "Schneeball",
+       "Betrug",
+       "Ponzi"
+      ],
+      "es": [
+       "ponzi",
+       "estafa",
+       "pirámide"
+      ],
+      "ja": [
+       "ポンジ",
+       "詐欺",
+       "ねずみ講"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "HA-TAX-AUTH",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "can_team_change_tax",
+    "rug_via_fee",
+    "contract_renounced"
+   ],
+   "examples": {
+    "en": [
+     "Can the team change the 10% tax?",
+     "Can they raise the tax to 100%?",
+     "Could the team rug us through the fee?",
+     "Is the contract renounced?",
+     "Who controls the transfer tax?"
+    ],
+    "ru": [
+     "Может ли команда поднять налог до 100%?",
+     "Кто может изменить комиссию 10%?",
+     "Права на контракт отозваны?",
+     "Могут ли они изменить налог?"
+    ],
+    "de": [
+     "Kann das Team die 10% Steuer ändern?",
+     "Können sie die Gebühr auf 100% erhöhen?",
+     "Ist der Vertrag renounced?",
+     "Wer kontrolliert die Transfersteuer?"
+    ],
+    "es": [
+     "¿El equipo puede subir el impuesto?",
+     "¿Pueden cambiar el impuesto del 10%?",
+     "¿Pueden subir la comisión al 100%?",
+     "¿El contrato está renunciado?"
+    ],
+    "ja": [
+     "チームは10%の税率を変更できますか？",
+     "手数料を100%に上げられますか？",
+     "コントラクトは放棄されていますか？",
+     "誰が取引税を管理していますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "fee.config_authority",
+    "fee.rate",
+    "fee.history",
+    "fee.change_delay",
+    "token.mint_authority",
+    "token.freeze_authority",
+    "token.holder_safety",
+    "dao.status",
+    "team.statement_2026_09_14",
+    "wallets.public_names"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Lead with what protects holders: the fee has been exactly 10% since launch (epoch 892), a new rate only applies two Solana epochs after it is submitted (about 2 to 4 days) and is public on-chain from the moment it's submitted, and nobody can seize or freeze a holder's balance.",
+     "Answer the question itself in one neutral sentence: the fee-config authority, the Seasons creator address, can set a new rate; GAIA reads it live and says whether a change is pending.",
+     "The team's 14 Sep 2026 post says certain fee-related settings stay adjustable; label it as the team's statement."
+    ],
+    "short_form": "It's been exactly 10% since launch. The Seasons creator address can set a new rate, but any change is public on-chain 2–4 days before it applies, and I check it live.",
+    "counterweight": "The fee-config authority is a single-signature wallet."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "fee authority is revoked",
+      "fee authority has been revoked",
+      "permission controls revoked",
+      "permission controls are revoked",
+      "the tax is immutable",
+      "the fee is immutable",
+      "only the dao can change",
+      "the team can't change the",
+      "the team cannot change the",
+      "can never be changed",
+      "fully decentralized",
+      "contract is renounced",
+      "fully renounced",
+      "it will never change",
+      "fee authority is a multisig",
+      "fee authority is held by a multisig"
+     ],
+     "ru": [
+      "налог неизменен",
+      "комиссию нельзя изменить",
+      "только DAO может",
+      "права на комиссию отозваны",
+      "налог изменить невозможно"
+     ],
+     "de": [
+      "die Steuer ist unveränderlich",
+      "nur die DAO kann",
+      "vollständig dezentral",
+      "Gebühr kann nicht geändert werden"
+     ],
+     "es": [
+      "el impuesto es inmutable",
+      "solo la DAO puede",
+      "totalmente descentralizado",
+      "la comisión no se puede cambiar"
+     ],
+     "ja": [
+      "税率は変更できません",
+      "変更不可能です",
+      "DAOだけが変更",
+      "完全に分散化"
+     ]
+    },
+    "forbidden_implicatures": [
+     "the fee settings can't affect holders' tokens",
+     "a fee change could happen without notice or be hidden",
+     "the fee authority is under multisig or DAO control",
+     "the rate is guaranteed to stay at 10%"
+    ]
+   }
+  },
+  {
+   "id": "HA-FEE-WITHDRAW",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "team_takes_fees",
+    "drain_fees",
+    "where_fees_go",
+    "fee_withdraw_key",
+    "yield_come_from"
+   ],
+   "examples": {
+    "en": [
+     "Can the team take the fees?",
+     "Can they drain the fees?",
+     "Who collects the 10% fees?",
+     "Where do the fees go?",
+     "Who holds the fee withdrawal key?",
+     "Where does the yield come from?"
+    ],
+    "ru": [
+     "Может ли команда забрать комиссии?",
+     "Куда идут комиссии?",
+     "Кто может вывести собранные комиссии?",
+     "Команда может слить комиссии?"
+    ],
+    "de": [
+     "Kann das Team die Gebühren abziehen?",
+     "Wohin gehen die Gebühren?",
+     "Wer kann die Gebühren abheben?"
+    ],
+    "es": [
+     "¿El equipo puede quedarse con las comisiones?",
+     "¿A dónde van las comisiones?",
+     "¿Quién puede retirar las comisiones?"
+    ],
+    "ja": [
+     "チームは手数料を引き出せますか？",
+     "手数料はどこに行きますか？",
+     "誰が手数料を回収できますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "fee.withdraw_authority",
+    "fees.withheld_summary",
+    "fees.last_collected",
+    "funding.observed_path",
+    "funding.reconciliation",
+    "token.holder_safety",
+    "team.statement_2026_09_14",
+    "wallets.public_names",
+    "yield.distributed_share"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Lead with the holder's safety: a balance can't be frozen, seized or spent; only the 10% fee withheld on tokens someone received can be collected, and it was never part of their spendable balance.",
+     "Answer the question neutrally: the fee stays withheld in the token accounts involved, including the pools, the token's fee-withdraw authority can collect it, and it was last collected on launch day. Of the at least 75.9M $SEAS withheld, about 66.7M is the one-time fee from moving allocations into time-locks in January 2026.",
+     "Describe a round from what is public: shortly before each round $SEAS goes to the distributor, which swaps it into XAUt0, wBTC and jlUSDc and pays node wallets; every step is on-chain.",
+     "The team's 14 Sep 2026 post says it plans to move fee-withdrawal authority to a multisig."
+    ],
+    "short_form": "Your own balance can't be touched. The 10% fee stays withheld on-chain and the token's fee-withdraw authority can collect it; it was last collected on launch day, and every round is public.",
+    "counterweight": "Collection is controlled by one single-signature wallet; the team plans to move it to a multisig."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "no one controls the fees",
+      "nobody controls the fees",
+      "fees go directly to holders",
+      "fees go straight to holders",
+      "fees are distributed automatically",
+      "distributed in full",
+      "nothing leaves your wallet without your signature",
+      "your yield is the last 48",
+      "seasons does not hold any assets",
+      "seasons holds no assets",
+      "withdraw authority is a multisig"
+     ],
+     "ru": [
+      "никто не контролирует комиссии",
+      "комиссии идут напрямую держателям",
+      "распределяются полностью"
+     ],
+     "de": [
+      "niemand kontrolliert die Gebühren",
+      "direkt an die Halter",
+      "vollständig ausgeschüttet"
+     ],
+     "es": [
+      "nadie controla las comisiones",
+      "directamente a los holders",
+      "se distribuyen íntegramente"
+     ],
+     "ja": [
+      "誰も手数料を管理していません",
+      "手数料は直接ホルダーに",
+      "全額分配されます"
+     ]
+    },
+    "forbidden_implicatures": [
+     "today's rounds are funded by collected fees",
+     "the withheld fees are locked forever or unreachable",
+     "the withdraw authority is a multisig",
+     "the 75.9M figure is all trading fees"
+    ]
+   }
+  },
+  {
+   "id": "HA-LOCKS",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "team_dumping",
+    "insider_selling",
+    "team_tokens_locked",
+    "unlocks",
+    "investors_selling",
+    "foundation_selling"
+   ],
+   "examples": {
+    "en": [
+     "Is the team dumping on us?",
+     "Are team tokens locked?",
+     "When do the team tokens unlock?",
+     "Are insiders selling?",
+     "Yes or no: are all team tokens locked?",
+     "What unlocks are coming?"
+    ],
+    "ru": [
+     "Команда сливает токены?",
+     "Токены команды заблокированы?",
+     "Когда разлок?",
+     "Инсайдеры продают?"
+    ],
+    "de": [
+     "Verkauft das Team seine Tokens?",
+     "Sind die Team-Tokens gesperrt?",
+     "Wann werden Tokens freigeschaltet?"
+    ],
+    "es": [
+     "¿El equipo está vendiendo?",
+     "¿Los tokens del equipo están bloqueados?",
+     "¿Cuándo se desbloquean los tokens?"
+    ],
+    "ja": [
+     "チームはトークンを売っていますか？",
+     "チームのトークンはロックされていますか？",
+     "アンロックはいつですか？"
+    ]
+   },
+   "required_fact_keys": [
+    "locks.total",
+    "supply.circulating",
+    "locks.published_groups",
+    "locks.unlocked_groups",
+    "locks.upcoming_unlocks",
+    "locks.unlabelled",
+    "locks.bucket_labels",
+    "locks.program",
+    "growth.fund_use"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Lead with what is verifiable: about 600.3M $SEAS (60% of supply) sits in 61 on-chain time-locks, plus 66.7M withheld as fees when it was locked, which is why about 333M circulates; anyone can check the schedule on-chain.",
+     "Published groups: the Foundation's 250M is locked, opening in steps from 8 Jul 2027 to 8 Jul 2028; the Partner 100M is locked until 30 Jan 2027.",
+     "Answer exactly what was asked, briefly and neutrally: the Incentives and Growth wallets (100M together) sit outside the lock programs, and the upcoming unlock dates are on the public schedule.",
+     "Wallet-level labels for the other allocations are for the team to publish; offer to pass the question on."
+    ],
+    "short_form": "Most are: about 600.3M $SEAS, 60% of supply, sits in 61 on-chain time-locks with a public schedule. The Foundation's 250M opens in steps from July 2027.",
+    "counterweight": "The Incentives and Growth wallets, 100M together, sit outside the lock programs, and about 194.4M unlocks by 30 Jan 2027."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "all team tokens are locked",
+      "all tokens are locked",
+      "uniform 365-day",
+      "365-day rolling",
+      "no insider unlock",
+      "the team never sells",
+      "the team will never sell",
+      "locks are immutable",
+      "incentives are locked",
+      "growth is locked",
+      "growth wallets are locked",
+      "incentive wallets are locked"
+     ],
+     "ru": [
+      "все токены команды заблокированы",
+      "команда никогда не продаёт",
+      "команда никогда не продает",
+      "разлоков нет"
+     ],
+     "de": [
+      "alle Team-Tokens sind gesperrt",
+      "das Team verkauft nie",
+      "es gibt keine Freischaltungen"
+     ],
+     "es": [
+      "todos los tokens del equipo están bloqueados",
+      "el equipo nunca vende",
+      "no hay desbloqueos"
+     ],
+     "ja": [
+      "チームのトークンはすべてロック",
+      "チームは決して売りません",
+      "アンロックはありません"
+     ]
+    },
+    "forbidden_implicatures": [
+     "the 10% fee is a real deterrent to insider selling",
+     "the locks can't be changed by anyone",
+     "unlocked tokens will not be sold",
+     "a named allocation owns a specific unlabelled lock"
+    ]
+   }
+  },
+  {
+   "id": "HA-AUDIT",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "is_audited",
+    "audit_report",
+    "who_audited",
+    "certik"
+   ],
+   "examples": {
+    "en": [
+     "Is Seasons audited?",
+     "Has the contract been audited?",
+     "Show me the audit report",
+     "Who audited Seasons?",
+     "Is there a CertiK audit?"
+    ],
+    "ru": [
+     "Есть ли аудит?",
+     "Контракт проверен аудиторами?",
+     "Кто делал аудит Seasons?"
+    ],
+    "de": [
+     "Sind die Verträge auditiert?",
+     "Gibt es ein Audit?",
+     "Wer hat Seasons geprüft?"
+    ],
+    "es": [
+     "¿Seasons está auditado?",
+     "¿Hay una auditoría?",
+     "¿Quién auditó el contrato?"
+    ],
+    "ja": [
+     "監査は受けていますか？",
+     "スマートコントラクトは監査済みですか？",
+     "監査レポートはありますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "team.statement_2026_09_14",
+    "audit.protocol",
+    "token.mint_authority",
+    "token.freeze_authority",
+    "token.holder_safety",
+    "token.mint",
+    "fee.config_authority",
+    "fee.withdraw_authority",
+    "builder_claims.upgrade"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Yes for the token: the team's 14 Sep 2026 post says QuillAudits reviewed the $SEAS token's configuration and extensions and found no critical, high or medium issues; label it as the team's statement.",
+     "What anyone can check on-chain: fixed supply, no freeze authority, no permanent delegate, metadata locked since 13 May 2026.",
+     "If asked about the rest of the protocol: the published audit covers the token, and the distribution, Builder claims and lock programs don't have a published audit yet; don't call Seasons as a whole audited.",
+     "Scanner badges such as 'mint authority disabled' are useful checks, not audits."
+    ],
+    "short_form": "Yes, the token: per the team's 14 Sep 2026 post, QuillAudits reviewed its configuration and found no critical, high or medium issues. Fixed supply and no freeze authority are checkable on-chain.",
+    "counterweight": "The published audit covers the token, not the distribution, Builder claims or lock programs."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "fully audited",
+      "multiple independent audits",
+      "multiple audits",
+      "audit-grade",
+      "audited by certik",
+      "the protocol is audited",
+      "the protocol has been audited",
+      "all contracts are audited",
+      "all smart contracts are audited",
+      "verified on jupiter",
+      "security-reviewed"
+     ],
+     "ru": [
+      "полностью проверен",
+      "несколько независимых аудитов",
+      "протокол прошёл аудит"
+     ],
+     "de": [
+      "vollständig auditiert",
+      "mehrfach auditiert",
+      "mehrere unabhängige Audits"
+     ],
+     "es": [
+      "totalmente auditado",
+      "múltiples auditorías",
+      "varias auditorías independientes"
+     ],
+     "ja": [
+      "完全に監査",
+      "複数の独立した監査",
+      "プロトコル全体が監査済み"
+     ]
+    },
+    "forbidden_implicatures": [
+     "the token audit means the fee authorities are safe, renounced or multisig",
+     "the distribution, Builder claims or lock programs were audited",
+     "a scanner badge is an audit"
+    ]
+   }
+  },
+  {
+   "id": "HA-RETURNS",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "guaranteed_apy",
+    "how_much_will_i_earn",
+    "savings_safety",
+    "apy_100",
+    "profit",
+    "per_month",
+    "how_much_get"
+   ],
+   "examples": {
+    "en": [
+     "Is the APY guaranteed?",
+     "How much will I earn?",
+     "How much can I make with $10,000?",
+     "How do I earn with Seasons?",
+     "Is it safe to put my savings in Seasons?",
+     "Can you guarantee I won't lose money?"
+    ],
+    "ru": [
+     "Доходность гарантирована?",
+     "Сколько я заработаю?",
+     "Можно ли вложить сюда сбережения?",
+     "Как зарабатывать с Seasons?",
+     "Как заработать на Seasons?",
+     "Когда я начну зарабатывать?"
+    ],
+    "de": [
+     "Ist die Rendite garantiert?",
+     "Wie viel verdiene ich?",
+     "Wie viel verdiene ich mit 20.000 € in einem Jahr?"
+    ],
+    "es": [
+     "¿El APY está garantizado?",
+     "¿Cuánto voy a ganar?",
+     "¿Cuánto ganaré con 5.000 dólares en seis meses?"
+    ],
+    "ja": [
+     "利回りは保証されていますか？",
+     "いくら稼げますか？",
+     "10,000 SEASで毎月いくら稼げますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "apy.not_guaranteed",
+    "apy.definition",
+    "apy.last_reported",
+    "apy.history",
+    "tax.round_trip",
+    "node.director",
+    "node.builder",
+    "legal.insurance",
+    "distribution.schedule",
+    "inclusion_set.current",
+    "yield.distributed_share",
+    "modules.status",
+    "custody.self"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Answer the question: Directors (10,000+ $SEAS at the snapshot) are paid every Sunday and Wednesday, straight to the wallet, in a basket of tokenised gold (XAUt0), bitcoin (wBTC) and dollars (jlUSDc); nothing to claim. Builders (1,000+) accrue weekly at 0.8× the network rate. The $SEAS stays in the holder's own wallet, with no deposit or lock-up; the fixed cost of joining is the 10% entry fee.",
+     "Give the history, dated and labelled team-reported: about 20.17% for Round #84 (25 Sep 2026); Q2 2026 rounds 5.76% to 12.17% (average 8.66%), Q1 6.13% to 18.42%. For a new buyer the rate on what they paid is about 0.9× the quoted figure because of the entry fee.",
+     "With the user's amount, offer a conditional illustration with the calculator at the latest reported rate or their own rate ('at that rate, if it held, …'); never 'you will'.",
+     "Why it can grow: payouts rise with activity on the protocol, the distributed share of generated yield rose from 58.9% in Q1 to 75.4% in Q2, and two more revenue modules are planned, with no date yet.",
+     "For savings questions: GAIA doesn't say what suits someone's savings; unlike a bank deposit it isn't insured and the rate isn't fixed. Offer the history and a calculation instead.",
+     "Close with one short neutral clause: rates change every round, so this is history, not a guarantee."
+    ],
+    "short_form": "Directors are paid twice a week in gold, bitcoin and dollar tokens. The last reported round was about 20.17%, recent quarters 5.76% to 18.42%. History, not a guarantee; I can run your numbers.",
+    "counterweight": "The rate and the $SEAS price both move, and nothing about the rate is guaranteed."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "guaranteed apy",
+      "guaranteed return",
+      "guaranteed yield",
+      "guaranteed profit",
+      "the apy is guaranteed",
+      "you will earn",
+      "you'll earn",
+      "you will make",
+      "risk-free",
+      "your principal is safe",
+      "principal remains intact",
+      "safe place for your savings",
+      "better than a bank",
+      "100% apy is real"
+     ],
+     "ru": [
+      "гарантированная доходность",
+      "гарантированный доход",
+      "вы заработаете",
+      "без риска"
+     ],
+     "de": [
+      "garantierte Rendite",
+      "Sie werden verdienen",
+      "risikofrei",
+      "sichere Rendite"
+     ],
+     "es": [
+      "rentabilidad garantizada",
+      "ganancias garantizadas",
+      "usted ganará",
+      "sin riesgo"
+     ],
+     "ja": [
+      "保証された利回り",
+      "元本保証",
+      "確実に稼げます",
+      "リスクはありません"
+     ]
+    },
+    "forbidden_implicatures": [
+     "a past or reported APY is what the user will get",
+     "a higher APY after a price drop is a gain",
+     "Seasons is a suitable home for savings",
+     "the docs' target range is a floor"
+    ]
+   }
+  },
+  {
+   "id": "HA-PAYBACK",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "payback",
+    "break_even",
+    "roi",
+    "earn_back_fee"
+   ],
+   "examples": {
+    "en": [
+     "When will my node pay for itself?",
+     "How long until I break even?",
+     "When do I get my money back?",
+     "What's the ROI of a node?",
+     "How long to earn back the tax?"
+    ],
+    "ru": [
+     "Когда окупится нода?",
+     "Через сколько я верну вложения?",
+     "Какая окупаемость ноды?",
+     "Через сколько я верну свои деньги?",
+     "Когда я верну деньги?"
+    ],
+    "de": [
+     "Wann amortisiert sich ein Node?",
+     "Wann habe ich mein Geld zurück?",
+     "Wie lange bis zum Break-even?"
+    ],
+    "es": [
+     "¿Cuándo se paga solo un nodo?",
+     "¿Cuándo recupero mi inversión?",
+     "¿Cuánto tarda en recuperarse el impuesto?"
+    ],
+    "ja": [
+     "ノードはいつ元が取れますか？",
+     "投資回収までどれくらいですか？",
+     "損益分岐点はいつですか？"
+    ]
+   },
+   "required_fact_keys": [
+    "tax.round_trip",
+    "tax.earn_back_formula",
+    "fee.rate",
+    "apy.definition",
+    "apy.not_guaranteed",
+    "apy.last_reported",
+    "apy.history",
+    "node.director",
+    "yield.distributed_share",
+    "modules.status",
+    "custody.self"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Answer it, don't dodge: the money isn't spent, because the $SEAS stays in the holder's own wallet; the fixed cost of joining is the 10% entry fee, so the useful question is how fast payouts cover that fee.",
+     "Payouts start with the first Sunday or Wednesday round after the wallet holds 10,000+ $SEAS at the snapshot (Builders: 1,000+, weekly), straight to the wallet.",
+     "Illustrate with calc_time_to_earn_back (basis entry_fee) at the latest reported rate, about 20.17% for Round #84 (25 Sep 2026), or at the user's own rate, and say it conditionally ('at that rate, if it held, the entry fee would be covered in about …'); mention in a few words that recent quarters ranged from 5.76% to 18.42%.",
+     "Why it can be faster: payouts grow with activity on the protocol, the distributed share of generated yield rose from 58.9% in Q1 to 75.4% in Q2, and two more revenue modules are planned, with no date yet.",
+     "Close with one short neutral clause: rates and the $SEAS price change, so this is an illustration, not a promise."
+    ],
+    "short_form": "Your $SEAS stays in your wallet, so the cost of joining is the 10% entry fee. At the last reported rate, about 20.17%, payouts would cover it in roughly half a year, if it held.",
+    "counterweight": "Payouts and the $SEAS price both change, so any payback time is an illustration."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "you'll break even in",
+      "you will break even in",
+      "you'll get your money back in",
+      "you will get your money back in",
+      "guaranteed break-even",
+      "a typical rate is",
+      "a conservative rate of",
+      "let's assume a rate of",
+      "the average apy is"
+     ],
+     "ru": [
+      "вы вернёте вложения через",
+      "гарантированная окупаемость",
+      "точно окупится"
+     ],
+     "de": [
+      "Sie haben Ihr Geld zurück in",
+      "garantierter Break-even"
+     ],
+     "es": [
+      "recuperará su inversión en",
+      "punto de equilibrio garantizado"
+     ],
+     "ja": [
+      "で元が取れます",
+      "で投資を回収できます",
+      "確実に回収"
+     ]
+    },
+    "forbidden_implicatures": [
+     "the latest reported rate will continue or is what the user should expect",
+     "the payback time is certain",
+     "holding long enough guarantees a profit"
+    ]
+   }
+  },
+  {
+   "id": "HA-VOLUME",
+   "version": 1,
+   "status": "hold",
+   "mode": "HOLD",
+   "intents": [
+    "volume_fake",
+    "bots",
+    "market_makers",
+    "wash_trading",
+    "organic_volume",
+    "quest_farm"
+   ],
+   "examples": {
+    "en": [
+     "Is the volume fake?",
+     "Do you run bots?",
+     "Are there market makers?",
+     "Is the volume real or bots?",
+     "Is Seasons wash trading?"
+    ],
+    "ru": [
+     "Объём накручен?",
+     "У вас есть маркетмейкеры?",
+     "Это боты торгуют?",
+     "Объёмы настоящие?"
+    ],
+    "de": [
+     "Ist das Volumen echt?",
+     "Benutzt ihr Bots?",
+     "Gibt es Market Maker?"
+    ],
+    "es": [
+     "¿El volumen es falso?",
+     "¿Usan bots?",
+     "¿Hay market makers?"
+    ],
+    "ja": [
+     "出来高は偽物ですか？",
+     "ボットを使っていますか？",
+     "マーケットメーカーはいますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "volume.definition",
+    "market.trading_activity",
+    "funding.observed_path",
+    "distribution.weekday_streak"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Don't call the volume genuine and don't call it manufactured: that is for the team to answer on the record.",
+     "Say you've passed the question to the team (queue_for_team); never ask the user for wallets or transactions.",
+     "Offer what is verifiable instead: every payout round is on-chain, on schedule every Sunday and Wednesday, and the Terminal's 'volume' is on-chain transfer volume, not DEX trading volume."
+    ],
+    "short_form": "That's a question for the team to answer on the record, and I've passed it on. What I can show you is on-chain: every payout round, on schedule."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "no market makers",
+      "100% organic",
+      "organic volume",
+      "no bots",
+      "dex-only",
+      "wash trading is pointless",
+      "wash trading is costly",
+      "makes wash trading",
+      "i can't verify that",
+      "send me the wallets",
+      "everyone pays the same 10%",
+      "they pay the same 10%",
+      "the volume is real",
+      "the volume is fake"
+     ],
+     "ru": [
+      "нет маркетмейкеров",
+      "органический объём",
+      "органический объем",
+      "нет ботов",
+      "все платят одинаковые 10%"
+     ],
+     "de": [
+      "keine Market Maker",
+      "organisches Volumen",
+      "keine Bots"
+     ],
+     "es": [
+      "no hay market makers",
+      "volumen orgánico",
+      "no hay bots"
+     ],
+     "ja": [
+      "マーケットメーカーはいません",
+      "オーガニックな出来高",
+      "ボットはいません"
+     ]
+    },
+    "forbidden_implicatures": [
+     "the 10% fee makes churning or wash trading costly, so volume is real",
+     "everyone, including any trading wallets, pays the same 10%",
+     "24h DEX volume or holder counts are the real measure of demand",
+     "on-time payouts prove trading demand"
+    ]
+   }
+  },
+  {
+   "id": "HA-PRICE",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "price_prediction",
+    "price_target",
+    "10x",
+    "price_dump",
+    "dumping",
+    "price_down",
+    "buy_dip",
+    "buy_timing"
+   ],
+   "examples": {
+    "en": [
+     "Will $SEAS go up?",
+     "Will SEAS 10x?",
+     "Is now a good time to buy?",
+     "Why is the price dumping?",
+     "Will the price recover?",
+     "Someone said the target is $10 per SEAS. Is that true?"
+    ],
+    "ru": [
+     "Цена вырастет?",
+     "Будут иксы?",
+     "Почему цена падает?",
+     "Когда цена восстановится?"
+    ],
+    "de": [
+     "Wird $SEAS steigen?",
+     "Warum fällt der Kurs so stark?",
+     "Ist jetzt ein guter Zeitpunkt zum Kaufen?"
+    ],
+    "es": [
+     "¿Va a subir el precio?",
+     "¿Por qué cae el precio?",
+     "¿Es buen momento para comprar?"
+    ],
+    "ja": [
+     "価格は上がりますか？",
+     "価格はいつ回復しますか？",
+     "今が買い時ですか？"
+    ]
+   },
+   "required_fact_keys": [
+    "price.sources",
+    "liquidity.exit_depth",
+    "fee.history",
+    "token.supply_total",
+    "distribution.last_round",
+    "modules.status",
+    "tax.round_trip"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Don't predict prices, targets, multiples or timing, and don't repeat price targets from anyone, older Seasons material included; neither confirm nor deny that one was published.",
+     "Give the live price with its pool and time; other sources can differ slightly.",
+     "What is fixed and verifiable: 1 billion $SEAS and nobody can mint more, the fee is 10% with no change pending, and about 60% of supply sits in on-chain time-locks.",
+     "Payouts already received are in gold, bitcoin and dollar tokens, so their value doesn't depend on the $SEAS price.",
+     "If asked why the price moved: it follows trading on the DEX pools; don't guess at motives or name anyone, and say what hasn't changed.",
+     "Buy or sell timing is the user's call: offer a scenario with their own numbers."
+    ],
+    "short_form": "I don't predict prices, but I can show the live price with its source and what's fixed: a supply of 1 billion $SEAS that nobody can increase, and the 10% fee.",
+    "counterweight": "The price moves with the market, and large sales move it noticeably."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "will definitely go up",
+      "will 10x",
+      "going to 10x",
+      "to the moon",
+      "buy the dip",
+      "now is a good time to buy",
+      "you won't regret",
+      "don't miss out",
+      "we're still early",
+      "you're still early",
+      "our price target",
+      "support level is",
+      "buybacks are active",
+      "buybacks are running",
+      "outperformed bitcoin",
+      "outperformed the market"
+     ],
+     "ru": [
+      "цена обязательно вырастет",
+      "будут иксы",
+      "сейчас хорошее время купить",
+      "откупайте просадку"
+     ],
+     "de": [
+      "der Kurs wird sicher steigen",
+      "jetzt ist ein guter Zeitpunkt",
+      "den Dip kaufen"
+     ],
+     "es": [
+      "el precio va a subir seguro",
+      "ahora es buen momento para comprar",
+      "compre la caída"
+     ],
+     "ja": [
+      "価格は必ず上がります",
+      "今が買い時です",
+      "必ず回復します"
+     ]
+    },
+    "forbidden_implicatures": [
+     "a lower price raises the holder's real return",
+     "past price performance predicts future moves",
+     "buybacks support the price today",
+     "a specific actor caused the move"
+    ]
+   }
+  },
+  {
+   "id": "HA-SAFETY",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "seed_phrase_request",
+    "dm_scam",
+    "fake_support",
+    "wallet_connect_scam",
+    "verify_wallet",
+    "admin_dmed",
+    "сид_фраза"
+   ],
+   "examples": {
+    "en": [
+     "Support asked for my seed phrase in DM, is that OK?",
+     "Should I paste my seed phrase here to verify my node?",
+     "An admin DMed me offering 2x yield if I send SOL",
+     "Is this Seasons support account real?",
+     "Someone asked me to connect my wallet to claim a bonus"
+    ],
+    "ru": [
+     "Поддержка попросила мою сид-фразу, это нормально?",
+     "Мне написал админ Seasons в личку",
+     "Нужно ли вводить сид-фразу, чтобы проверить ноду?"
+    ],
+    "de": [
+     "Der Support hat nach meiner Seed-Phrase gefragt",
+     "Ein Admin hat mir privat geschrieben",
+     "Soll ich meine Seed-Phrase eingeben?"
+    ],
+    "es": [
+     "Soporte me pidió mi frase semilla, ¿está bien?",
+     "Un admin me escribió por privado",
+     "¿Debo pegar mi frase semilla aquí?"
+    ],
+    "ja": [
+     "サポートにシードフレーズを聞かれました",
+     "管理者からDMが来ました",
+     "シードフレーズを入力すべきですか？"
+    ]
+   },
+   "required_fact_keys": [
+    "security.keys",
+    "official.channels",
+    "gaia.surfaces",
+    "token.mint"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Never share a seed phrase or private key with anyone: Seasons and GAIA never ask for one, and anyone who does is running a scam.",
+     "Official Seasons staff never DM first to offer help, bonuses or doubled yield; treat any such DM as a scam and report it in the official community.",
+     "If a seed phrase was already shared or pasted anywhere, treat the wallet as compromised: move the funds to a new wallet created on a device you trust, and delete the message.",
+     "Check links and handles only against the official list (seasons.wtf, terminal.seasons.wtf, the docs at seasons.gitbook.io, @SeasonsDEFI), and compare every character of an address.",
+     "GAIA can't sign, hold keys or recover funds, and Solana transfers are irreversible; offer a human for account problems."
+    ],
+    "short_form": "Never share your seed phrase or private key. Seasons and GAIA never ask for them, and official staff never DM you first. If you already shared it, move your funds to a new wallet now."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "send me your seed",
+      "share your seed phrase with",
+      "paste your seed phrase here",
+      "enter your private key",
+      "i can recover your funds",
+      "we can recover your",
+      "connect your wallet to verify",
+      "dm me your"
+     ],
+     "ru": [
+      "пришлите сид-фразу",
+      "введите сид-фразу",
+      "мы вернём ваши средства"
+     ],
+     "de": [
+      "senden Sie mir Ihre Seed-Phrase",
+      "geben Sie Ihre Seed-Phrase ein",
+      "wir können Ihr Geld zurückholen"
+     ],
+     "es": [
+      "envíeme su frase semilla",
+      "introduzca su frase semilla",
+      "podemos recuperar sus fondos"
+     ],
+     "ja": [
+      "シードフレーズを送って",
+      "シードフレーズを入力してください",
+      "資金を取り戻せます"
+     ]
+    },
+    "forbidden_implicatures": [
+     "a DM from 'support' could be legitimate",
+     "GAIA can verify a wallet with a seed phrase",
+     "lost funds can be recovered by the team"
+    ]
+   }
+  },
+  {
+   "id": "HA-SUPPLY",
+   "version": 1,
+   "status": "approved",
+   "mode": "STATE",
+   "intents": [
+    "fixed_supply",
+    "mint_more",
+    "freeze_tokens",
+    "total_supply"
+   ],
+   "examples": {
+    "en": [
+     "Is the supply fixed?",
+     "Can the team mint more $SEAS?",
+     "Can they print more tokens?",
+     "Can the team freeze my tokens?",
+     "What's the total supply?",
+     "Can they mint more to pay Builders?"
+    ],
+    "ru": [
+     "Эмиссия фиксированная?",
+     "Может ли команда напечатать ещё токенов?",
+     "Могут ли заморозить мои токены?"
+    ],
+    "de": [
+     "Ist das Angebot fix?",
+     "Kann das Team neue Tokens minten?",
+     "Können meine Tokens eingefroren werden?"
+    ],
+    "es": [
+     "¿El suministro es fijo?",
+     "¿Pueden acuñar más tokens?",
+     "¿Pueden congelar mis tokens?"
+    ],
+    "ja": [
+     "供給量は固定ですか？",
+     "チームはトークンを追加発行できますか？",
+     "トークンを凍結できますか？"
+    ]
+   },
+   "required_fact_keys": [
+    "token.supply_total",
+    "token.mint_authority",
+    "token.freeze_authority",
+    "token.holder_safety",
+    "supply.circulating",
+    "locks.upcoming_unlocks",
+    "locks.unlocked_groups",
+    "node.builder_funding"
+   ],
+   "model_brief": {
+    "core_points": [
+     "Supply is fixed: 1 billion $SEAS were minted at genesis and the mint authority is null, so nobody, the team included, can create more; about 0.2 $SEAS has been burned in small amounts.",
+     "The freeze authority is null and the token has no transfer hook or permanent delegate, so nobody can freeze, seize or move a holder's tokens.",
+     "Builder payouts come from an allocation of existing supply, not new tokens.",
+     "Stick to supply; if the user asks about circulation or unlocks, answer from the Almanac briefly and neutrally."
+    ],
+    "short_form": "Yes. 1 billion $SEAS were minted at genesis and the mint and freeze authorities are null, so nobody, the team included, can mint more or freeze yours.",
+    "counterweight": "Circulation grows as scheduled time-locks open; the schedule is public on-chain."
+   },
+   "verifier": {
+    "must_not": {
+     "en": [
+      "no unlocks",
+      "circulating supply is fixed",
+      "circulation is fixed",
+      "the team can mint",
+      "new tokens are minted for builders",
+      "inflationary rewards"
+     ],
+     "ru": [
+      "команда может выпустить",
+      "разлоков нет"
+     ],
+     "de": [
+      "das Team kann minten",
+      "es gibt keine Freischaltungen"
+     ],
+     "es": [
+      "el equipo puede acuñar",
+      "no hay desbloqueos"
+     ],
+     "ja": [
+      "チームは発行できます",
+      "アンロックはありません"
+     ]
+    },
+    "forbidden_implicatures": [
+     "fixed supply means holders can't be diluted by unlocks",
+     "Builder payouts are newly minted"
+    ]
+   }
+  }
+ ],
+ "hardAnswerMeta": {
+  "HA-LEGIT": {
+   "requires_review": true,
+   "decisions": [
+    "D3",
+    "D12"
+   ],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-TAX-AUTH": {
+   "requires_review": false,
+   "decisions": [
+    "D1",
+    "D12"
+   ],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-FEE-WITHDRAW": {
+   "requires_review": true,
+   "decisions": [
+    "D2",
+    "D3",
+    "D12"
+   ],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-LOCKS": {
+   "requires_review": false,
+   "decisions": [
+    "D4",
+    "D9",
+    "D10"
+   ],
+   "queue": true,
+   "review_by": "2026-12-11"
+  },
+  "HA-AUDIT": {
+   "requires_review": false,
+   "decisions": [
+    "D6"
+   ],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-RETURNS": {
+   "requires_review": false,
+   "decisions": [],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-PAYBACK": {
+   "requires_review": false,
+   "decisions": [],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-VOLUME": {
+   "requires_review": true,
+   "decisions": [
+    "D-VOL"
+   ],
+   "queue": true,
+   "review_by": "2026-11-15"
+  },
+  "HA-PRICE": {
+   "requires_review": false,
+   "decisions": [
+    "D7"
+   ],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-SAFETY": {
+   "requires_review": false,
+   "decisions": [],
+   "queue": false,
+   "review_by": "2026-12-31"
+  },
+  "HA-SUPPLY": {
+   "requires_review": false,
+   "decisions": [],
+   "queue": false,
+   "review_by": "2026-12-31"
+  }
+ },
+ "registry": [
+  {
+   "kind": "domain",
+   "value": "seasons.wtf",
+   "label": "Seasons website",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "terminal.seasons.wtf",
+   "label": "Seasons Terminal (node status, Builder claims)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "tutorials.seasons.wtf",
+   "label": "Seasons interactive tutorials (linked from the docs How-To pages)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "access.seasons.wtf",
+   "label": "Seasons Partner Program application (linked from the docs)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "partners.seasons.wtf",
+   "label": "Seasons Partner Program login (linked from the docs)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "seasons.gitbook.io",
+   "label": "Seasons documentation (GitBook, /seasons-docs)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.gitbook.io/seasons-docs",
+   "label": "Seasons docs",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/blog",
+   "label": "Seasons blog (first publication for all posts)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/legal/terms",
+   "label": "Seasons Terms of use",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/tutorials",
+   "label": "Seasons step-by-step guides (wallet setup, becoming a node, buying $SEAS, bridging)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://tutorials.seasons.wtf/demo/cmq47xk7y06yv1p0jqbvnsbvj",
+   "label": "Interactive guide: become a node with Jupiter Wallet",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://tutorials.seasons.wtf/demo/cmq57jj0x0b7z0a0kcqaba33i",
+   "label": "Interactive guide: move a Phantom wallet to Jupiter Mobile",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/company/team",
+   "label": "Seasons team page (first names and roles)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/legal/privacy",
+   "label": "Seasons Privacy policy",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://terminal.seasons.wtf",
+   "label": "Seasons Terminal",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasons.wtf/blog/more-to-build-on-with-confidence",
+   "label": "Team post of 14 Sep 2026: QuillAudits token audit and token authorities",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://x.com/SeasonsDEFI",
+   "label": "Seasons on X (Twitter)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://t.me/SeasonsCommunity",
+   "label": "Seasons Telegram community",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://t.me/SeasonsHQ",
+   "label": "Seasons Telegram announcements",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://t.me/GAIA_Seasons_Bot",
+   "label": "GAIA on Telegram (official bot)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://www.youtube.com/@SeasonsDEFI",
+   "label": "Seasons on YouTube",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://www.linkedin.com/company/seasons-seas",
+   "label": "Seasons on LinkedIn",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://www.pinterest.com/seasonsdefi/",
+   "label": "Seasons on Pinterest",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://www.facebook.com/seasonsDeFi/",
+   "label": "Seasons on Facebook (linked from the website)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://linktr.ee/SeasonsDEFI",
+   "label": "Seasons Linktree",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://linktr.ee/SeasonsSEAS",
+   "label": "$SEAS Linktree (listed on the docs Socials page)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://beacons.ai/seasonsdefi",
+   "label": "Seasons Beacons page (listed on the docs Socials page)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://seasonchain.substack.com/",
+   "label": "Seasons on Substack (mirror of the blog)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://medium.com/seasons-blog",
+   "label": "Seasons on Medium (mirror of the blog)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://paragraph.com/@seasonsdefi",
+   "label": "Seasons on Paragraph (mirror of the blog)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "http://x.com/SEAS_onchain",
+   "label": "Old Seasons X account; use @SeasonsDEFI",
+   "status": "outdated"
+  },
+  {
+   "kind": "url",
+   "value": "https://linktr.ee/SEASonchain",
+   "label": "Old Seasons Linktree; use linktr.ee/SeasonsDEFI",
+   "status": "outdated"
+  },
+  {
+   "kind": "domain",
+   "value": "solscan.io",
+   "label": "Solscan block explorer (third party, not Seasons)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "dexscreener.com",
+   "label": "DexScreener market data (third party, not Seasons)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "jup.ag",
+   "label": "Jupiter aggregator (third party, not Seasons)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "raydium.io",
+   "label": "Raydium DEX (third party, hosts official $SEAS pools)",
+   "status": "official"
+  },
+  {
+   "kind": "domain",
+   "value": "meteora.ag",
+   "label": "Meteora DEX (third party, hosts official $SEAS pools)",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://solscan.io/token/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "label": "$SEAS mint on Solscan",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://jup.ag/tokens/7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "label": "$SEAS on Jupiter",
+   "status": "official"
+  },
+  {
+   "kind": "url",
+   "value": "https://dexscreener.com/solana/Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+   "label": "Deepest $SEAS/USDC pool on DexScreener",
+   "status": "official"
+  },
+  {
+   "kind": "handle",
+   "value": "@SeasonsDEFI",
+   "label": "Seasons on X and YouTube",
+   "status": "official"
+  },
+  {
+   "kind": "handle",
+   "value": "@SeasonsCommunity",
+   "label": "Seasons Telegram community",
+   "status": "official"
+  },
+  {
+   "kind": "handle",
+   "value": "@SeasonsHQ",
+   "label": "Seasons Telegram announcements",
+   "status": "official"
+  },
+  {
+   "kind": "handle",
+   "value": "@GAIA_Seasons_Bot",
+   "label": "GAIA on Telegram",
+   "status": "official"
+  },
+  {
+   "kind": "handle",
+   "value": "@SEAS_onchain",
+   "label": "Old Seasons X handle; use @SeasonsDEFI",
+   "status": "outdated"
+  },
+  {
+   "kind": "email",
+   "value": "contact@seasons.wtf",
+   "label": "Seasons support and questions",
+   "status": "official"
+  },
+  {
+   "kind": "email",
+   "value": "hello@seasons.wtf",
+   "label": "Seasons ideas, strategies and use cases",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+   "label": "$SEAS mint (the only official contract address)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "2yHa1Ukpe2rVtusPPYKH1fP8kL6wPFe8K7r7s5NYjk9a",
+   "label": "Inclusion Set #2 distributor (Director payouts since 1 Apr 2026)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "A4coF6LeFfrEVTpRQUeTrUfNxHVefmuiirrVYkutx5mo",
+   "label": "Inclusion Set #1 distributor (retired 31 Mar 2026)",
+   "status": "inactive"
+  },
+  {
+   "kind": "address",
+   "value": "HKGnLzbEGadPVes9yVvi1DSeAuCkAU7D8TWCZrkcFyta",
+   "label": "genesis allocation address (inactive; the docs call it 'Distributor')",
+   "status": "inactive"
+  },
+  {
+   "kind": "address",
+   "value": "E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8",
+   "label": "Seasons creator address (fee-config authority; single-signature)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7",
+   "label": "fee-withdraw authority wallet (single-signature)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "GjUEJ3MD19eityiAr8PRRSRGQkN13gdaa5kPfbqR7xmf",
+   "label": "Builder claims program",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "GPik4LzwFr8chVvdEMDLJvZ7BgmvKXdqqcoj78wWzK8p",
+   "label": "Builder claims config account",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "Hb5NCcuDVwDPMWoUK44sEkykyfF1rUmvVQtVQYtjUXA1",
+   "label": "Builder claims vault",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "CXHaE1gdLSB1AAA28QELNZNPgmDAuxafCjegSwxmSJ8k",
+   "label": "Squads 2-of-3 vault (Builder claims upgrade authority and funding)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "Fm1TPALsbL3Bx7T9mnRWem75jSgABDtZoZbrhfAknvw5",
+   "label": "Squads 2-of-3 multisig behind the Builder claims vault",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "Lock1zcQFoaZmTk59sr9pB5daFE6Cs1K5eWyRLF1eju",
+   "label": "third-party time-lock program holding the treasury locks (not operated by Seasons)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "Fc6NsEMazYGWWQCR6UQSSx8AXV85Qcoa5taJmRbHgZvy",
+   "label": "Raydium CLMM $SEAS/USDC pool (deepest pool)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "D12EGYWwgj7S981m6rbvs8LJrWo6s9JZVNVpLDHiHVbJ",
+   "label": "Meteora DAMM v2 $SEAS/USDC 0.25% pool",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "3aKbJcGeZtsKGqcXBViLnbeB9oK3F3KsFdej5zwtUijm",
+   "label": "Meteora DAMM v2 $SEAS/USDC 0.3% pool",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "DRADrcWifJpmuSHQv9Ug415PDDUuiqytBP2JPbizQNhw",
+   "label": "Meteora DAMM v2 $SEAS/USDT 1% pool",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "FYrbvqozdNyrmVFVD6AMcNx1h8DbUNNpP6quRfQQ1kYf",
+   "label": "Meteora DAMM v2 $SEAS/USDT 0.25% pool",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "AymATz4TCL9sWNEEV9Kvyz45CHVhDZ6kUgjTJPzLpU9P",
+   "label": "XAUt0 (Tether Gold) mint, 30% of Set #2",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh",
+   "label": "wBTC (Wormhole) mint, 30% of Set #2",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "9BEcn9aPEmhSPbPQeFGjidRiEKki46fVQDyPpSQXPA2D",
+   "label": "jlUSDc (Jupiter Lend USDC) mint, 40% of Set #2",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEaSJ92QrSz6daa7WpAppWxrmyPrRioFFQremSbsg88",
+   "label": "Foundation wallet 1 of 5 (allocation in time-locks)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SeaS835vNPk3xvf2KLFHi2rFqNtqfLrgpgCpwkbRxjG",
+   "label": "Foundation wallet 2 of 5 (allocation in time-locks)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEAsij8MjMBeVdUGeKjAzQ9Pvh2Hh1xuZfiRqyC6yMw",
+   "label": "Foundation wallet 3 of 5 (allocation in time-locks)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "seASCXmgjq4kG2G5LwmqZxezMV1Q4JNPD6adJLswyem",
+   "label": "Foundation wallet 4 of 5 (allocation in time-locks)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "sEasnk5yBwPmzohVhPfj5NZVrHazsAKMAysfsn1xU66",
+   "label": "Foundation wallet 5 of 5 (allocation in time-locks)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASP5s8HbTqbcCFbh9ueapiZvTKATNg6Z9wDx2LRtC",
+   "label": "Incentives wallet 1 of 6 (8M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASrhAnTMxq71QKBd7dsqpW5D8tGpCAe2HZAdgrP1j",
+   "label": "Incentives wallet 2 of 6 (8M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASvSRNKSzhNpSvV3R5JtiUF518Xha5v2qLNLvqVoC",
+   "label": "Incentives wallet 3 of 6 (8.5M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASZe8eXi8pci9BMj8HtJem6S5jo6ieGKANeQTncpr",
+   "label": "Incentives wallet 4 of 6 (8.5M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASoaUxbBRRGf65dYtBpT2PeK5f6qDo1G3qpN2QTFf",
+   "label": "Incentives wallet 5 of 6 (8.5M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "SEASSYhEzuaomffx9Q3bKh21cGFGTNSca7GnpGVyYxH",
+   "label": "Incentives wallet 6 of 6 (8.5M; not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "4XvefY42NUkh2nsJnyEv72mZTZq5vodQqnAy1wSTjfTx",
+   "label": "Growth wallet 1 of 4 (not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "BkCTmoghy6g2PqrHXSNzddGEVnHuGmaDRA39waJNFpwZ",
+   "label": "Growth wallet 2 of 4 (not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "9QWpFQHKjpq8jpMrKBRqz4CeuErxnt5We2RJcwPskDJK",
+   "label": "Growth wallet 3 of 4 (not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "1cNXa2PfeQ4122WyuHAEXFaKjvjVUtuvC7JzJxAabYi",
+   "label": "Growth wallet 4 of 4 (not in a lock program)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "BhnruTRw2rZpv8X7r8B5ver19w97rZYcoYTk2K8rVk3A",
+   "label": "Partner wallet 1 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "6dzTy6BmNrbyTn2sA7wp6wBDFwyeAmroRe4zmFnf98aR",
+   "label": "Partner wallet 2 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "9fPq97PC3k2XSVr5cePqTbQ35p39js8GWfx5YdtHYvKM",
+   "label": "Partner wallet 3 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "6AcRyW5ywRjZdowG7SUQ7djieHTcyUQtPxqDi4GMb7Ns",
+   "label": "Partner wallet 4 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "D571MbiSHzXknUENZXUC8Qv1xk1zv5ug4zyiqEgAhPsM",
+   "label": "Partner wallet 5 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "4nVN2MQdbpo94UiWD3v4yhGAXXkxX1D9wuZ63CZi6idP",
+   "label": "Partner wallet 6 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "AuNoRKBL6tDNuDXWjdHJccxgumA3z1hidQDCvh9Y1eZs",
+   "label": "Partner wallet 7 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "3arATicDSNeqYXQJKHYmqSpnAx3rBcFpFL66MKmbmYKW",
+   "label": "Partner wallet 8 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "GR2TkTNHFVvFYve7LtSpvEL15DxgFbkBACn25UPHABxh",
+   "label": "Partner wallet 9 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "CFK7happPRquDTqZViQyCwLez76UpekxYtxUvx39zqrc",
+   "label": "Partner wallet 10 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "DfaPsTi9eUhRuPqnuJGpYAVFdievUqmr2QmZ9wAkeJ9v",
+   "label": "Partner wallet 11 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  },
+  {
+   "kind": "address",
+   "value": "6pCwPPCdYVxZ4StNdE57U8LGhoPW9YJrktyxr3NNqufg",
+   "label": "Partner wallet 12 of 12 (locked until 30 Jan 2027)",
+   "status": "official"
+  }
+ ],
+ "bridges": [
+  {
+   "cluster": "bitcoin",
+   "to": "basket assets (wBTC in the Inclusion Set)",
+   "example": "Bitcoin also shows up inside Seasons: 30% of each Director payout this Season arrives as wBTC, which carries Bitcoin's price swings with it."
+  },
+  {
+   "cluster": "gold",
+   "to": "basket assets (XAUt0 in the Inclusion Set)",
+   "example": "Gold has a direct line into Seasons too: 30% of each Director payout this Season is XAUt0, a gold-backed token whose value moves with the gold price."
+  },
+  {
+   "cluster": "stablecoins",
+   "to": "basket assets (jlUSDc) and their own risks",
+   "example": "Dollar tokens are part of Seasons payouts as well: 40% of each Director payout this Season is jlUSDc, a Jupiter Lend USDC token that carries issuer and platform risk of its own."
+  },
+  {
+   "cluster": "stablecoin_yield",
+   "to": "roadmap honesty (SSYM planned, not live)",
+   "example": "Seasons has a planned stablecoin-lending module of its own, but it isn't live and has no date, so there's nothing on that side to compare yet."
+  },
+  {
+   "cluster": "staking",
+   "to": "10% fee mechanics (nothing to stake, 10% in and out)",
+   "example": "Seasons works differently from staking: there's nothing to stake or lock, but every move in or out of $SEAS pays 10%, so a quick round trip costs about 19%."
+  },
+  {
+   "cluster": "inflation",
+   "to": "fixed supply (mint authority null) and its counterweight",
+   "example": "On the supply side, $SEAS can't be inflated because its mint authority is null, though fixed supply isn't fixed circulation: about 194.4M unlocks by 30 Jan 2027."
+  },
+  {
+   "cluster": "savings_accounts",
+   "to": "verify a token's keys (never yield)",
+   "example": "If you're weighing any token as a place for savings, one check I can run for you is who holds its mint, freeze and fee keys, $SEAS included."
+  },
+  {
+   "cluster": "rates_macro",
+   "to": "payout rate is set by activity, not a central bank",
+   "example": "Seasons payouts aren't tied to any central bank rate: they change every round with the protocol's own activity, with no floor."
+  },
+  {
+   "cluster": "apr_apy",
+   "to": "how the reported APY is defined",
+   "example": "Seasons reports a simple per-round rate annualised over about 104 rounds, and for a new buyer the entry fee makes the yield on cost about 0.9× the quoted figure."
+  },
+  {
+   "cluster": "etfs",
+   "to": "on-chain verifiability of every round",
+   "example": "Where a fund publishes custodian reports, every Seasons round can be checked directly on-chain, and I can walk you through the last one if you like."
+  },
+  {
+   "cluster": "dividends",
+   "to": "payouts are not dividends; they vary with no guarantee",
+   "example": "Seasons payouts can look like dividends but aren't: no company declares them, and each round's size varies with nothing guaranteed."
+  },
+  {
+   "cluster": "defi_lending",
+   "to": "self-custody, no lending market",
+   "example": "Seasons isn't a lending market: your $SEAS stays in your own wallet, and the stablecoin-lending module in its plans isn't live."
+  },
+  {
+   "cluster": "dex_amm_lp",
+   "to": "the fee on liquidity deposits and withdrawals",
+   "example": "One cost people miss on $SEAS pools: the $SEAS side pays the fee going in and again coming out."
+  },
+  {
+   "cluster": "airdrops",
+   "to": "official links only (scam safety)",
+   "example": "Airdrop hunting is where most wallet drainers hide, so before you connect a wallet anywhere I can check a \"Seasons\" link against the official list."
+  },
+  {
+   "cluster": "memecoins",
+   "to": "Inclusion Set history (Set",
+   "example": "Seasons actually paid memecoins in its first Season, then switched in April 2026 to a gold, Bitcoin and dollar-token basket."
+  },
+  {
+   "cluster": "solana",
+   "to": "the Token-2022 fee readable on-chain",
+   "example": "$SEAS is a Solana Token-2022 token, so its 10% fee lives in the mint itself and anyone can read it on-chain; I can show you where."
+  },
+  {
+   "cluster": "ethereum",
+   "to": "one official mint, on Solana only",
+   "example": "Seasons lives on Solana only, so a \"$SEAS\" contract on Ethereum isn't official; the one real mint is listed on seasons.wtf and in the docs."
+  },
+  {
+   "cluster": "cross_chain_bridges",
+   "to": "one official mint (bridged copies aren't official)",
+   "example": "The only official $SEAS is the Solana mint in the docs, so a bridged or wrapped \"$SEAS\" on another chain isn't Seasons."
+  },
+  {
+   "cluster": "tax_basics",
+   "to": "the 10% token fee is not a government tax; no tax advice",
+   "example": "One thing that often gets mixed up: the 10% on $SEAS is a token transfer fee, not a government tax, and how your local rules treat either is a question for a tax adviser."
+  },
+  {
+   "cluster": "crypto_security",
+   "to": "seed phrase and DM rules",
+   "example": "The same rule holds for Seasons: nobody from Seasons or GAIA will ever ask for your seed phrase, and official staff never DM first."
+  },
+  {
+   "cluster": "wallets",
+   "to": "the fee on moves between your own wallets",
+   "example": "One wallet detail matters for Seasons specifically: moving $SEAS between your own wallets pays the fee, so 10,000 sent arrives as 9,000."
+  },
+  {
+   "cluster": "scams_rugpulls",
+   "to": "the token's authorities, read live",
+   "example": "The first checks for any token are its mint, freeze and fee authorities: for $SEAS the mint and freeze are null and the fee settings sit with a single-key wallet, which I can show you live."
+  },
+  {
+   "cluster": "market_selloff",
+   "to": "what did and didn't change on-chain (no reassurance)",
+   "example": "If you want to see what did and didn't change for Seasons on a day like this, I can read the fee setting and the mint authority live."
+  },
+  {
+   "cluster": "competitors",
+   "to": "a design difference, never superiority",
+   "example": "Seasons is a different machine rather than a better one: it pays from its own rounds in an external basket, with 10% in and out and $SEAS price risk instead."
+  },
+  {
+   "cluster": "real_world_assets",
+   "to": "tokenized gold in the basket",
+   "example": "Seasons touches tokenized real-world assets directly: its current payout basket includes XAUt0, a token backed by physical gold."
+  },
+  {
+   "cluster": "dca",
+   "to": "small regular basket payouts, with their risk",
+   "example": "Director payouts arrive as small, regular amounts of gold, Bitcoin and dollar tokens, though each amount varies and $SEAS itself can fall."
+  },
+  {
+   "cluster": "stocks_equities",
+   "to": "$SEAS is not equity; price risk",
+   "example": "Holding $SEAS isn't owning a share of any company, and its price can move as sharply as any small token's."
+  },
+  {
+   "cluster": "regulation",
+   "to": "what the Terms say (no legal advice)",
+   "example": "For Seasons specifically, the Terms say the site and Terminal are provided by Seasons Labs under British Virgin Islands law, and legal advice beyond that is for a lawyer."
+  },
+  {
+   "cluster": "developers",
+   "to": "verify $SEAS yourself (raw accounts)",
+   "example": "If you like reading raw accounts, the $SEAS mint is a good exercise: its fee settings, authorities and withheld amounts are readable by anyone."
+  },
+  {
+   "cluster": "ai_agents",
+   "to": "GAIA herself, with receipts",
+   "example": "I'm one of those agents myself, Seasons' official one, and every Seasons figure I give comes with a receipt so you can check me."
+  },
+  {
+   "cluster": "weather_smalltalk",
+   "to": "why it is called Seasons (chip only)",
+   "example": "Speaking of weather, Seasons is named for nature's cycles, and its payout baskets change by Season too."
+  },
+  {
+   "cluster": "travel_smalltalk",
+   "to": "why it is called Seasons (chip only)",
+   "example": "Autumn travel is a good reminder of where Seasons got its name: nature's cycles."
+  },
+  {
+   "cluster": "jokes_poetry",
+   "to": "why it is called Seasons (question or chip only)",
+   "example": "Want to hear why the protocol I work for is called Seasons?"
+  }
+ ],
+ "bridgeMeta": {
+  "bitcoin": {
+   "fact_keys": [
+    "inclusion_set.current"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "gold": {
+   "fact_keys": [
+    "inclusion_set.current"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "stablecoins": {
+   "fact_keys": [
+    "inclusion_set.current"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "stablecoin_yield": {
+   "fact_keys": [
+    "modules.status"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "staking": {
+   "fact_keys": [
+    "fee.rate",
+    "tax.round_trip"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "inflation": {
+   "fact_keys": [
+    "token.mint_authority",
+    "locks.upcoming_unlocks"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "savings_accounts": {
+   "fact_keys": [
+    "token.mint_authority",
+    "token.freeze_authority",
+    "fee.config_authority"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "rates_macro": {
+   "fact_keys": [
+    "apy.not_guaranteed"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "apr_apy": {
+   "fact_keys": [
+    "apy.definition"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "etfs": {
+   "fact_keys": [
+    "distribution.weekday_streak"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "dividends": {
+   "fact_keys": [
+    "apy.not_guaranteed",
+    "node.director"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "defi_lending": {
+   "fact_keys": [
+    "custody.self",
+    "modules.status"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "dex_amm_lp": {
+   "fact_keys": [
+    "fee.scope"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "airdrops": {
+   "fact_keys": [
+    "security.keys",
+    "official.channels"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "memecoins": {
+   "fact_keys": [
+    "inclusion_set.current"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": false
+  },
+  "solana": {
+   "fact_keys": [
+    "token.mint",
+    "fee.rate"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "ethereum": {
+   "fact_keys": [
+    "token.mint"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "cross_chain_bridges": {
+   "fact_keys": [
+    "token.mint"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "tax_basics": {
+   "fact_keys": [
+    "fee.scope",
+    "legal.entity"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "crypto_security": {
+   "fact_keys": [
+    "security.keys"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "wallets": {
+   "fact_keys": [
+    "tax.gross_up"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "scams_rugpulls": {
+   "fact_keys": [
+    "token.mint_authority",
+    "token.freeze_authority",
+    "fee.config_authority"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "market_selloff": {
+   "fact_keys": [
+    "fee.history",
+    "token.mint_authority"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "competitors": {
+   "fact_keys": [
+    "fee.rate",
+    "modules.status"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "real_world_assets": {
+   "fact_keys": [
+    "inclusion_set.current"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "dca": {
+   "fact_keys": [
+    "node.director",
+    "apy.not_guaranteed"
+   ],
+   "yield_anchor": true,
+   "personal_savings_ok": false
+  },
+  "stocks_equities": {
+   "fact_keys": [
+    "legal.insurance"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "regulation": {
+   "fact_keys": [
+    "legal.entity"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "developers": {
+   "fact_keys": [
+    "token.mint",
+    "fee.config_authority"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "ai_agents": {
+   "fact_keys": [
+    "gaia.surfaces"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "weather_smalltalk": {
+   "fact_keys": [
+    "brand.name_origin"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "travel_smalltalk": {
+   "fact_keys": [
+    "brand.name_origin"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  },
+  "jokes_poetry": {
+   "fact_keys": [
+    "brand.name_origin"
+   ],
+   "yield_anchor": false,
+   "personal_savings_ok": true
+  }
+ },
+ "errata": [
+  {
+   "id": "ERR-AUDITS-MULTIPLE",
+   "where": "GitBook TTT (L438)",
+   "match": [
+    "multiple independent audits"
+   ],
+   "correction": "Only the $SEAS token was audited (QuillAudits, per the team's 14 Sep 2026 post); no audit of the distribution, Builder claims or lock programs has been published."
+  },
+  {
+   "id": "ERR-NO-ASSETS",
+   "where": "GitBook TTT (L440)",
+   "match": [
+    "does not own/?\\s*posses+ any pools",
+    "manage any assets"
+   ],
+   "correction": "The team operates the distributor, the Builder claims vault and the Foundation-deployed official pools; holders keep their own tokens in their own wallets."
+  },
+  {
+   "id": "ERR-PERMISSIONS-REVOKED",
+   "where": "GitBook LPs (L3688)",
+   "match": [
+    "permission controls revoked"
+   ],
+   "correction": "Mint, freeze and metadata authorities are revoked, but the fee-config and fee-withdraw authorities are live single-signature wallets."
+  },
+  {
+   "id": "ERR-RATE-AFTER-DAO",
+   "where": "GitBook TTT F.A.Q. (L478)",
+   "match": [
+    "adaptation of the rate becomes a consideration after the instantiation of the dao"
+   ],
+   "correction": "Today a single-signature wallet can change the rate (with a two-epoch delay); the DAO is not operational."
+  },
+  {
+   "id": "ERR-ALWAYS-GUARANTEED",
+   "where": "GitBook Generation (L236)",
+   "match": [
+    "always guaranteed"
+   ],
+   "correction": "Nothing about the yield is guaranteed; only 1 of 3 planned revenue modules is live and payouts vary every round."
+  },
+  {
+   "id": "ERR-FEES-PER-ROUND",
+   "where": "GitBook Distribution and TTT (fees swapped each round)",
+   "match": [
+    "rolling two-day basis",
+    "accumulated fees are directly swapped",
+    "accumulated in the \\*?\\*?acquirer escrow"
+   ],
+   "correction": "On-chain the fees stay withheld and were last collected on launch day; how each round is funded is for the team to describe, and no per-round reconciliation is published."
+  },
+  {
+   "id": "ERR-ORGANIC-VOLUME",
+   "where": "GitBook TTT (velocity section)",
+   "match": [
+    "organic volume based on organic demand",
+    "dissuades market makers"
+   ],
+   "correction": "GAIA doesn't treat volume as evidence of demand, and doesn't have information about trading by Seasons-related wallets; the team should answer that on the record."
+  },
+  {
+   "id": "ERR-FOUNDATION-ROLLING",
+   "where": "GitBook Tokenomics (L2287)",
+   "match": [
+    "locked in 365-day rolling periods"
+   ],
+   "correction": "The Foundation locks are fixed schedules opening from 8 Jul 2027 to 8 Jul 2028, not rolling 365-day relocks."
+  },
+  {
+   "id": "ERR-INCENTIVES-LOCKED",
+   "where": "GitBook Tokenomics (L2303)",
+   "match": [
+    "incentive supply remains locked"
+   ],
+   "correction": "The Incentives wallets haven't moved since launch but are not in any lock program."
+  },
+  {
+   "id": "ERR-GROWTH-LOCKED",
+   "where": "GitBook Tokenomics (L2322)",
+   "match": [
+    "only enter circulation after an officially announced counterparty",
+    "remaining three wallets shall be locked"
+   ],
+   "correction": "The Growth wallets are not in a lock program, and about 25.6M $SEAS has moved out of them since January 2026."
+  },
+  {
+   "id": "ERR-PARTNER-ALL-BUT-ONE",
+   "where": "GitBook Tokenomics (L2338)",
+   "match": [
+    "all but one partnership wallets"
+   ],
+   "correction": "All 12 Partner wallets are locked, until 30 Jan 2027."
+  },
+  {
+   "id": "ERR-LOCKS-UNIFORM",
+   "where": "GitBook Tokenomics (L2364)",
+   "match": [
+    "lock periods\\W*\\s*\\W*are uniform"
+   ],
+   "correction": "Lock terms range from about one year to five-year annual vesting, and Incentives and Growth are not locked."
+  },
+  {
+   "id": "ERR-TOKEN-NAME",
+   "where": "GitBook $SEAS (L2083, L2099)",
+   "match": [
+    "season's token"
+   ],
+   "correction": "The on-chain token name is \"Seasons\" and the ticker is $SEAS."
+  },
+  {
+   "id": "ERR-DISTRIBUTOR-HKGN",
+   "where": "GitBook $SEAS (L2097)",
+   "match": [
+    "distributor\\W+hkgnlzbegadpves9yvvi1dseauckau7d8twczrkcfyta"
+   ],
+   "correction": "HKGn…Fyta is the genesis allocation address and is inactive; Director payouts come from the Set #2 distributor 2yHa1U…jk9a."
+  },
+  {
+   "id": "ERR-APY-SHARE-LABELS",
+   "where": "GitBook Nodes and Builder Nodes tables (L1424, L1791)",
+   "match": [
+    "100% apy",
+    "80% apy"
+   ],
+   "correction": "\"100% APY\" and \"80% APY\" are share labels: Directors get the full network rate and Builders 0.8× of it; neither is a return."
+  },
+  {
+   "id": "ERR-APY-SIMULATION",
+   "where": "GitBook APY (L1996)",
+   "match": [
+    "an apy of approximately ~?70%"
+   ],
+   "correction": "The ~70% figure is a hypothetical simulation that includes modules that aren't live; it is not a forecast."
+  },
+  {
+   "id": "ERR-OUTPERFORMING",
+   "where": "GitBook APY and F.A.Q. (L2060)",
+   "match": [
+    "outperforming all alternative options"
+   ],
+   "correction": "The docs give design targets, not a comparison; no return is guaranteed."
+  },
+  {
+   "id": "ERR-THRESHOLD-FRACTION",
+   "where": "GitBook Director Nodes and HYSA (L1580, L4849)",
+   "match": [
+    "1/10,000th or 0\\.0001%"
+   ],
+   "correction": "10,000 $SEAS is 0.001% (1/100,000) of the 1B supply."
+  },
+  {
+   "id": "ERR-10K-ONLY",
+   "where": "GitBook $SEAS, F.A.Q., Applying Yield 3.0, TTT (10,000-only node definition)",
+   "match": [
+    "threshold amount of 10,000 tokens",
+    "holding at least 10,000 tokens",
+    "minimal threshold is 10,000",
+    "balance of 10,000(\\.0+)? \\$seas tokens or more as a node",
+    "once an address holds 10,000 \\$seas tokens it will automatically activate",
+    "threshold minimum of 10,000",
+    "i\\.e\\., 10,000\\+ \\$seas"
+   ],
+   "correction": "There are two tiers: Director from 10,000 $SEAS and Builder from 1,000 to 9,999 $SEAS."
+  },
+  {
+   "id": "ERR-SSYM-DATE",
+   "where": "GitBook SSYM (L505)",
+   "match": [
+    "alpha version to be live before q4 of 2026"
+   ],
+   "correction": "The SSYM is planned and not active, with no confirmed date."
+  },
+  {
+   "id": "ERR-IRREFUTABLE-CLAIMS",
+   "where": "GitBook Nodes (L1388)",
+   "match": [
+    "irrefutable claims on the capital flows"
+   ],
+   "correction": "Nodes receive a pro-rata share of each distribution while they hold the threshold; there is no enforceable claim before the DAO exists."
+  },
+  {
+   "id": "ERR-BURN-PATH",
+   "where": "GitBook $SEAS (L2115), Applying Yield 3.0 (Yield Faucet)",
+   "match": [
+    "the consumer path is a short-lived",
+    "burnclaim"
+   ],
+   "correction": "Burn-for-yield paths are documented concepts with unconfirmed status; the token has no native burn mechanism, so GAIA never encourages an irreversible burn."
+  }
+ ]
+}

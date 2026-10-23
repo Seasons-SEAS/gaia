@@ -1,0 +1,1001 @@
+# GAIA canon: Hard Answers registry
+#
+# The answers that are verifiable, uncomfortable and brand-critical. GAIA writes
+# every answer in her own words around these anchors: the facts are fixed, the
+# prose is alive.
+#
+# Two halves per entry, so nothing can be extracted:
+#   model_brief  the ONLY part that reaches the model (per-turn system message).
+#                Public facts only; the strongest verifiable
+#                facts first, never the hostile frame, nothing false.
+#                counterweight: said only if the user asks about the downside.
+#   verifier     output-side checks only; never placed in any prompt.
+#                must_not: claim-scoped phrases per language (case-insensitive).
+#                forbidden_implicatures: claims the semantic judge blocks.
+#                cooccurrence_block: a concession phrase next to a hostile label.
+#
+# Modes: STATE (approved facts, plainly) or HOLD (say everything verifiable, say
+# what isn't known, log the question). There is no DENY mode.
+#
+# `meta` is registry bookkeeping (open decisions, review, queue,
+# review date). It is compiled beside the entry, never into a prompt.
+# Decision IDs: D1-D12 and D-VOL name open team decisions.
+
+- id: HA-LEGIT
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [scam, ponzi, pyramid, is_it_legit, rug_pull_generic]
+  examples:
+    en:
+      - Is Seasons a scam?
+      - Is this a Ponzi?
+      - New buyers pay old holders, right?
+      - Is Seasons legit?
+      - This looks like a pyramid scheme
+      - Is this a rug pull?
+    ru:
+      - Это пирамида?
+      - Seasons — это скам?
+      - Это финансовая пирамида или нет?
+      - Это лохотрон?
+      - Новые покупатели платят старым?
+    de:
+      - Ist Seasons ein Schneeballsystem?
+      - Ist das Betrug?
+      - Ist Seasons seriös?
+      - Ist das ein Ponzi-System?
+    es:
+      - ¿Es una estafa?
+      - ¿Seasons es un esquema Ponzi?
+      - ¿Es una pirámide?
+      - ¿Seasons es legítimo?
+    ja:
+      - これは詐欺ですか？
+      - Seasonsはポンジスキームですか？
+      - ねずみ講じゃないの？
+      - Seasonsは信頼できますか？
+  required_fact_keys:
+    - token.mint_authority
+    - token.freeze_authority
+    - custody.self
+    - distribution.last_round
+    - distribution.weekday_streak
+    - apy.not_guaranteed
+    - tax.round_trip
+    - fee.config_authority
+    - funding.observed_path
+    - fees.last_collected
+    - funding.reconciliation
+    - modules.status
+  model_brief:
+    core_points:
+      - "Answer with evidence, calmly and confidently, and never repeat the hostile label as your own words."
+      - "No deposit and no custody: $SEAS stays in the holder's own wallet, with no staking contract or lock-up; mint and freeze authority are both null, so nobody, the team included, can create more $SEAS or freeze a holder's balance."
+      - "Every round is public on-chain: give the last round and the Sunday/Wednesday streak from this turn's receipts and offer to trace it together."
+      - "Payouts go straight to node wallets in a basket of tokenised gold, bitcoin and dollars, with nothing to claim; nothing is promised, and the rate each round depends on activity."
+      - "The design favours holding: the 10% fee is fixed in the token and makes quick flipping costly."
+      - "Next step: offer to show the last round on-chain or to read the mint live."
+    short_form: "Fair question, and the chain answers it. No deposit, your $SEAS stays in your wallet, nobody can mint more or freeze it, and every payout round is public on-chain, on schedule."
+    counterweight: "Payouts vary from round to round, and nothing about them is guaranteed."
+  verifier:
+    must_not:
+      en:
+        [
+          "not a scam",
+          "100% safe",
+          "completely safe",
+          "no ponzi mechanics",
+          "fees go straight to holders",
+          "fees go directly to holders",
+          "seasons holds no assets",
+          "seasons doesn't hold any assets",
+          "nothing leaves your wallet without your signature",
+          "guaranteed return",
+          "guaranteed yield",
+          "risk-free",
+          "rounds are funded by fees",
+          "funded by trading fees",
+          "last 48 hours of fees",
+        ]
+      ru:
+        [
+          "не скам",
+          "не пирамида",
+          "100% безопасно",
+          "гарантированный доход",
+          "без риска",
+          "ничего не уходит из кошелька без вашей подписи",
+        ]
+      de:
+        ["kein Betrug", "kein Schneeballsystem", "100% sicher", "garantierte Rendite", "risikofrei"]
+      es: ["no es una estafa", "100% seguro", "rentabilidad garantizada", "sin riesgo"]
+      ja: ["詐欺ではありません", "100%安全", "保証された利回り", "リスクはありません"]
+    forbidden_implicatures:
+      - "today's rounds are funded by collected fees"
+      - "on-time payouts prove trading demand"
+      - "self-custody removes all risk"
+      - "Seasons holds no assets or keys"
+    cooccurrence_block:
+      concede:
+        en: ["you're right", "you are right", "you're partly right", "you have a point"]
+        ru: ["Вы правы", "вы правы", "отчасти правы", "в чём-то правы"]
+        de: ["Sie haben recht", "teilweise recht", "da haben Sie recht"]
+        es: ["tiene razón", "tiene parte de razón", "en parte tiene razón"]
+        ja: ["おっしゃる通り", "一理あります", "その通りです"]
+      label:
+        en: ["ponzi", "scam", "pyramid"]
+        ru: ["пирамид", "скам", "мошенн", "лохотрон"]
+        de: ["Schneeball", "Betrug", "Ponzi"]
+        es: ["ponzi", "estafa", "pirámide"]
+        ja: ["ポンジ", "詐欺", "ねずみ講"]
+  meta:
+    requires_review: true
+    decisions: [D3, D12]
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-TAX-AUTH
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [can_team_change_tax, rug_via_fee, contract_renounced]
+  examples:
+    en:
+      - Can the team change the 10% tax?
+      - Can they raise the tax to 100%?
+      - Could the team rug us through the fee?
+      - Is the contract renounced?
+      - Who controls the transfer tax?
+    ru:
+      - Может ли команда поднять налог до 100%?
+      - Кто может изменить комиссию 10%?
+      - Права на контракт отозваны?
+      - Могут ли они изменить налог?
+    de:
+      - Kann das Team die 10% Steuer ändern?
+      - Können sie die Gebühr auf 100% erhöhen?
+      - Ist der Vertrag renounced?
+      - Wer kontrolliert die Transfersteuer?
+    es:
+      - ¿El equipo puede subir el impuesto?
+      - ¿Pueden cambiar el impuesto del 10%?
+      - ¿Pueden subir la comisión al 100%?
+      - ¿El contrato está renunciado?
+    ja:
+      - チームは10%の税率を変更できますか？
+      - 手数料を100%に上げられますか？
+      - コントラクトは放棄されていますか？
+      - 誰が取引税を管理していますか？
+  required_fact_keys:
+    - fee.config_authority
+    - fee.rate
+    - fee.history
+    - fee.change_delay
+    - token.mint_authority
+    - token.freeze_authority
+    - token.holder_safety
+    - dao.status
+    - team.statement_2026_09_14
+    - wallets.public_names
+  model_brief:
+    core_points:
+      - "Lead with what protects holders: the fee has been exactly 10% since launch (epoch 892), a new rate only applies two Solana epochs after it is submitted (about 2 to 4 days) and is public on-chain from the moment it's submitted, and nobody can seize or freeze a holder's balance."
+      - "Answer the question itself in one neutral sentence: the fee-config authority, the Seasons creator address, can set a new rate; GAIA reads it live and says whether a change is pending."
+      - "The team's 14 Sep 2026 post says certain fee-related settings stay adjustable; label it as the team's statement."
+    short_form: "It's been exactly 10% since launch. The Seasons creator address can set a new rate, but any change is public on-chain 2–4 days before it applies, and I check it live."
+    counterweight: "The fee-config authority is a single-signature wallet."
+  verifier:
+    must_not:
+      en:
+        [
+          "fee authority is revoked",
+          "fee authority has been revoked",
+          "permission controls revoked",
+          "permission controls are revoked",
+          "the tax is immutable",
+          "the fee is immutable",
+          "only the dao can change",
+          "the team can't change the",
+          "the team cannot change the",
+          "can never be changed",
+          "fully decentralized",
+          "contract is renounced",
+          "fully renounced",
+          "it will never change",
+          "fee authority is a multisig",
+          "fee authority is held by a multisig",
+        ]
+      ru:
+        [
+          "налог неизменен",
+          "комиссию нельзя изменить",
+          "только DAO может",
+          "права на комиссию отозваны",
+          "налог изменить невозможно",
+        ]
+      de:
+        [
+          "die Steuer ist unveränderlich",
+          "nur die DAO kann",
+          "vollständig dezentral",
+          "Gebühr kann nicht geändert werden",
+        ]
+      es:
+        [
+          "el impuesto es inmutable",
+          "solo la DAO puede",
+          "totalmente descentralizado",
+          "la comisión no se puede cambiar",
+        ]
+      ja: ["税率は変更できません", "変更不可能です", "DAOだけが変更", "完全に分散化"]
+    forbidden_implicatures:
+      - "the fee settings can't affect holders' tokens"
+      - "a fee change could happen without notice or be hidden"
+      - "the fee authority is under multisig or DAO control"
+      - "the rate is guaranteed to stay at 10%"
+  meta:
+    requires_review: false
+    decisions: [D1, D12]
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-FEE-WITHDRAW
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [team_takes_fees, drain_fees, where_fees_go, fee_withdraw_key, yield_come_from]
+  examples:
+    en:
+      - Can the team take the fees?
+      - Can they drain the fees?
+      - Who collects the 10% fees?
+      - Where do the fees go?
+      - Who holds the fee withdrawal key?
+      - Where does the yield come from?
+    ru:
+      - Может ли команда забрать комиссии?
+      - Куда идут комиссии?
+      - Кто может вывести собранные комиссии?
+      - Команда может слить комиссии?
+    de:
+      - Kann das Team die Gebühren abziehen?
+      - Wohin gehen die Gebühren?
+      - Wer kann die Gebühren abheben?
+    es:
+      - ¿El equipo puede quedarse con las comisiones?
+      - ¿A dónde van las comisiones?
+      - ¿Quién puede retirar las comisiones?
+    ja:
+      - チームは手数料を引き出せますか？
+      - 手数料はどこに行きますか？
+      - 誰が手数料を回収できますか？
+  required_fact_keys:
+    - fee.withdraw_authority
+    - fees.withheld_summary
+    - fees.last_collected
+    - funding.observed_path
+    - funding.reconciliation
+    - token.holder_safety
+    - team.statement_2026_09_14
+    - wallets.public_names
+    - yield.distributed_share
+  model_brief:
+    core_points:
+      - "Lead with the holder's safety: a balance can't be frozen, seized or spent; only the 10% fee withheld on tokens someone received can be collected, and it was never part of their spendable balance."
+      - "Answer the question neutrally: the fee stays withheld in the token accounts involved, including the pools, the token's fee-withdraw authority can collect it, and it was last collected on launch day. Of the at least 75.9M $SEAS withheld, about 66.7M is the one-time fee from moving allocations into time-locks in January 2026."
+      - "Describe a round from what is public: shortly before each round $SEAS goes to the distributor, which swaps it into XAUt0, wBTC and jlUSDc and pays node wallets; every step is on-chain."
+      - "The team's 14 Sep 2026 post says it plans to move fee-withdrawal authority to a multisig."
+    short_form: "Your own balance can't be touched. The 10% fee stays withheld on-chain and the token's fee-withdraw authority can collect it; it was last collected on launch day, and every round is public."
+    counterweight: "Collection is controlled by one single-signature wallet; the team plans to move it to a multisig."
+  verifier:
+    must_not:
+      en:
+        [
+          "no one controls the fees",
+          "nobody controls the fees",
+          "fees go directly to holders",
+          "fees go straight to holders",
+          "fees are distributed automatically",
+          "distributed in full",
+          "nothing leaves your wallet without your signature",
+          "your yield is the last 48",
+          "seasons does not hold any assets",
+          "seasons holds no assets",
+          "withdraw authority is a multisig",
+        ]
+      ru:
+        [
+          "никто не контролирует комиссии",
+          "комиссии идут напрямую держателям",
+          "распределяются полностью",
+        ]
+      de: ["niemand kontrolliert die Gebühren", "direkt an die Halter", "vollständig ausgeschüttet"]
+      es:
+        [
+          "nadie controla las comisiones",
+          "directamente a los holders",
+          "se distribuyen íntegramente",
+        ]
+      ja: ["誰も手数料を管理していません", "手数料は直接ホルダーに", "全額分配されます"]
+    forbidden_implicatures:
+      - "today's rounds are funded by collected fees"
+      - "the withheld fees are locked forever or unreachable"
+      - "the withdraw authority is a multisig"
+      - "the 75.9M figure is all trading fees"
+  meta:
+    requires_review: true
+    decisions: [D2, D3, D12]
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-LOCKS
+  version: 1
+  status: approved
+  mode: STATE
+  intents:
+    [
+      team_dumping,
+      insider_selling,
+      team_tokens_locked,
+      unlocks,
+      investors_selling,
+      foundation_selling,
+    ]
+  examples:
+    en:
+      - Is the team dumping on us?
+      - Are team tokens locked?
+      - When do the team tokens unlock?
+      - Are insiders selling?
+      - "Yes or no: are all team tokens locked?"
+      - What unlocks are coming?
+    ru:
+      - Команда сливает токены?
+      - Токены команды заблокированы?
+      - Когда разлок?
+      - Инсайдеры продают?
+    de:
+      - Verkauft das Team seine Tokens?
+      - Sind die Team-Tokens gesperrt?
+      - Wann werden Tokens freigeschaltet?
+    es:
+      - ¿El equipo está vendiendo?
+      - ¿Los tokens del equipo están bloqueados?
+      - ¿Cuándo se desbloquean los tokens?
+    ja:
+      - チームはトークンを売っていますか？
+      - チームのトークンはロックされていますか？
+      - アンロックはいつですか？
+  required_fact_keys:
+    - locks.total
+    - supply.circulating
+    - locks.published_groups
+    - locks.unlocked_groups
+    - locks.upcoming_unlocks
+    - locks.unlabelled
+    - locks.bucket_labels
+    - locks.program
+    - growth.fund_use
+  model_brief:
+    core_points:
+      - "Lead with what is verifiable: about 600.3M $SEAS (60% of supply) sits in 61 on-chain time-locks, plus 66.7M withheld as fees when it was locked, which is why about 333M circulates; anyone can check the schedule on-chain."
+      - "Published groups: the Foundation's 250M is locked, opening in steps from 8 Jul 2027 to 8 Jul 2028; the Partner 100M is locked until 30 Jan 2027."
+      - "Answer exactly what was asked, briefly and neutrally: the Incentives and Growth wallets (100M together) sit outside the lock programs, and the upcoming unlock dates are on the public schedule."
+      - "Wallet-level labels for the other allocations are for the team to publish; offer to pass the question on."
+    short_form: "Most are: about 600.3M $SEAS, 60% of supply, sits in 61 on-chain time-locks with a public schedule. The Foundation's 250M opens in steps from July 2027."
+    counterweight: "The Incentives and Growth wallets, 100M together, sit outside the lock programs, and about 194.4M unlocks by 30 Jan 2027."
+  verifier:
+    must_not:
+      en:
+        [
+          "all team tokens are locked",
+          "all tokens are locked",
+          "uniform 365-day",
+          "365-day rolling",
+          "no insider unlock",
+          "the team never sells",
+          "the team will never sell",
+          "locks are immutable",
+          "incentives are locked",
+          "growth is locked",
+          "growth wallets are locked",
+          "incentive wallets are locked",
+        ]
+      ru:
+        [
+          "все токены команды заблокированы",
+          "команда никогда не продаёт",
+          "команда никогда не продает",
+          "разлоков нет",
+        ]
+      de:
+        ["alle Team-Tokens sind gesperrt", "das Team verkauft nie", "es gibt keine Freischaltungen"]
+      es:
+        [
+          "todos los tokens del equipo están bloqueados",
+          "el equipo nunca vende",
+          "no hay desbloqueos",
+        ]
+      ja: ["チームのトークンはすべてロック", "チームは決して売りません", "アンロックはありません"]
+    forbidden_implicatures:
+      - "the 10% fee is a real deterrent to insider selling"
+      - "the locks can't be changed by anyone"
+      - "unlocked tokens will not be sold"
+      - "a named allocation owns a specific unlabelled lock"
+  meta:
+    requires_review: false
+    decisions: [D4, D9, D10]
+    queue: true
+    review_by: 2026-12-11 # first unlock; re-review before it
+
+- id: HA-AUDIT
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [is_audited, audit_report, who_audited, certik]
+  examples:
+    en:
+      - Is Seasons audited?
+      - Has the contract been audited?
+      - Show me the audit report
+      - Who audited Seasons?
+      - Is there a CertiK audit?
+    ru:
+      - Есть ли аудит?
+      - Контракт проверен аудиторами?
+      - Кто делал аудит Seasons?
+    de:
+      - Sind die Verträge auditiert?
+      - Gibt es ein Audit?
+      - Wer hat Seasons geprüft?
+    es:
+      - ¿Seasons está auditado?
+      - ¿Hay una auditoría?
+      - ¿Quién auditó el contrato?
+    ja:
+      - 監査は受けていますか？
+      - スマートコントラクトは監査済みですか？
+      - 監査レポートはありますか？
+  required_fact_keys:
+    - team.statement_2026_09_14
+    - audit.protocol
+    - token.mint_authority
+    - token.freeze_authority
+    - token.holder_safety
+    - token.mint
+    - fee.config_authority
+    - fee.withdraw_authority
+    - builder_claims.upgrade
+  model_brief:
+    core_points:
+      - "Yes for the token: the team's 14 Sep 2026 post says QuillAudits reviewed the $SEAS token's configuration and extensions and found no critical, high or medium issues; label it as the team's statement."
+      - "What anyone can check on-chain: fixed supply, no freeze authority, no permanent delegate, metadata locked since 13 May 2026."
+      - "If asked about the rest of the protocol: the published audit covers the token, and the distribution, Builder claims and lock programs don't have a published audit yet; don't call Seasons as a whole audited."
+      - "Scanner badges such as 'mint authority disabled' are useful checks, not audits."
+    short_form: "Yes, the token: per the team's 14 Sep 2026 post, QuillAudits reviewed its configuration and found no critical, high or medium issues. Fixed supply and no freeze authority are checkable on-chain."
+    counterweight: "The published audit covers the token, not the distribution, Builder claims or lock programs."
+  verifier:
+    must_not:
+      en:
+        [
+          "fully audited",
+          "multiple independent audits",
+          "multiple audits",
+          "audit-grade",
+          "audited by certik",
+          "the protocol is audited",
+          "the protocol has been audited",
+          "all contracts are audited",
+          "all smart contracts are audited",
+          "verified on jupiter",
+          "security-reviewed",
+        ]
+      ru: ["полностью проверен", "несколько независимых аудитов", "протокол прошёл аудит"]
+      de: ["vollständig auditiert", "mehrfach auditiert", "mehrere unabhängige Audits"]
+      es: ["totalmente auditado", "múltiples auditorías", "varias auditorías independientes"]
+      ja: ["完全に監査", "複数の独立した監査", "プロトコル全体が監査済み"]
+    forbidden_implicatures:
+      - "the token audit means the fee authorities are safe, renounced or multisig"
+      - "the distribution, Builder claims or lock programs were audited"
+      - "a scanner badge is an audit"
+  meta:
+    requires_review: false
+    decisions: [D6]
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-RETURNS
+  version: 1
+  status: approved
+  mode: STATE
+  intents:
+    [guaranteed_apy, how_much_will_i_earn, savings_safety, apy_100, profit, per_month, how_much_get]
+  examples:
+    en:
+      - Is the APY guaranteed?
+      - How much will I earn?
+      - How much can I make with $10,000?
+      - How do I earn with Seasons?
+      - Is it safe to put my savings in Seasons?
+      - Can you guarantee I won't lose money?
+    ru:
+      - Доходность гарантирована?
+      - Сколько я заработаю?
+      - Можно ли вложить сюда сбережения?
+      - Как зарабатывать с Seasons?
+      - Как заработать на Seasons?
+      - Когда я начну зарабатывать?
+    de:
+      - Ist die Rendite garantiert?
+      - Wie viel verdiene ich?
+      - Wie viel verdiene ich mit 20.000 € in einem Jahr?
+    es:
+      - ¿El APY está garantizado?
+      - ¿Cuánto voy a ganar?
+      - ¿Cuánto ganaré con 5.000 dólares en seis meses?
+    ja:
+      - 利回りは保証されていますか？
+      - いくら稼げますか？
+      - 10,000 SEASで毎月いくら稼げますか？
+  required_fact_keys:
+    - apy.not_guaranteed
+    - apy.definition
+    - apy.last_reported
+    - apy.history
+    - tax.round_trip
+    - node.director
+    - node.builder
+    - legal.insurance
+    - distribution.schedule
+    - inclusion_set.current
+    - yield.distributed_share
+    - modules.status
+    - custody.self
+  model_brief:
+    core_points:
+      - "Answer the question: Directors (10,000+ $SEAS at the snapshot) are paid every Sunday and Wednesday, straight to the wallet, in a basket of tokenised gold (XAUt0), bitcoin (wBTC) and dollars (jlUSDc); nothing to claim. Builders (1,000+) accrue weekly at 0.8× the network rate. The $SEAS stays in the holder's own wallet, with no deposit or lock-up; the fixed cost of joining is the 10% entry fee."
+      - "Give the history, dated and labelled team-reported: about 20.17% for Round #84 (25 Sep 2026); Q2 2026 rounds 5.76% to 12.17% (average 8.66%), Q1 6.13% to 18.42%. For a new buyer the rate on what they paid is about 0.9× the quoted figure because of the entry fee."
+      - "With the user's amount, offer a conditional illustration with the calculator at the latest reported rate or their own rate ('at that rate, if it held, …'); never 'you will'."
+      - "Why it can grow: payouts rise with activity on the protocol, the distributed share of generated yield rose from 58.9% in Q1 to 75.4% in Q2, and two more revenue modules are planned, with no date yet."
+      - "For savings questions: GAIA doesn't say what suits someone's savings; unlike a bank deposit it isn't insured and the rate isn't fixed. Offer the history and a calculation instead."
+      - "Close with one short neutral clause: rates change every round, so this is history, not a guarantee."
+    short_form: "Directors are paid twice a week in gold, bitcoin and dollar tokens. The last reported round was about 20.17%, recent quarters 5.76% to 18.42%. History, not a guarantee; I can run your numbers."
+    counterweight: "The rate and the $SEAS price both move, and nothing about the rate is guaranteed."
+  verifier:
+    must_not:
+      en:
+        [
+          "guaranteed apy",
+          "guaranteed return",
+          "guaranteed yield",
+          "guaranteed profit",
+          "the apy is guaranteed",
+          "you will earn",
+          "you'll earn",
+          "you will make",
+          "risk-free",
+          "your principal is safe",
+          "principal remains intact",
+          "safe place for your savings",
+          "better than a bank",
+          "100% apy is real",
+        ]
+      ru: ["гарантированная доходность", "гарантированный доход", "вы заработаете", "без риска"]
+      de: ["garantierte Rendite", "Sie werden verdienen", "risikofrei", "sichere Rendite"]
+      es: ["rentabilidad garantizada", "ganancias garantizadas", "usted ganará", "sin riesgo"]
+      ja: ["保証された利回り", "元本保証", "確実に稼げます", "リスクはありません"]
+    forbidden_implicatures:
+      - "a past or reported APY is what the user will get"
+      - "a higher APY after a price drop is a gain"
+      - "Seasons is a suitable home for savings"
+      - "the docs' target range is a floor"
+  meta:
+    requires_review: false
+    decisions: []
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-PAYBACK
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [payback, break_even, roi, earn_back_fee]
+  examples:
+    en:
+      - When will my node pay for itself?
+      - How long until I break even?
+      - When do I get my money back?
+      - What's the ROI of a node?
+      - How long to earn back the tax?
+    ru:
+      - Когда окупится нода?
+      - Через сколько я верну вложения?
+      - Какая окупаемость ноды?
+      - Через сколько я верну свои деньги?
+      - Когда я верну деньги?
+    de:
+      - Wann amortisiert sich ein Node?
+      - Wann habe ich mein Geld zurück?
+      - Wie lange bis zum Break-even?
+    es:
+      - ¿Cuándo se paga solo un nodo?
+      - ¿Cuándo recupero mi inversión?
+      - ¿Cuánto tarda en recuperarse el impuesto?
+    ja:
+      - ノードはいつ元が取れますか？
+      - 投資回収までどれくらいですか？
+      - 損益分岐点はいつですか？
+  required_fact_keys:
+    - tax.round_trip
+    - tax.earn_back_formula
+    - fee.rate
+    - apy.definition
+    - apy.not_guaranteed
+    - apy.last_reported
+    - apy.history
+    - node.director
+    - yield.distributed_share
+    - modules.status
+    - custody.self
+  model_brief:
+    core_points:
+      - "Answer it, don't dodge: the money isn't spent, because the $SEAS stays in the holder's own wallet; the fixed cost of joining is the 10% entry fee, so the useful question is how fast payouts cover that fee."
+      - "Payouts start with the first Sunday or Wednesday round after the wallet holds 10,000+ $SEAS at the snapshot (Builders: 1,000+, weekly), straight to the wallet."
+      - "Illustrate with calc_time_to_earn_back (basis entry_fee) at the latest reported rate, about 20.17% for Round #84 (25 Sep 2026), or at the user's own rate, and say it conditionally ('at that rate, if it held, the entry fee would be covered in about …'); mention in a few words that recent quarters ranged from 5.76% to 18.42%."
+      - "Why it can be faster: payouts grow with activity on the protocol, the distributed share of generated yield rose from 58.9% in Q1 to 75.4% in Q2, and two more revenue modules are planned, with no date yet."
+      - "Close with one short neutral clause: rates and the $SEAS price change, so this is an illustration, not a promise."
+    short_form: "Your $SEAS stays in your wallet, so the cost of joining is the 10% entry fee. At the last reported rate, about 20.17%, payouts would cover it in roughly half a year, if it held."
+    counterweight: "Payouts and the $SEAS price both change, so any payback time is an illustration."
+  verifier:
+    must_not:
+      en:
+        [
+          "you'll break even in",
+          "you will break even in",
+          "you'll get your money back in",
+          "you will get your money back in",
+          "guaranteed break-even",
+          "a typical rate is",
+          "a conservative rate of",
+          "let's assume a rate of",
+          "the average apy is",
+        ]
+      ru: ["вы вернёте вложения через", "гарантированная окупаемость", "точно окупится"]
+      de: ["Sie haben Ihr Geld zurück in", "garantierter Break-even"]
+      es: ["recuperará su inversión en", "punto de equilibrio garantizado"]
+      ja: ["で元が取れます", "で投資を回収できます", "確実に回収"]
+    forbidden_implicatures:
+      - "the latest reported rate will continue or is what the user should expect"
+      - "the payback time is certain"
+      - "holding long enough guarantees a profit"
+  meta:
+    requires_review: false
+    decisions: []
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-VOLUME
+  version: 1
+  status: hold
+  mode: HOLD
+  intents: [volume_fake, bots, market_makers, wash_trading, organic_volume, quest_farm]
+  examples:
+    en:
+      - Is the volume fake?
+      - Do you run bots?
+      - Are there market makers?
+      - Is the volume real or bots?
+      - Is Seasons wash trading?
+    ru:
+      - Объём накручен?
+      - У вас есть маркетмейкеры?
+      - Это боты торгуют?
+      - Объёмы настоящие?
+    de:
+      - Ist das Volumen echt?
+      - Benutzt ihr Bots?
+      - Gibt es Market Maker?
+    es:
+      - ¿El volumen es falso?
+      - ¿Usan bots?
+      - ¿Hay market makers?
+    ja:
+      - 出来高は偽物ですか？
+      - ボットを使っていますか？
+      - マーケットメーカーはいますか？
+  required_fact_keys:
+    - volume.definition
+    - market.trading_activity
+    - funding.observed_path
+    - distribution.weekday_streak
+  model_brief:
+    core_points:
+      - "Don't call the volume genuine and don't call it manufactured: that is for the team to answer on the record."
+      - "Say you've passed the question to the team (queue_for_team); never ask the user for wallets or transactions."
+      - "Offer what is verifiable instead: every payout round is on-chain, on schedule every Sunday and Wednesday, and the Terminal's 'volume' is on-chain transfer volume, not DEX trading volume."
+    short_form: "That's a question for the team to answer on the record, and I've passed it on. What I can show you is on-chain: every payout round, on schedule."
+  verifier:
+    must_not:
+      en:
+        [
+          "no market makers",
+          "100% organic",
+          "organic volume",
+          "no bots",
+          "dex-only",
+          "wash trading is pointless",
+          "wash trading is costly",
+          "makes wash trading",
+          "i can't verify that",
+          "send me the wallets",
+          "everyone pays the same 10%",
+          "they pay the same 10%",
+          "the volume is real",
+          "the volume is fake",
+        ]
+      ru:
+        [
+          "нет маркетмейкеров",
+          "органический объём",
+          "органический объем",
+          "нет ботов",
+          "все платят одинаковые 10%",
+        ]
+      de: ["keine Market Maker", "organisches Volumen", "keine Bots"]
+      es: ["no hay market makers", "volumen orgánico", "no hay bots"]
+      ja: ["マーケットメーカーはいません", "オーガニックな出来高", "ボットはいません"]
+    forbidden_implicatures:
+      - "the 10% fee makes churning or wash trading costly, so volume is real"
+      - "everyone, including any trading wallets, pays the same 10%"
+      - "24h DEX volume or holder counts are the real measure of demand"
+      - "on-time payouts prove trading demand"
+  meta:
+    requires_review: true
+    decisions: [D-VOL]
+    queue: true
+    review_by: 2026-11-15
+
+- id: HA-PRICE
+  version: 1
+  status: approved
+  mode: STATE
+  intents:
+    [price_prediction, price_target, 10x, price_dump, dumping, price_down, buy_dip, buy_timing]
+  examples:
+    en:
+      - Will $SEAS go up?
+      - Will SEAS 10x?
+      - Is now a good time to buy?
+      - Why is the price dumping?
+      - Will the price recover?
+      - Someone said the target is $10 per SEAS. Is that true?
+    ru:
+      - Цена вырастет?
+      - Будут иксы?
+      - Почему цена падает?
+      - Когда цена восстановится?
+    de:
+      - Wird $SEAS steigen?
+      - Warum fällt der Kurs so stark?
+      - Ist jetzt ein guter Zeitpunkt zum Kaufen?
+    es:
+      - ¿Va a subir el precio?
+      - ¿Por qué cae el precio?
+      - ¿Es buen momento para comprar?
+    ja:
+      - 価格は上がりますか？
+      - 価格はいつ回復しますか？
+      - 今が買い時ですか？
+  required_fact_keys:
+    - price.sources
+    - liquidity.exit_depth
+    - fee.history
+    - token.supply_total
+    - distribution.last_round
+    - modules.status
+    - tax.round_trip
+  model_brief:
+    core_points:
+      - "Don't predict prices, targets, multiples or timing, and don't repeat price targets from anyone, older Seasons material included; neither confirm nor deny that one was published."
+      - "Give the live price with its pool and time; other sources can differ slightly."
+      - "What is fixed and verifiable: 1 billion $SEAS and nobody can mint more, the fee is 10% with no change pending, and about 60% of supply sits in on-chain time-locks."
+      - "Payouts already received are in gold, bitcoin and dollar tokens, so their value doesn't depend on the $SEAS price."
+      - "If asked why the price moved: it follows trading on the DEX pools; don't guess at motives or name anyone, and say what hasn't changed."
+      - "Buy or sell timing is the user's call: offer a scenario with their own numbers."
+    short_form: "I don't predict prices, but I can show the live price with its source and what's fixed: a supply of 1 billion $SEAS that nobody can increase, and the 10% fee."
+    counterweight: "The price moves with the market, and large sales move it noticeably."
+  verifier:
+    must_not:
+      en:
+        [
+          "will definitely go up",
+          "will 10x",
+          "going to 10x",
+          "to the moon",
+          "buy the dip",
+          "now is a good time to buy",
+          "you won't regret",
+          "don't miss out",
+          "we're still early",
+          "you're still early",
+          "our price target",
+          "support level is",
+          "buybacks are active",
+          "buybacks are running",
+          "outperformed bitcoin",
+          "outperformed the market",
+        ]
+      ru:
+        [
+          "цена обязательно вырастет",
+          "будут иксы",
+          "сейчас хорошее время купить",
+          "откупайте просадку",
+        ]
+      de: ["der Kurs wird sicher steigen", "jetzt ist ein guter Zeitpunkt", "den Dip kaufen"]
+      es: ["el precio va a subir seguro", "ahora es buen momento para comprar", "compre la caída"]
+      ja: ["価格は必ず上がります", "今が買い時です", "必ず回復します"]
+    forbidden_implicatures:
+      - "a lower price raises the holder's real return"
+      - "past price performance predicts future moves"
+      - "buybacks support the price today"
+      - "a specific actor caused the move"
+  meta:
+    requires_review: false
+    decisions: [D7]
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-SAFETY
+  version: 1
+  status: approved
+  mode: STATE
+  intents:
+    [
+      seed_phrase_request,
+      dm_scam,
+      fake_support,
+      wallet_connect_scam,
+      verify_wallet,
+      admin_dmed,
+      сид_фраза,
+    ]
+  examples:
+    en:
+      - Support asked for my seed phrase in DM, is that OK?
+      - Should I paste my seed phrase here to verify my node?
+      - An admin DMed me offering 2x yield if I send SOL
+      - Is this Seasons support account real?
+      - Someone asked me to connect my wallet to claim a bonus
+    ru:
+      - Поддержка попросила мою сид-фразу, это нормально?
+      - Мне написал админ Seasons в личку
+      - Нужно ли вводить сид-фразу, чтобы проверить ноду?
+    de:
+      - Der Support hat nach meiner Seed-Phrase gefragt
+      - Ein Admin hat mir privat geschrieben
+      - Soll ich meine Seed-Phrase eingeben?
+    es:
+      - Soporte me pidió mi frase semilla, ¿está bien?
+      - Un admin me escribió por privado
+      - ¿Debo pegar mi frase semilla aquí?
+    ja:
+      - サポートにシードフレーズを聞かれました
+      - 管理者からDMが来ました
+      - シードフレーズを入力すべきですか？
+  required_fact_keys:
+    - security.keys
+    - official.channels
+    - gaia.surfaces
+    - token.mint
+  model_brief:
+    core_points:
+      - "Never share a seed phrase or private key with anyone: Seasons and GAIA never ask for one, and anyone who does is running a scam."
+      - "Official Seasons staff never DM first to offer help, bonuses or doubled yield; treat any such DM as a scam and report it in the official community."
+      - "If a seed phrase was already shared or pasted anywhere, treat the wallet as compromised: move the funds to a new wallet created on a device you trust, and delete the message."
+      - "Check links and handles only against the official list (seasons.wtf, terminal.seasons.wtf, the docs at seasons.gitbook.io, @SeasonsDEFI), and compare every character of an address."
+      - "GAIA can't sign, hold keys or recover funds, and Solana transfers are irreversible; offer a human for account problems."
+    short_form: "Never share your seed phrase or private key. Seasons and GAIA never ask for them, and official staff never DM you first. If you already shared it, move your funds to a new wallet now."
+  verifier:
+    must_not:
+      en:
+        [
+          "send me your seed",
+          "share your seed phrase with",
+          "paste your seed phrase here",
+          "enter your private key",
+          "i can recover your funds",
+          "we can recover your",
+          "connect your wallet to verify",
+          "dm me your",
+        ]
+      ru: ["пришлите сид-фразу", "введите сид-фразу", "мы вернём ваши средства"]
+      de:
+        [
+          "senden Sie mir Ihre Seed-Phrase",
+          "geben Sie Ihre Seed-Phrase ein",
+          "wir können Ihr Geld zurückholen",
+        ]
+      es:
+        ["envíeme su frase semilla", "introduzca su frase semilla", "podemos recuperar sus fondos"]
+      ja: ["シードフレーズを送って", "シードフレーズを入力してください", "資金を取り戻せます"]
+    forbidden_implicatures:
+      - "a DM from 'support' could be legitimate"
+      - "GAIA can verify a wallet with a seed phrase"
+      - "lost funds can be recovered by the team"
+  meta:
+    requires_review: false
+    decisions: []
+    queue: false
+    review_by: 2026-12-31
+
+- id: HA-SUPPLY
+  version: 1
+  status: approved
+  mode: STATE
+  intents: [fixed_supply, mint_more, freeze_tokens, total_supply]
+  examples:
+    en:
+      - Is the supply fixed?
+      - Can the team mint more $SEAS?
+      - Can they print more tokens?
+      - Can the team freeze my tokens?
+      - What's the total supply?
+      - Can they mint more to pay Builders?
+    ru:
+      - Эмиссия фиксированная?
+      - Может ли команда напечатать ещё токенов?
+      - Могут ли заморозить мои токены?
+    de:
+      - Ist das Angebot fix?
+      - Kann das Team neue Tokens minten?
+      - Können meine Tokens eingefroren werden?
+    es:
+      - ¿El suministro es fijo?
+      - ¿Pueden acuñar más tokens?
+      - ¿Pueden congelar mis tokens?
+    ja:
+      - 供給量は固定ですか？
+      - チームはトークンを追加発行できますか？
+      - トークンを凍結できますか？
+  required_fact_keys:
+    - token.supply_total
+    - token.mint_authority
+    - token.freeze_authority
+    - token.holder_safety
+    - supply.circulating
+    - locks.upcoming_unlocks
+    - locks.unlocked_groups
+    - node.builder_funding
+  model_brief:
+    core_points:
+      - "Supply is fixed: 1 billion $SEAS were minted at genesis and the mint authority is null, so nobody, the team included, can create more; about 0.2 $SEAS has been burned in small amounts."
+      - "The freeze authority is null and the token has no transfer hook or permanent delegate, so nobody can freeze, seize or move a holder's tokens."
+      - "Builder payouts come from an allocation of existing supply, not new tokens."
+      - "Stick to supply; if the user asks about circulation or unlocks, answer from the Almanac briefly and neutrally."
+    short_form: "Yes. 1 billion $SEAS were minted at genesis and the mint and freeze authorities are null, so nobody, the team included, can mint more or freeze yours."
+    counterweight: "Circulation grows as scheduled time-locks open; the schedule is public on-chain."
+  verifier:
+    must_not:
+      en:
+        [
+          "no unlocks",
+          "circulating supply is fixed",
+          "circulation is fixed",
+          "the team can mint",
+          "new tokens are minted for builders",
+          "inflationary rewards",
+        ]
+      ru: ["команда может выпустить", "разлоков нет"]
+      de: ["das Team kann minten", "es gibt keine Freischaltungen"]
+      es: ["el equipo puede acuñar", "no hay desbloqueos"]
+      ja: ["チームは発行できます", "アンロックはありません"]
+    forbidden_implicatures:
+      - "fixed supply means holders can't be diluted by unlocks"
+      - "Builder payouts are newly minted"
+  meta:
+    requires_review: false
+    decisions: []
+    queue: false
+    review_by: 2026-12-31

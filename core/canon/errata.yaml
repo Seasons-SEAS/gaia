@@ -1,0 +1,175 @@
+# GAIA canon: errata for the docs library
+#
+# Lines in the public docs that are wrong, stale or unsafe to repeat. The library build tags every chunk whose text
+# matches `match` (case-insensitive regexes over the cleaned chunk text) with
+# the erratum id. A tagged chunk is down-ranked, its numbers never pass numeric
+# provenance, and GAIA must not repeat the line without its correction.
+#
+# `correction` is the true statement to pair with the line. It uses public facts
+# only and the interim wordings of open team decisions.
+# Fix at source: every erratum is also a content fix for the GitBook (D5).
+
+- id: ERR-AUDITS-MULTIPLE
+  where: GitBook TTT (L438)
+  match: ["multiple independent audits"]
+  correction: >-
+    Only the $SEAS token was audited (QuillAudits, per the team's 14 Sep 2026 post); no audit of the
+    distribution, Builder claims or lock programs has been published.
+
+- id: ERR-NO-ASSETS
+  where: GitBook TTT (L440)
+  match: ["does not own/?\\s*posses+ any pools", "manage any assets"]
+  correction: >-
+    The team operates the distributor, the Builder claims vault and the Foundation-deployed official
+    pools; holders keep their own tokens in their own wallets.
+
+- id: ERR-PERMISSIONS-REVOKED
+  where: GitBook LPs (L3688)
+  match: ["permission controls revoked"]
+  correction: >-
+    Mint, freeze and metadata authorities are revoked, but the fee-config and fee-withdraw authorities
+    are live single-signature wallets.
+
+- id: ERR-RATE-AFTER-DAO
+  where: GitBook TTT F.A.Q. (L478)
+  match: ["adaptation of the rate becomes a consideration after the instantiation of the dao"]
+  correction: >-
+    Today a single-signature wallet can change the rate (with a two-epoch delay); the DAO is not
+    operational.
+
+- id: ERR-ALWAYS-GUARANTEED
+  where: GitBook Generation (L236)
+  match: ["always guaranteed"]
+  correction: >-
+    Nothing about the yield is guaranteed; only 1 of 3 planned revenue modules is live and payouts vary
+    every round.
+
+- id: ERR-FEES-PER-ROUND
+  where: GitBook Distribution and TTT (fees swapped each round)
+  match:
+    [
+      "rolling two-day basis",
+      "accumulated fees are directly swapped",
+      "accumulated in the \\*?\\*?acquirer escrow",
+    ]
+  correction: >-
+    On-chain the fees stay withheld and were last collected on launch day; how each round is funded is
+    for the team to describe, and no per-round reconciliation is published.
+
+- id: ERR-ORGANIC-VOLUME
+  where: GitBook TTT (velocity section)
+  match: ["organic volume based on organic demand", "dissuades market makers"]
+  correction: >-
+    GAIA doesn't treat volume as evidence of demand, and doesn't have information about trading by
+    Seasons-related wallets; the team should answer that on the record.
+
+- id: ERR-FOUNDATION-ROLLING
+  where: GitBook Tokenomics (L2287)
+  match: ["locked in 365-day rolling periods"]
+  correction: >-
+    The Foundation locks are fixed schedules opening from 8 Jul 2027 to 8 Jul 2028, not rolling
+    365-day relocks.
+
+- id: ERR-INCENTIVES-LOCKED
+  where: GitBook Tokenomics (L2303)
+  match: ["incentive supply remains locked"]
+  correction: >-
+    The Incentives wallets haven't moved since launch but are not in any lock program.
+
+- id: ERR-GROWTH-LOCKED
+  where: GitBook Tokenomics (L2322)
+  match:
+    [
+      "only enter circulation after an officially announced counterparty",
+      "remaining three wallets shall be locked",
+    ]
+  correction: >-
+    The Growth wallets are not in a lock program, and about 25.6M $SEAS has moved out of them since
+    January 2026.
+
+- id: ERR-PARTNER-ALL-BUT-ONE
+  where: GitBook Tokenomics (L2338)
+  match: ["all but one partnership wallets"]
+  correction: >-
+    All 12 Partner wallets are locked, until 30 Jan 2027.
+
+- id: ERR-LOCKS-UNIFORM
+  where: GitBook Tokenomics (L2364)
+  match: ["lock periods\\W*\\s*\\W*are uniform"]
+  correction: >-
+    Lock terms range from about one year to five-year annual vesting, and Incentives and Growth are not
+    locked.
+
+- id: ERR-TOKEN-NAME
+  where: GitBook $SEAS (L2083, L2099)
+  match: ["season's token"]
+  correction: >-
+    The on-chain token name is "Seasons" and the ticker is $SEAS.
+
+- id: ERR-DISTRIBUTOR-HKGN
+  where: GitBook $SEAS (L2097)
+  match: ["distributor\\W+hkgnlzbegadpves9yvvi1dseauckau7d8twczrkcfyta"]
+  correction: >-
+    HKGn…Fyta is the genesis allocation address and is inactive; Director payouts come from the Set #2
+    distributor 2yHa1U…jk9a.
+
+- id: ERR-APY-SHARE-LABELS
+  where: GitBook Nodes and Builder Nodes tables (L1424, L1791)
+  match: ["100% apy", "80% apy"]
+  correction: >-
+    "100% APY" and "80% APY" are share labels: Directors get the full network rate and Builders 0.8×
+    of it; neither is a return.
+
+- id: ERR-APY-SIMULATION
+  where: GitBook APY (L1996)
+  match: ["an apy of approximately ~?70%"]
+  correction: >-
+    The ~70% figure is a hypothetical simulation that includes modules that aren't live; it is not a
+    forecast.
+
+- id: ERR-OUTPERFORMING
+  where: GitBook APY and F.A.Q. (L2060)
+  match: ["outperforming all alternative options"]
+  correction: >-
+    The docs give design targets, not a comparison; no return is guaranteed.
+
+- id: ERR-THRESHOLD-FRACTION
+  where: GitBook Director Nodes and HYSA (L1580, L4849)
+  match: ["1/10,000th or 0\\.0001%"]
+  correction: >-
+    10,000 $SEAS is 0.001% (1/100,000) of the 1B supply.
+
+- id: ERR-10K-ONLY
+  where: GitBook $SEAS, F.A.Q., Applying Yield 3.0, TTT (10,000-only node definition)
+  match:
+    [
+      "threshold amount of 10,000 tokens",
+      "holding at least 10,000 tokens",
+      "minimal threshold is 10,000",
+      "balance of 10,000(\\.0+)? \\$seas tokens or more as a node",
+      "once an address holds 10,000 \\$seas tokens it will automatically activate",
+      "threshold minimum of 10,000",
+      "i\\.e\\., 10,000\\+ \\$seas",
+    ]
+  correction: >-
+    There are two tiers: Director from 10,000 $SEAS and Builder from 1,000 to 9,999 $SEAS.
+
+- id: ERR-SSYM-DATE
+  where: GitBook SSYM (L505)
+  match: ["alpha version to be live before q4 of 2026"]
+  correction: >-
+    The SSYM is planned and not active, with no confirmed date.
+
+- id: ERR-IRREFUTABLE-CLAIMS
+  where: GitBook Nodes (L1388)
+  match: ["irrefutable claims on the capital flows"]
+  correction: >-
+    Nodes receive a pro-rata share of each distribution while they hold the threshold; there is no
+    enforceable claim before the DAO exists.
+
+- id: ERR-BURN-PATH
+  where: GitBook $SEAS (L2115), Applying Yield 3.0 (Yield Faucet)
+  match: ["the consumer path is a short-lived", "burnclaim"]
+  correction: >-
+    Burn-for-yield paths are documented concepts with unconfirmed status; the token has no native burn
+    mechanism, so GAIA never encourages an irreversible burn.

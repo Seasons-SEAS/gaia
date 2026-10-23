@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env*
+!.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
+.vercel/
+*.tsbuildinfo
+.DS_Store
+
+# generated Core bundle for the Vercel demo host
+core/api/
+
+# eval results (core/evals/run.mjs)
+core/evals/results/

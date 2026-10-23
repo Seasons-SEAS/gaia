@@ -1,0 +1,12 @@
+# The demo host needs only the bundled function (api/core.js) and vercel.json.
+.dev.vars
+.dev.vars.*
+.env*
+.wrangler/
+node_modules/
+src/
+test/
+evals/
+scripts/
+canon/
+*.tsbuildinfo

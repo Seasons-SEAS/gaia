@@ -1,0 +1,69 @@
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": {
+      "apiVersion": "4.3.0",
+      "slot": 451563650
+    },
+    "value": {
+      "data": {
+        "parsed": {
+          "info": {
+            "decimals": 8,
+            "extensions": [
+              {
+                "extension": "transferFeeConfig",
+                "state": {
+                  "newerTransferFee": {
+                    "epoch": 892,
+                    "maximumFee": 10000000000000000,
+                    "transferFeeBasisPoints": 1000
+                  },
+                  "olderTransferFee": {
+                    "epoch": 892,
+                    "maximumFee": 10000000000000000,
+                    "transferFeeBasisPoints": 1000
+                  },
+                  "transferFeeConfigAuthority": "E1J26HgTZp4mKyWFz7TmWtEzVkMRAcZ5uoytT6nEJzm8",
+                  "withdrawWithheldAuthority": "CY3fa3LQmZ9woV3cdfMxGmMYow1WHZ2BGNTcc4JsMDK7",
+                  "withheldAmount": 28847141027326
+                }
+              },
+              {
+                "extension": "metadataPointer",
+                "state": {
+                  "authority": null,
+                  "metadataAddress": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS"
+                }
+              },
+              {
+                "extension": "tokenMetadata",
+                "state": {
+                  "additionalMetadata": [],
+                  "mint": "7GdpaeSzvkx1a78rRkU11KstM1x8naMmMmmpWQnQSEAS",
+                  "name": "Seasons",
+                  "symbol": "SEAS",
+                  "updateAuthority": null,
+                  "uri": "https://ipfs.filebase.io/ipfs/QmTqYYsGD24m4rkYw6RZeEquqi4zLH8R6Yc2yueFAgGPEf"
+                }
+              }
+            ],
+            "freezeAuthority": null,
+            "isInitialized": true,
+            "mintAuthority": null,
+            "supply": "99999999980449592"
+          },
+          "type": "mint"
+        },
+        "program": "spl-token-2022",
+        "space": 517
+      },
+      "executable": false,
+      "lamports": 4503120,
+      "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "rentEpoch": 18446744073709552000,
+      "space": 517
+    }
+  },
+  "id": 171
+}
